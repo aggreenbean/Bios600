@@ -14,11 +14,10 @@ execute:
 
 
 -   Associate Professor, Department of Biostatistics 
--   PhD in Biostatistics from UNC in 2012
--   Fellow, Carolina Population Center 
--   Primary Office on Franklin Street, Most Thursdays I'll be in McGavern 3101A
+-   Fellow at the Carolina Population Center 
+-   PhD in Biostatistics from UNC
 -   Originally from Winston-Salem, NC
--   Interests: Dogs, traveling, trying anything new and being outdoors especially near water
+-   Interests: Dogs, traveling and being outdoors especially near water
 -   Office Hours: Thursdays 9:45-10:45 AM and by appointment. 
 
 
@@ -27,7 +26,7 @@ execute:
 -   Alex Akushevich, Abby Foes
 -   PhD students, Biostatistics department
 -   Will lead lab sessions, Tuesdays 3:30-4:50, McGavran-Greenberg 1301 (this room!)
--   Additional TA office hours TBD, will be announced via Canvas
+-   Potential of some additional office hours TBD, will be announced via Canvas
 
 ## Check out Ed Discussion
 
@@ -73,11 +72,11 @@ In groups of 4, share
 ## Activities: Participate, Practice, Perform {.smaller}
 
 -   **Participate:** Attend and actively participate in lectures and labs, office hours
--   **Practice:** Practice applying statistical concepts and computing with lab exercises (individual)
+-   **Practice:** Practice applying statistical concepts and computing with lab exercises 
     -   Review course topics with occasional participation exercises, typically a few questions administered via Canvas. Annotated notes will be uploaded after class.
 -   **Perform:** Put together what you've learned to analyze real-world data
-    -   Homework assignments (individual)
-    -   Three in-class exams 
+    -   Homework assignments 
+    -   Three in-class exams
 
 ## Cadence
 
@@ -115,7 +114,7 @@ In groups of 4, share
 | Exams    | 40%        |
 | Participation   | 5%         |
 
-See the course syllabus (.pdf available on Canvas) for how the final letter grade will be determined.
+See the course syllabus (available on Canvas) for how the final letter grade will be determined.
 
 ## Textbooks
 
@@ -197,6 +196,7 @@ I (like many people) am still in the process of learning about diverse perspecti
 -   Unless explicitly stated otherwise, this course's policy is that you may make use of any online resources (e.g. RStudio Community, StackOverflow, ChatGPT, etc.) but you must **explicitly cite** where you obtained any code you directly use or use as inspiration in your solution(s).
 
 - **I know that you will have access to the internet and AI in the real world**. However, you are required to understand (& be able to explain) every line of code you're turning in.
+- Exams will be held in person and completed without laptops or AI tools. It is therefore to your benefit that you are able to understand and solve problems independently.
 
 -   Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism, regardless of source.
 
@@ -229,7 +229,7 @@ What questions do you have?
 
 ## This week's tasks
 
--   Read the syllabus! (a .pdf version is available on Canvas)
+-   Read the syllabus! (available on Canvas)
 -   First lab will be posted on Monday!  
 -   Keep an eye out for a Getting to Know You Survey via Canvas, I'll send out an announcement.
 

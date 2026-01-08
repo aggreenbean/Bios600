@@ -107,7 +107,7 @@ You should get output that looks like
 To illustrate, let's load a dataset. Enter the following command into the console (you can directly copy/paste it, but make sure everything is exactly as below):
 
 ```{r echo = T}
-cdc <- read.csv("https://aggreenbean.github.io/Course-Slides/Bios%20600/labs/data/cdc_cleaned.csv")
+cdc <- read.csv("https://aggreenbean.github.io/Bios600/labs/data/cdc_cleaned.csv")
 ```
 
 We've just loaded a dataset named `cdc`. These data come primarily from the Sortable Risk Factors and Health Indicators dataset from the CDC, which comprises demographic and health indices compiled from various federal sources. This dataset is now part of our **environment**, which is displayed on the top half and right side of the RStudio window.
@@ -165,7 +165,7 @@ One of the biggest strengths of Quarto is that everything is in one place, and t
 Every homework assignment and lab in this class will be written in Quarto, with a template provided for you to use for the first few assignments. This lab's template can be downloaded by typing in the following code in the Console:
 
 ```{r}
-download.file("https://karamccor.github.io/b6002/labs/lab-01-template.qmd",
+download.file("https://aggreenbean.github.io/Bios600/labs/lab1-template_AGH.qmd",
               destfile="lab-01.qmd")
 ```
 

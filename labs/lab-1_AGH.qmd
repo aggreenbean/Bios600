@@ -3,7 +3,7 @@ title: "Lab 01"
 subtitle: "BIOS 600 - Spring 2025"
 logo: "images/logo_600.png"
 editor: visual
-format: html
+format: htmlgi
 ---
 
 Due Friday, Jan 16 at 11:59pm.

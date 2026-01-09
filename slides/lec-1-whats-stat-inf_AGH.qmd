@@ -29,16 +29,31 @@ No reading for today.
 
 ## Announcements
 
-- Lab 1 due **tomorrow at 11:59pm** in Gradescope. 
+- Thanks for all your wonderful introductions on Ed Discussion!
+
+- Your first lab will be **this afternoon** in **this room** from 3:30-4:50
+
+- Lab 1 has been posted and will be due **Friday  at 11:59 pm**
 
 - Fill out the Getting to Know You Survey (linked on Canvas homepage) by **tomorrow at 11:59pm**. 
 
-- TA office hours will be Tuesdays 2:20-3:20pm in MCG 2303. Stop by whenever you need help!
 
-- Moving forward on assignments, be sure to assign each question to the corresponding page in your PDF document. 
+## Announcements (cont) {.smaller}
 
-- Reach out to the TAs if you need help installing R/RStudio!
+- Tutoring is available (**starting Jan 20**) and this will include office hours for each of the 3 tutors 
+  - **Jose Lopez**
+  - **Wenqing Zhu**
+  - **Molly Hoch**
+  
+- More information next week once we identify the best times for office hours
 
+- Reach out to me or the TAs if you need assistance outside of the Lab time or my office hours 9:45-10:45 Thursday
+  - **Abby Foes** — agfoes@unc.edu
+  - **Alex Akushevich** — aku@unc.edu
+
+- Assistance from TAs is available by appointment (to start) 
+
+- Reminder: Please do utilize Ed Discussion whenpossible for questions 
 
 ## What is statistical inference (in a biostatistics context)?
 
@@ -78,7 +93,7 @@ Based on our collective histogram, get in groups of 4 and discuss the following:
 
 - What limitations might we have? (How could we improve?)
 
-## Sampling methods
+## Sampling methods  {.smaller}
 
 \textcolor{brown}{Probability sampling} (e.g., simple random sampling, stratified, cluster, or multi-stage sampling)
 
@@ -114,7 +129,7 @@ Based on our collective histogram, get in groups of 4 and discuss the following:
 
 -   Inability to prove causality
 
-## Example
+## Example  {.smaller}
 
 - Study: The effect of a new diet on weight loss in adults
 
@@ -139,7 +154,7 @@ Based on our collective histogram, get in groups of 4 and discuss the following:
 
 
 
-## What can go wrong?
+## What can go wrong?  {.smaller}
 
 - Depending on the study design and sampling methods, different types of bias occur (again, we don't have the full population, only a sample). 
 
@@ -167,7 +182,7 @@ Based on our collective histogram, get in groups of 4 and discuss the following:
 [What do some other people have to say about this study...?](https://medium.com/@balajis/peer-review-of-covid-19-antibody-seroprevalence-in-santa-clara-county-california-1f6382258c25)
 
 
-## Three main issues brought up in blog 
+## Three main issues brought up in blog  {.smaller}
 
 1. Sampling bias
 
@@ -179,7 +194,7 @@ Based on our collective histogram, get in groups of 4 and discuss the following:
 
 - Without a truly random sample, findings are less generalizable and reproducible
 
-## The issues, continued
+## The issues, continued  {.smaller}
 
 2. Statistical adjustments: High false positive rate could drive results
 
@@ -201,9 +216,9 @@ Based on our collective histogram, get in groups of 4 and discuss the following:
 
 ## Reproducibility and replicability {.smaller}
 
--   \textcolor{brown}{Reproducibility}: being able to take original data and code to reproduce all numerical findings.
+-   **Reproducibility**: being able to take original data and code to reproduce all numerical findings.
 
--   \textcolor{brown}{Replicability}: being able to independently repeat an entire study without use of the original data (generally with the same methods)
+-   **Replicability**: being able to independently repeat an entire study without use of the original data (generally with the same methods)
 
 Best practices from the American Statistical Association:
 
@@ -232,7 +247,7 @@ Best practices from the American Statistical Association:
 
 Fraudulent data can lead to unreliable research findings, waste resources, and erode trust in scientific integrity!
 
-## What is biostatistics good for?
+## What is biostatistics good for? {.smaller}
 
 - 📊 **Turning Data Into Insight**  
   Biostatistics helps us move beyond raw numbers to identify meaningful patterns in health and disease.  
@@ -266,7 +281,7 @@ Fraudulent data can lead to unreliable research findings, waste resources, and e
 
 ![](images/lec-1/incarceration.png){width="300"}
 
-## Activity: Biostatistics for public good!
+## Activity: Biostatistics for public good! {.smaller}
 
 Step 1: Explore Google Scholar
 

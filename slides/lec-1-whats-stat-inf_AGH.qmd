@@ -34,6 +34,7 @@ No reading for today.
 - Your first lab will be **this afternoon** in **this room** from 3:30-4:50
 
 - Lab 1 has been posted and will be due **Friday  at 11:59 pm**
+-   Zoom recording of lab has also been posted
 
 - Fill out the Getting to Know You Survey (linked on Canvas homepage) by **tomorrow at 11:59pm**. 
 
@@ -53,7 +54,7 @@ No reading for today.
 
 - Assistance from TAs is available by appointment (to start) 
 
-- Reminder: Please do utilize Ed Discussion whenpossible for questions 
+- **Reminder**: Please do utilize Ed Discussion whenpossible for questions 
 
 ## What is statistical inference (in a biostatistics context)?
 
@@ -65,21 +66,21 @@ A process that converts data into useful information, whereby practitioners
 
 ## Identifying the population and question of interest
 
-The \textcolor{brown}{population} is the group we'd like to learn something about:
+The **population** is the group we'd like to learn something about:
 
--   What is the prevalence of diabetes among \textcolor{brown}{U.S. adults}, and has it changed over time?
+-   What is the prevalence of diabetes among **U.S. adults**, and has it changed over time?
 
--   Is there a relationship between tumor type and five-year mortality in \textcolor{brown}{breast cancer patients}?
+-   Is there a relationship between tumor type and five-year mortality in **breast cancer patients**?
 
--   Does the average amount of caffeine vary by vendor in \textcolor{brown}{12 oz cups of coffee at UNC coffee shops}?
+-   Does the average amount of caffeine vary by vendor in **12 oz cups of coffee at UNC coffee shops**?
 
 If we had data from every unit in the population, we could just calculate what we wanted and be done!
 
 ## Sampling from the population
 
-Unfortunately, we (usually) have to settle with a \textcolor{brown}{sample} from the population.
+Unfortunately, we (usually) have to settle with a **sample** from the population.
 
--   Ideally, the sample is \textcolor{brown}{representative}, allowing us to use \textcolor{brown}{probability and statistical inference} to make conclusions that are \textcolor{brown}{generalizable} to the broader population of interest.
+-   Ideally, the sample is **representative**, allowing us to use **probability and statistical inference** to make conclusions that are **generalizable** to the broader population of interest.
 
 ## Our Sleep Data
 
@@ -95,7 +96,7 @@ Based on our collective histogram, get in groups of 4 and discuss the following:
 
 ## Sampling methods  {.smaller}
 
-\textcolor{brown}{Probability sampling} (e.g., simple random sampling, stratified, cluster, or multi-stage sampling)
+**Probability sampling** (e.g., simple random sampling, stratified, cluster, or multi-stage sampling)
 
 -   All units have a known chance of being selected
 
@@ -103,7 +104,7 @@ Based on our collective histogram, get in groups of 4 and discuss the following:
 
 -   Can be more expensive and time-consuming
 
-\textcolor{brown}{Non-probability sampling} (e.g. quota, convenience, or snowball sampling)
+**Non-probability sampling** (e.g. quota, convenience, or snowball sampling)
 
 -   Some units unable to be selected, with no way of knowing size or effect of sampling errors
 
@@ -113,7 +114,7 @@ Based on our collective histogram, get in groups of 4 and discuss the following:
 
 ## Study design
 
-\textcolor{brown}{Experimental} studies (e.g. randomized control trials (RCTs))
+**Experimental** studies (e.g. randomized control trials (RCTs))
 
 -   Researchers directly control exposures or treatment groups. 
 
@@ -121,7 +122,7 @@ Based on our collective histogram, get in groups of 4 and discuss the following:
 
 -   Less real-world applicability and generalizability
 
-\textcolor{brown}{Observational} studies (e.g. surveys)
+**Observational** studies (e.g. surveys)
 
 -   Researchers do not assign exposures or treatments
 
@@ -163,9 +164,10 @@ Based on our collective histogram, get in groups of 4 and discuss the following:
   - Reporting bias: tendency to under-report all information available
   - Many more: non-response bias, attrition bias, confounding, detection bias, lack of blinding, straight-up falsified data (this happens), ...
 
-![](images/lec-1/bias.png) [and more!](https://catalogofbias.org/biases/)
+![](images/lec-1/bias.png){style="width:90%; height:auto;"}<br>
+[and more!](https://catalogofbias.org/biases/)
 
-## A few years ago...
+## A few years ago...{.smaller}
 
 ![](images/lec-1/covid.png){width="300"}
 
@@ -232,14 +234,14 @@ Best practices from the American Statistical Association:
 
 ::: columns
 ::: {.column width="50%"}
-![](images/lec-1/drip.png){fig-alt="Former Harvard stem cell researcher up to 18 retractions" fig-align="center" width="200"}
+![](images/lec-1/drip.png){fig-alt="Former Harvard stem cell researcher up to 18 retractions" fig-align="center" width="400"}
 
 - misconduct, including image manipulation
 
 :::
 
 ::: {.column width="50%"}
-![](images/lec-1/duke.png){fig-alt="Duke agrees to pay $112 million to settle false claims related to scientific misconduct" fig-align="center" width="200"}
+![](images/lec-1/duke.png){fig-alt="Duke agrees to pay $112 million to settle false claims related to scientific misconduct" fig-align="center" width="400"}
 
 - submitting falsified data to secure federal research grants
 :::
@@ -247,6 +249,21 @@ Best practices from the American Statistical Association:
 
 Fraudulent data can lead to unreliable research findings, waste resources, and erode trust in scientific integrity!
 
+## Replication and Transparency as a Path to Self-Correction
+
+::: columns
+::: {.column width="40%"}
+
+Sharing code and data can help identify even accidental mistakes
+
+
+:::
+
+::: {.column width="60%"}
+
+![](images/lec-1/accidental.png){fig-alt="Notice of Retraction:" fig-align="center" width="400"}
+:::
+:::
 ## What is biostatistics good for? {.smaller}
 
 - 📊 **Turning Data Into Insight**  

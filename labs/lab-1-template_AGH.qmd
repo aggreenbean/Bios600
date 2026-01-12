@@ -1,5 +1,5 @@
 ---
-title: "Lab 01"
+title: "Lab 01: Introducing the Toolkit"
 author: YOUR NAME GOES HERE
 output: html_document
 ---

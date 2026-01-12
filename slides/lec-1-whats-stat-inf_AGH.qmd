@@ -17,11 +17,14 @@ library(countdown)
 
 ## As you walk in...
 
-Today, we'll "collect" some data from the class and record on the whiteboard! 
 
-How many hours of sleep did you get last night? If you feel comfortable sharing, please draw a dot above the number corresponding to the number of hours of sleep you got. (Round to the nearest hour)
+Today, we'll "collect" some data from the class and record it in a file you can access at the link below
 
-Draw each dot about 1 inch above the previous dot. Make dots about the same size. We'll come back to this later in class. 
+How many hours of sleep did you get last night? If you feel comfortable sharing, please type in a number corresponding to the number of hours of sleep you got. Round to the nearest hour.
+
+We'll come back to this later in class. 
+
+[Record Your Sleep Data](https://docs.google.com/spreadsheets/d/19evPgUDkN61lB7XZhChOqTLoCXPlkTSfM-RNBQDqL7E/edit?usp=sharing)
 
 ## Reading
 
@@ -33,8 +36,7 @@ No reading for today.
 
 - Your first lab will be **this afternoon** in **this room** from 3:30-4:50
 
-- Lab 1 has been posted and will be due **Friday  at 11:59 pm**
--   Zoom recording of lab has also been posted
+- Lab 1 and Zoom recording of the lab has been posted and will be due **Friday  at 11:59 pm**
 
 - Fill out the Getting to Know You Survey (linked on Canvas homepage) by **tomorrow at 11:59pm**. 
 

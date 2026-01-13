@@ -235,7 +235,7 @@ Best practices from the American Statistical Association:
 
 ::: columns
 ::: {.column width="50%"}
-![](images/lec-1/drip.png){fig-alt="Former Harvard stem cell researcher up to 18 retractions" fig-align="center" width="400"}
+![](images/lec-1/drip.PNG){fig-alt="Former Harvard stem cell researcher up to 18 retractions" fig-align="center" width="400"}
 
 - misconduct, including image manipulation
 
@@ -287,17 +287,17 @@ Sharing code and data can help identify even accidental mistakes
 
 - When we appropriately apply statistical inference methods, they can do a lot of good!
 
-![](images/lec-1/hospital.png){width="300"}
+![](images/lec-1/hospital.PNG){width="300"}
 
 
 
 ## What is biostatistics good for?
 
-![](images/lec-1/hurricane.png){width="300"}
+![](images/lec-1/hurricane.PNG){width="300"}
 
 ## What is biostatistics good for?
 
-![](images/lec-1/incarceration.png){width="300"}
+![](images/lec-1/incarceration.PNG){width="300"}
 
 ## Activity: Biostatistics for public good! {.smaller}
 

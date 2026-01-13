@@ -66,7 +66,7 @@ A process that converts data into useful information, whereby practitioners
 2.  collect and summarize data
 3.  and interpret the results
 
-## Identifying the population and question of interest
+## Identifying the population and question of interest  {.smaller}
 
 The **population** is the group we'd like to learn something about:
 
@@ -166,11 +166,11 @@ Based on our collective histogram, get in groups of 4 and discuss the following:
   - Reporting bias: tendency to under-report all information available
   - Many more: non-response bias, attrition bias, confounding, detection bias, lack of blinding, straight-up falsified data (this happens)...[and more!](https://catalogofbias.org/biases/)
 
-![](images/lec-1/bias.png){style="width:80%; height:auto;"}
+![](images/lec-1/bias.PNG){style="width:80%; height:auto;"}
 
 ## A few years ago...{.smaller}
 
-![](images/lec-1/covid.png){width="100"}
+![](images/lec-1/covid.PNG){width="100"}
 
 [link to article](https://pubmed.ncbi.nlm.nih.gov/33615345/)
 
@@ -180,7 +180,7 @@ Based on our collective histogram, get in groups of 4 and discuss the following:
 
 ## However...
 
-![](images/lec-1/covid2.png){width="300"}
+![](images/lec-1/covid2.PNG){width="300"}
 
 [What do some other people have to say about this study...?](https://medium.com/@balajis/peer-review-of-covid-19-antibody-seroprevalence-in-santa-clara-county-california-1f6382258c25)
 

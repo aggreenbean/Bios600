@@ -289,15 +289,19 @@ Sharing code and data can help identify even accidental mistakes
 
 ![](images/lec-1/hospital.PNG){width="300"}
 
-
+[Link to Study](https://pmc.ncbi.nlm.nih.gov/articles/PMC5558155/)
 
 ## What is biostatistics good for?
 
 ![](images/lec-1/hurricane.PNG){width="300"}
 
+[Link to Study](https://www.nejm.org/doi/full/10.1056/NEJMsa1803972)
+
 ## What is biostatistics good for?
 
 ![](images/lec-1/incarceration.PNG){width="300"}
+
+[Link to Study](https://pmc.ncbi.nlm.nih.gov/articles/PMC6935062/)
 
 ## Activity: Biostatistics for public good! {.smaller}
 

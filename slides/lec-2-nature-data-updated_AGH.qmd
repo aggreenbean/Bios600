@@ -498,7 +498,7 @@ $$s = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2}$$
 
 ## Let's go back to this descriptive table
 
-![](images/lec-2/tab1.png){width="400"}
+![](images/lec-2/tab1.PNG){width="400"}
 
 
 ## Variance {.smaller}

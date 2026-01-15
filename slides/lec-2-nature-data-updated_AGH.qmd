@@ -20,20 +20,16 @@ library(tidyverse)
 
 ## Announcements
 
-- Lab #1 due this Friday, Jan 16 at 11:59pm.
-- Homework #1 posted to Canvas today. Due next Thurdsay Jan 22 at 11:59pm.
+- **Lab #1** due this Friday, Jan 16 at 11:59pm.
+- **HW #1** posted today. Due next Thursday Jan 22 at 11:59pm.
 - **Reminder** Office hours today for Dr. Howard from 9:45-10:45 in McGavern-Greenberg 3101A
-- Reach out to me or the TAs if you need assistance outside of office hours 
+- Please reach out to me or TAs if you need assistance outside of office hours 
   - **Abby Foes** — agfoes@unc.edu
   - **Alex Akushevich** — aku@unc.edu
 
-## Tutoring
+## Download or print notes to PDF {.smaller}
 
-REACH TAS
-
-## Download or print notes to PDF {.small}
-
-If you’d like to export this presentation to a PDF, do the following:
+If you’d like to export this presentation to a PDF, do the following in Chrome or Firefox:
 
 1.  Toggle into Print View using the E key.
 2.  Open the in-browser print dialog (CTRL/CMD+P)
@@ -43,23 +39,40 @@ If you’d like to export this presentation to a PDF, do the following:
 6.  Enable the Background graphics option.
 7.  Click Save.
 
-This feature has been confirmed to work in Google Chrome and Firefox.
+## Download or print notes to Ipad {.small}
+
+If you’d like to export this presentation to a PDF, do the following:
+
+1.  Open the slides in Safari from Canvas 
+2.  Tap the Share button
+3.  Tap Options and select PDF
+4.  Tap Print (this allows you to change the orientation)
+5.  In the print preview, tap the Share button again to save the PDF to Files or another app.
 
 # Survey results
 
+## Tutoring/Office Hours
+
+- Interest in office hours
+  - Monday morning
+  - Monday afternoon
+  - Wednesday afternoon 
+  - Friday afternoon 
+- Updated office hours will be posted to Canvas later today
+  
 ## Interests
 
-- pharmaceutical sciences, clinical research, genetics, epidemiology, nutrition & metabolic diseases, immunology, public health policy, neuro Oncology, occupational health, industrial toxicology (+ intersection with environmental justice), disaster resilience networks + mutual aid, real-world applications, community health research, medicaid policy, dental research, biomedical engineering, cancer therapy, air + water quality, food systems, Adverse Childhood Experiences, reproductive disorders, biomechanics, & more!
+- clinical research, public health policy, social determinants of health, reproductive health, environmental engineering, environmental health, biotechnology, nutrition, global health, health equities, molecular genetics, implementation science, chemistry, health economics, social sciences, public health law, data science, biology, gut microbiome, computational 'omics, water and sanitation health, ecology, healthcare administration & quality improvement, medicine, epidemiology, pediatrics, maternal health, sustainability, toxicology, physical therapy & more!
 
 ## Hopes
 
-- Getting more comfortable coding in R, how can biostatistics inform understanding of health data, learning correct statistical test to use for data, understand meaning behind research results & how we get to those results, review statistics which I haven't seen since AP Stats, making R workflow more structured + reproducible, how to analyze + interpret data accurately, & more
+- Getting more comfortable and confident coding in R, what you can do with biostatistics, coding and biostatistics skills for your research projects here in Gillings and for your future careers, data visualization, data literacy, refine writing and data analysis skills, how to analyze + interpret data accurately, & more
 
-## R + supportive learning
+## R + supportive learning {.smaller}
 
 - R experience: Mostly never used R before! Many beginners, a few with more experience
 
-- What supports learning: step-by-step examples + independent practice, hands-on coding, visuals, group work + discussion, steady pace + clear instructions
+- What supports learning: step-by-step examples + independent practice, working in groups, hands-on coding, visuals, video recordings, repetition, practice problems, slides with photos + fun examples, examples in class that reflect the lab 
 
 - Many shared being nervous about coding and learning statistics in general. That's okay - we are here to support you!
   
@@ -93,19 +106,18 @@ In small groups, identify the target population and what represents an individua
 -   Creating visualizations helps us see patterns and identify potential data quality issues
 -   We will focus on **ggplot2**, a component of the **tidyverse**
 
-
 ::: {.callout-note appearance="minimal"}
 "The simple graph has brought more information to the data analyst's mind than any other device." - John Tukey
 :::
 
 
-## ggplot2 in tidyverse
+## ggplot2 in tidyverse {.smaller}
 
 ::: columns
 ::: {.column width="50%"}
 -   The tidyverse is a group of R packages designed for data science
 -   All tidyverse packages share an underlying design philosophy
--   Data visualization package in the tidyverse
+-   ggplot2 is the data visualization package in the tidyverse
 -   Inspired by *The Grammar of Graphics* (Wilkinson)
 
 ![](images/lec-2/gg.png)
@@ -131,7 +143,7 @@ A statistical graphic is
 -   using **geometries** (points, lines, bars, etc.)
 -   mapped onto a specific **coordinate** and/or **facet** system
 
-# Types of data
+# Types of data {.small}
 
 ## Categorical data
 
@@ -157,9 +169,9 @@ A statistical graphic is
 
 ::: columns
 ::: {.column width="50%"}
-**Count** or **rank** data}
+**Count** or **rank** data
 
--   Discrete counts. Or ranks.
+-   Discrete counts or ranks.
 -   Number of alcoholic drinks consumed in the past week, numerical rank of cancers by mortality, etc.
 :::
 
@@ -204,7 +216,7 @@ In designing a study, what variable should we use for smoking exposure?
 
 In the real world, decisions are made based on sample size, statistical power, likelihood of measurement error, or simply convenience (this happens a lot!)
 
-## Visualizing CDC data
+## Visualizing CDC data {.smaller}
 
 Let's take a look at some basic visualizations using state-level data collected by the Center for Disease Control (CDC). We'll examine the following variables:
 
@@ -291,7 +303,7 @@ ggplot(data = cdc, aes(x = Obesity)) +
 
 ::: columns
 ::: {.column width="50%"}
-```{r fig.height = 8, fig.width = 7, fig.asp=1}
+```{r fig.height = 7, fig.width = 6, fig.asp=1}
 ggplot(data = cdc[1:4,], aes(x = State, y = Obesity, group = 1)) +
   geom_line() + 
   geom_point() + 
@@ -301,10 +313,6 @@ ggplot(data = cdc[1:4,], aes(x = State, y = Obesity, group = 1)) +
 
 ```
 
-::: {.callout-warning title="Question"}
-Is this plot useful?
-:::
-
 :::
 
 ::: {.column width="50%" style="font-size: 70%;"}
@@ -312,6 +320,9 @@ Is this plot useful?
 -   Each value on x-axis corresponds to only one measurement on y-axis (and vice versa)
 -   Often used to depict change over time and connected with line.
 
+::: {.callout-warning title="Question"}
+Is this plot useful?
+:::
 
 :::
 :::
@@ -320,15 +331,16 @@ Is this plot useful?
 
 ::: columns
 ::: {.column width="50%"}
-```{r fig.height = 8, fig.width = 7, fig.asp=1}
+```{r fig.height = 8, fig.width = 7}
 cdc |>
   ggplot(aes(x = Exercise, y = Obesity)) +
-  geom_point() + 
+  geom_point(size=4) + 
   facet_grid(. ~ HDI) +
-  ggtitle("Adequate aerobic activity \n associated with lower obesity") +
+  ggtitle("Adequate aerobic activity \n associated with lower obesity by State HDI") +
   xlab("Adequate aerobic activity (%)") + 
-  theme(text = element_text(size = 28),
-        axis.text = element_text(size = 16))
+  theme(text = element_text(size = 26),
+        axis.text = element_text(size = 16),
+        plot.title = element_text(size = 20))  # make title smaller)
 ```
 :::
 
@@ -354,7 +366,7 @@ cdc |>
 
 -   Sample: 84,496 adults 65 years of age or older recruited in a trial between September 2008 and January 2010 and 101 sites throughout the Netherlands.
 
-## Parameters and statistics
+## Parameters and statistics {.smaller}
 
 **Parameters**
 
@@ -422,9 +434,9 @@ $$\bar{x} = \frac{1}{n}(x_1 + \ldots + x_n) = \frac{1}{n} \sum_{i=1}^n x_i$$
 
 ![](images/lec-2/irma.png){width="700"}
 
-## Skewness
+## Skewness {.smaller}
 
-```{r out.height="60%"}
+```{r, out.height="40%"}
 # Set the seed for reproducibility
 set.seed(123)
 
@@ -482,9 +494,12 @@ $$s = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2}$$
 
 -   Often used to express confidence (e.g. a **margin of error** for a poll being around $\pm$ 2 SD of the mean)
 
--   Squared deviations weight larger deviations more heavily, 
+-   Squared deviations weight larger deviations more heavily, and so also positive and negative deviations do not cancel out
 
-and so also positive and negative deviations do not cancel out
+## Let's go back to this descriptive table
+
+![](images/lec-2/tab1.png){width="400"}
+
 
 ## Variance {.smaller}
 

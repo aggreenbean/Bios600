@@ -432,7 +432,7 @@ $$\bar{x} = \frac{1}{n}(x_1 + \ldots + x_n) = \frac{1}{n} \sum_{i=1}^n x_i$$
 
 ## Are point estimates of location enough?
 
-![](images/lec-2/irma.png){width="700"}
+![](images/lec-2/irma.PNG){width="700"}
 
 ## Skewness {.smaller}
 

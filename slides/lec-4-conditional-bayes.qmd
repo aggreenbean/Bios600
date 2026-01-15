@@ -1,0 +1,307 @@
+---
+title: "Lecture 4: Conditional Probability and Bayes' Rule"
+subtitle: "BIOS 600 - Spring 2026"
+institute: "UNC - Chapel Hill"
+logo: "images/logo_600.png"
+format:
+  revealjs:
+    css: reveal-custom.css
+execute:
+  freeze: auto
+---
+
+## Announcements
+
+- HW 1 Due Tonight at 11:59pm
+
+- Lab 3 session Today at 3:30pm, due Friday at 11:59pm
+
+  - Encouraged to read over lab assignment tutorial ahead of time.
+
+- Some of you asked about the exam. Will send out information about exam structure, types of questions, content, etc. at the end of this week. 
+
+- Reminder: I have office hours Thursdays 9:45-10:45am (MCG 3106F) and by appointment. TAs have office hours Mondays 2-3pm (MCG 2303) & by appointment. Reach out if you need any support!
+
+
+## Ensure your code is visible in your PDF document!
+
+- For all assignments
+
+- Go from this:
+
+```{r}
+#| eval: false
+#| echo: true
+ggplot(data = cdc, aes(x = Region, y = InfantMortalityRate)) + 
+  geom_boxplot() + labs(title = "Infant Mortality Rate (%) by Region", xlab = "Region", ylab = "Infant Mortality Rate (%)")
+```
+
+to this:
+
+```{r}
+#| eval: false
+#| echo: true
+ggplot(data = cdc, aes(x = Region, 
+                       y = InfantMortalityRate)) + 
+  geom_boxplot() +
+  labs(title = "Infant Mortality Rate (%) by Region", 
+       xlab = "Region", 
+       ylab = "Infant Mortality Rate (%)")
+```
+
+## Reading
+
+-   Pagano and Gavreau: Sections 6.2, 6.3
+-   [OpenIntro Statistics](https://www.openintro.org/go/?id=os4_for_screen_readers&referrer=/book/os/index.php): Section 3.2
+
+## Overview
+
+-   Introduction to conditional probability
+-   Bayes' Rule
+
+## Conditional probability
+
+- **Conditional probability** is he probability an event will occur when another event has already occurred. The **conditional probability** of event $A$ given event $B$ is
+
+
+$$
+P(A|B) = \frac{P(A\cap B)}{P(B)}
+$$
+
+- How can we represent this visually? (Drawing)
+
+## Examples
+
+Examples come up all the time in the real world:
+
+-   Given that a mammogram comes back positive, what is the probability that a woman has breast cancer?
+-   Given that a 68-year old man has suffered four previous heart attacks, what is the probability he dies in the next five years?
+-   Given that a patient has a mutation in the CFTR gene, what is the probability their offspring will have cystic fibrosis?
+
+## Independence and the multiplicative rule {.smaller}
+
+We can rewrite the definition of conditional probability:
+
+$$
+P(A|B) = \frac{P(A\cap B)}{P(B)} \implies  \underbrace{P(A\cap B) = P(A | B) \times P(B)}_{\text{Multiplicative Rule}}
+$$
+
+
+::: callout-tip
+## Question
+
+What does the multiplicative rule mean in plain English?
+:::
+
+- The probability that A and B **both happen** is the probability that B happened, multiplied by the probability of A happened (given B already happened).  
+
+## The multiplicative rule
+
+Events $A$ and $B$ are said to be **independent** when
+
+::: {.callout-caution appearance="minimal"}
+
+$$
+P(A \cap B) = P(A) \times P(B)
+$$
+:::
+
+or equivalently, $P(A|B) = P(A)$ or $P(B|A) = P(B)$
+
+- In other words, if A and B are independent, then the probability of both happening is simply the probability of A happening times the probability of B happening. (Since B happening has nothing to do with A later happening, or vice-versa).
+
+## Example
+
+- Experiment: Toss a fair 6-sided dice two times. We assume the two tosses are **independent** from each other. 
+
+- Let $A$ = getting a 1 on the first toss. Let $B$ = getting a 1 on the second toss.
+
+- What is $P(A)$?
+
+- What is $P(B)$?
+
+- What is the $P(A \cap B)$?
+
+- What is $P(A | B)$ ?
+
+- What is $P(B | A)$ ?
+    
+
+## Recall: disjoint events
+
+- Definition: Two outcomes are **disjoint** or **mutually exclusive** if they cannot both happen. 
+
+- For example: If we roll a die, the outcomes 1 and 2 are disjoint since they cannot both occur. 
+
+- On the other hand, the outcomes 1 and "rolling an odd number" are not disjoint since both occur if the outcome of the roll is a 1. 
+
+
+## Conditional probabilities and independence {.smaller}
+
+| Coffee drinking | Died? Yes | Died? No | Total |
+|-----------------|:---------:|:--------:|:-----:|
+| None            |   1039    |   5438   | 6477  |
+| Med-Low         |   4440    |  29712   | 29809 |
+| High            |   3601    |  24934   | 28535 |
+| **Total**       |   9080    |  60084   | 64821 |
+
+What was the probability a randomly selected person in the study...
+
+-   ...died?
+-   ...died, given they were a non-coffee drinker?
+
+::: callout-caution
+## Question
+
+In this study, were dying and coffee drinking independent events?
+:::
+
+## The law of total probability
+
+-   Suppose we partition $B$ into mutually disjoint events $B_1, B_2, \ldots B_k$ that comprise the entire sample space.
+-   Then the **law of total probability** states that the probability of event $A$ is
+
+$$
+P(A) = P(A \cap B_1) + P(A \cap B_2) + \cdots + P(A \cap B_k)
+$$
+
+- [Drawing]
+
+## Rewriting...
+
+- We can rewrite these probabilities using the multiplicative rule as follows:
+
+$$
+\begin{aligned}
+P(A) &= P(A \cap B_1) + P(A \cap B_2) + \cdots + P(A \cap B_k) \\
+     &= P(A|B_1) P(B_1) + P(A|B_2)P(B_2) + \cdots + P(A | B_k)P(B_k)
+\end{aligned}
+$$
+
+- Why rewrite? Sometimes $P(A|B_1)$, $P(B_1)$ are easier to find than $P(A \cap B_1)$, etc. We'll find out WHY (i.e. what these probabilities represent) in our next lecture.
+
+## The law of total probability in action {.smaller}
+
+| Coffee drinking | Died? Yes | Died? No | Total |
+|-----------------|:---------:|:--------:|:-----:|
+| None            |   1039    |   5438   | 6477  |
+| Med-Low         |   4440    |  29712   | 29809 |
+| High            |   3601    |  24934   | 28535 |
+| **Total**       |   9080    |  60084   | 64821 |
+
+What was the probability a randomly selected person died? Let's find this using the law of total probability.
+
+## The law of total probability in action
+
+-   In an introductory statistics course, 50% of students were undergrads, 40% were master's students, and 10% were PhD students.
+
+-   80% of the undergrads didn't give enough sleep, 40% of the master's students didn't get enough sleep, and 10% of the PhD students didn't get enough sleep.
+
+-   What is the probability that a randomly selected student in this class didn't get enough sleep? Are sufficient sleep status and year independent?
+
+**Let's solve this using the Law of Total Probability...**
+
+## Solution
+
+
+## Order matters!
+
+What is the probability that a random person...
+
+| Coffee drinking | Died? Yes | Died? No | Total |
+|-----------------|:---------:|:--------:|:-----:|
+| None            |   1039    |   5438   | 6477  |
+| Med-Low         |   4440    |  29712   | 29809 |
+| High            |   3601    |  24934   | 28535 |
+| **Total**       |   9080    |  60084   | 64821 |
+
+-   ...was a high coffee drinker, given that they died?
+
+-   ...died, given that they were a high coffee drinker?
+
+Are these two probabilities the same?
+
+## Bayes' rule
+
+
+-   We can use **Bayes' rule** to "reverse" the order of conditioning.
+
+-   By definition:
+
+$$P(A | B) = \frac{P(A \cap B)}{P(B)} = \frac{P(B | A) P(A)}{P(B)}$$
+
+
+
+## Bayes' rule
+
+-   Using the definition of conditional probability, the law of total probability, and the multiplicative rule, we have
+
+
+\begin{align}
+P(A | B) = \frac{P(A \cap B)}{P(B)} &= \frac{P(B | A) P(A)}{P(B)} \\
+ &= \frac{P(B | A) P(A) }{P(B | A) P(A) + P(B | A^C) P(A^C)}
+\end{align}
+
+
+## What if $A$ is partitioned into mutually disjoint events?
+
+If instead $A$ is partitioned into $k$ mutually disjoint events that together comprise the entire sample space, Bayes' rule gives:
+
+
+\begin{align}
+P(A | B) &= \frac{P(B | A) P(A)}{P(B)} \\
+ &= \frac{P(B | A) P(A) }{P(B | A_1) P(A_1) + P(B | A_2) P(A_2) + \cdots P(B | A^k) P(A^k)}
+\end{align}
+
+
+## Bayes' rule Example {.smaller}
+
+What is the probability that a random person in the coffee study...
+
+| Coffee drinking | Died? Yes | Died? No | Total |
+|-----------------|:---------:|:--------:|:-----:|
+| None            |   1039    |   5438   | 6477  |
+| Med-Low         |   4440    |  29712   | 29809 |
+| High            |   3601    |  24934   | 28535 |
+| **Total**       |   9080    |  60084   | 64821 |
+
+-   ...was a high coffee drinker, given that he died?
+-   ...died, given that he was a high coffee drinker?
+
+Let's verify our results using Bayes' rule.
+
+## Why do we need Bayes' rule?
+
+-   If we have the row and column totals, we can directly calculate these conditional probabilities from a table.
+
+-   So, why would we even need Bayes' rule?
+
+-   There are many cases where you would not have row/column totals.
+
+## Example: Medical diagnosis with missing data
+
+-   Imagine a scenario where a rare disease is being studied.
+
+-   You may have detailed information about patients who tested positive for the disease (including their symptoms and demographics), but you might lack comprehensive data on the entire population's symptom distribution or total number of people tested.
+
+-   In this case, you wouldn’t have the full row or column totals, making it necessary to use Bayes' Theorem to infer probabilities based on the available conditional probabilities and the prevalence of the disease.
+
+-   This is common in situations where data is incomplete, either due to privacy concerns, lack of resources, or when dealing with emerging diseases.
+
+## Recap
+
+- Conditional probability, the multiplicative rule, and Bayes' theorem
+
+- Disjoint vs. independent events
+
+- Law of total probability
+
+- Why is Bayes' rule helpful?
+
+## Next class
+
+- Lecture 5: Medical diagnostics
+
+## Participation
+
+- Name + How was class (sentence or artistic rendition)

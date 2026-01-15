@@ -1,6 +1,6 @@
 ---
 title: "Lecture 2: The nature of data"
-subtitle: "BIOS 600 - Fall 2025"
+subtitle: "BIOS 600 - Spring 2026"
 institute: "UNC - Chapel Hill"
 logo: "images/logo_600.png"
 format:

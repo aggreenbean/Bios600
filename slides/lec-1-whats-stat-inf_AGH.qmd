@@ -1,6 +1,6 @@
 ---
 title: "Lec 1: What is statistical inference?"
-subtitle: "BIOS 600 - Spring 2025"
+subtitle: "BIOS 600 - Spring 2026"
 institute: "UNC - Chapel Hill"
 logo: "images/logo_600.png"
 format:

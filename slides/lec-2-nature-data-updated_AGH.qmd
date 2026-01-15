@@ -186,7 +186,7 @@ A statistical graphic is
 
 ## Identifying data types
 
-![](images/lec-2/tab1.png){width="400"}
+![](images/lec-2/tab1.PNG){width="400"}
 
 ## Identifying data types
 
@@ -360,7 +360,7 @@ cdc |>
 
 ## Reminder: the population vs. a sample {.smaller}
 
-![](images/lec-2/poly.png){width=300}
+![](images/lec-2/poly.PNG){width=300}
 
 -   **Population and research question**: Is the PCV13 vaccine effective against community acquired pneumonia in **adults aged 65 or older**?
 
@@ -392,7 +392,7 @@ cdc |>
 :::
 
 ::: {.column width="60%"}
-![](images/lec-2/poly.png)
+![](images/lec-2/poly.PNG)
 :::
 :::
 

@@ -14,7 +14,6 @@ execute:
 
 - HW 1 Due Tonight at 11:59pm
 
-- Lab 3 session Today at 3:30pm, due Friday at 11:59pm
 
   - Encouraged to read over lab assignment tutorial ahead of time.
 
@@ -22,6 +21,21 @@ execute:
 
 - Reminder: I have office hours Thursdays 9:45-10:45am (MCG 3106F) and by appointment. TAs have office hours Mondays 2-3pm (MCG 2303) & by appointment. Reach out if you need any support!
 
+## RStudio Demo
+
+- Starting a new Quarto document
+
+- New header
+
+- New chunk, running a chunk
+
+- Setting `message` and `warning` to `false` when reading in data or loading a package.
+
+- `install.packages()` vs. `library()`: Baking analogy!
+
+- Running code in Console vs. in your quarto document
+
+- Questions?
 
 ## Ensure your code is visible in your PDF document!
 

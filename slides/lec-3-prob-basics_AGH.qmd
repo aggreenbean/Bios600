@@ -16,32 +16,90 @@ execute:
 
 ## Announcements
 
-- Lab 2 Due Friday August 29, at 11:59pm
+- Lab 2 session Today at 3:30pm, due Friday at 11:59pm
 
-- HW 1 Due Tuesday, Sept 2 at 11:59pm
+- HW 1 Due Tuesday, Jan 27 at 11:59pm
 
-- Labor day this weekend - do something fun and relaxing!
+- Office Hours have shifted
+  - Dr. Howard office hours (on canvas) - Fridays 1-2 pm
+  - Tutoring available - **bio600tutor@unc.edu**
 
-## RStudio Demo
+# Last Week
 
-- Starting a new Quarto document
+- **Skewed** distributions can be right or left skewed depending on which side the "tail" is on.
 
-- New header
+- Example of right skew (tail is on the right)
 
-- New chunk, running a chunk
+```{r}
+set.seed(123)
 
-- Setting `message` and `warning` to `false` when reading in data or loading a package.
+# Simulate data from a normal distribution
+normal_data <- rnorm(400, mean = 0, sd = 1)
 
-- `install.packages()` vs. `library()`: Baking analogy!
+# Transform the data to make it right-skewed
+right_skewed_data <- exp(normal_data)
 
-- Running code in Console vs. in your quarto document
+# Create a histogram
+hist(right_skewed_data, breaks = 30,
+     col = "darkgoldenrod3", main = " ", 
+     xlab = "Value")
+```
 
-- Questions?
+# Last Week
 
-# From last week 
+- Data has Mean of 12, Median of 10 
 
-- Skewed data
-- median higher than the mean examples
+```{r}
+set.seed(123)
+
+# Many typical values
+x <- rnorm(100, mean = 10, sd = 1)
+
+# One extreme outlier
+x_with_outlier <- c(x, 200)
+
+hist(x_with_outlier, breaks = 30, col = "gray",
+     main = "Servings of Fruits and Vegetables",
+     ylab= "# of Participants",
+     xlab = "# of Servings")
+
+abline(v = mean(x_with_outlier), col = "red", lwd = 2)
+abline(v = median(x_with_outlier), col = "blue", lwd = 2)
+
+legend("topright",
+       legend = c("Mean", "Median"),
+       col = c("red", "blue"),
+       lwd = 2)
+```
+# Last Week
+
+- Mean is higher than the median but data is not skewed
+
+```{r}
+# Many typical values
+hist(x, breaks = 30, col = "gray",
+     main = "Servings of Fruits and Vegetables",
+     ylab= "# of Participants",
+     xlab = "# of Servings")
+
+abline(v = mean(x_with_outlier), col = "red", lwd = 2)
+abline(v = median(x_with_outlier), col = "blue", lwd = 2)
+
+legend("topright",
+       legend = c("Mean", "Median"),
+       col = c("red", "blue"),
+       lwd = 2)
+```
+
+# Last Week
+
+- Categorical Data
+  - Nominal - includes binary or dictotomous
+  - Ordinal
+- Continuous Data
+  - Count or rank data
+  - Continuous data
+    - Can be discrete (having gaps)
 
 # Probability basics
 
@@ -249,7 +307,6 @@ How do we extend inclusion-exclusion to more than two events?
 ## Questions
 How do we interpret these in plain English?
 
-How do we extend DeMorgan's laws to more than two events?
 :::
 
 ## Gunter et al. study (2017) {.smaller}
@@ -279,12 +336,4 @@ What was the probability that a randomly selected person in the trial..
 - Probability spaces, sample spaces, events
 - Set operations
 - How do probabilities work? (Set operations, DeMorgan's Laws)
-
-## Participation
-
-- Name + 
-
-    - How was class today? OR
-    
-    - **Artistic rendition** of how class was today / something you learned today
 

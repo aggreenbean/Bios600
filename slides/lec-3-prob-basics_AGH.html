@@ -143,28 +143,56 @@
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li><p>Lab 2 Due Friday August 29, at 11:59pm</p></li>
-<li><p>HW 1 Due Tuesday, Sept 2 at 11:59pm</p></li>
-<li><p>Labor day this weekend - do something fun and relaxing!</p></li>
+<li><p>Lab 2 session Today at 3:30pm, due Friday at 11:59pm</p></li>
+<li><p>HW 1 Due Tuesday, Jan 27 at 11:59pm</p></li>
+<li><p>Office Hours have shifted</p>
+<ul>
+<li>Dr.&nbsp;Howard office hours (on canvas) - Fridays 1-2 pm</li>
+<li>Tutoring available - <strong>bio600tutor@unc.edu</strong></li>
+</ul></li>
 </ul>
 </section>
-<section id="rstudio-demo" class="slide level2">
-<h2>RStudio Demo</h2>
+<section id="last-week" class="title-slide slide level1 center">
+<h1>Last Week</h1>
 <ul>
-<li><p>Starting a new Quarto document</p></li>
-<li><p>New header</p></li>
-<li><p>New chunk, running a chunk</p></li>
-<li><p>Setting <code>message</code> and <code>warning</code> to <code>false</code> when reading in data or loading a package.</p></li>
-<li><p><code>install.packages()</code> vs.&nbsp;<code>library()</code>: Baking analogy!</p></li>
-<li><p>Running code in Console vs.&nbsp;in your quarto document</p></li>
-<li><p>Questions?</p></li>
+<li><p><strong>Skewed</strong> distributions can be right or left skewed depending on which side the “tail” is on.</p></li>
+<li><p>Example of right skew (tail is on the right)</p></li>
 </ul>
-</section>
-<section id="from-last-week" class="title-slide slide level1 center">
-<h1>From last week</h1>
+
+<img data-src="lec-3-prob-basics_AGH_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
+
+<section id="last-week-1" class="title-slide slide level1 center">
+<h1>Last Week</h1>
 <ul>
-<li>Skewed data</li>
-<li>median higher than the mean examples</li>
+<li>Data has Mean of 12, Median of 10</li>
+</ul>
+
+<img data-src="lec-3-prob-basics_AGH_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+
+<section id="last-week-2" class="title-slide slide level1 center">
+<h1>Last Week</h1>
+<ul>
+<li>Mean is higher than the median but data is not skewed</li>
+</ul>
+
+<img data-src="lec-3-prob-basics_AGH_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+
+<section id="last-week-3" class="title-slide slide level1 center">
+<h1>Last Week</h1>
+<ul>
+<li>Categorical Data
+<ul>
+<li>Nominal - includes binary or dictotomous</li>
+<li>Ordinal</li>
+</ul></li>
+<li>Continuous Data
+<ul>
+<li>Count or rank data</li>
+<li>Continuous data
+<ul>
+<li>Can be discrete (having gaps)</li>
+</ul></li>
+</ul></li>
 </ul>
 </section>
 
@@ -401,7 +429,6 @@
 </div>
 <div class="callout-content">
 <p>How do we interpret these in plain English?</p>
-<p>How do we extend DeMorgan’s laws to more than two events?</p>
 </div>
 </div>
 </div>
@@ -460,16 +487,6 @@
 <li>Probability spaces, sample spaces, events</li>
 <li>Set operations</li>
 <li>How do probabilities work? (Set operations, DeMorgan’s Laws)</li>
-</ul>
-</section>
-<section id="participation" class="slide level2">
-<h2>Participation</h2>
-<ul>
-<li><p>Name +</p>
-<ul>
-<li><p>How was class today? OR</p></li>
-<li><p><strong>Artistic rendition</strong> of how class was today / something you learned today</p></li>
-</ul></li>
 </ul>
 
 </section></section>
@@ -689,6 +706,82 @@
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

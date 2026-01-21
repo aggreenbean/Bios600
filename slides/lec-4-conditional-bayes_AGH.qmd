@@ -12,30 +12,33 @@ execute:
 
 ## Announcements
 
-- HW 1 Due Tonight at 11:59pm
+- **Lab 2** is due this Friday 11:59 pm
+
+- **HW #1** is due next Tuesday 11:59 pm
+
+- **Really** final office hours/tutoring Update!!
+  - Available on Canvas Home Page
 
 
-  - Encouraged to read over lab assignment tutorial ahead of time.
+## Announcements {.smaller}
 
-- Some of you asked about the exam. Will send out information about exam structure, types of questions, content, etc. at the end of this week. 
+- Free Tutoring available! Open sessions and individual sessions.
 
-- Reminder: I have office hours Thursdays 9:45-10:45am (MCG 3106F) and by appointment. TAs have office hours Mondays 2-3pm (MCG 2303) & by appointment. Reach out if you need any support!
+| Tutor | Open Session Time | Location/Zoom |
+|----------|--------|------------------|
+| Wenqing Zhu | Monday 2-4pm | [https://zoom.us/j/6873416836](https://zoom.us/j/6873416836) |
+| Jose Lopez | Wednesdays 2-4pm | [https://unc.zoom.us/j/94988210536](https://unc.zoom.us/j/94988210536) |
+| Molly Hoch | **starting this week** Fridays 2-4pm | McGavern Greenberg 3104E 
 
-## RStudio Demo
+- Email **bios600tutor@unc.edu** to set up an individual appointment. 
 
-- Starting a new Quarto document
 
-- New header
+## Announcements
 
-- New chunk, running a chunk
-
-- Setting `message` and `warning` to `false` when reading in data or loading a package.
-
-- `install.packages()` vs. `library()`: Baking analogy!
-
-- Running code in Console vs. in your quarto document
-
-- Questions?
+- Dr. Howard will shift again
+  - **This week** will **also** be avaliable Friday 1-2 pm
+  - Starting **next** week (1/29) Thursdays 3:30-4:30
+  - 3101A McGavern Greenberg
 
 ## Ensure your code is visible in your PDF document!
 
@@ -63,6 +66,40 @@ ggplot(data = cdc, aes(x = Region,
        ylab = "Infant Mortality Rate (%)")
 ```
 
+
+## Review/Questions 
+
+- Sample Space - Sum of rolling two fair six-sided dice
+  - {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
+- Event Space - An odd number
+  - {3, 5, 7, 9, 11}
+- Each number doesn't have the same chance of being rolled 
+- Each number doesn't have the same probability within this sample space
+
+## Review/Questions 
+
+- All possible combinations 
+  - 2 = 1+1
+  - 3 = 1+2, 2+1
+  - 4 = 1+3, 3+1, 2+2
+  - 5 = 1+4, 4+1, 2+3, 3+2
+  - 6 = 1+5, 5+1, 4+2, 2+4, 3+3
+  - . . . 
+- Probability of getting an odd number = 0.5
+
+
+## Review/Questions {.smaller}
+- Experimental studies **can** but do not have to include randomization
+- Experimental 
+  - Researchers directly control exposures or treatment groups
+  - Active manipulation of variables
+  - Assign all participants to new treatment or new policy
+- Observational
+  - Researchers do not assign exposures or treatments
+  - Collected data from those who did vs. did not try out new treatment or who were exposed to a new policy
+- Can collect some data in similar ways 
+
+
 ## Reading
 
 -   Pagano and Gavreau: Sections 6.2, 6.3
@@ -75,7 +112,7 @@ ggplot(data = cdc, aes(x = Region,
 
 ## Conditional probability
 
-- **Conditional probability** is he probability an event will occur when another event has already occurred. The **conditional probability** of event $A$ given event $B$ is
+- **Conditional probability** is the probability an event will occur when another event has already occurred. The **conditional probability** of event $A$ given event $B$ is
 
 
 $$
@@ -84,13 +121,14 @@ $$
 
 - How can we represent this visually? (Drawing)
 
-## Examples
+## Examples {.smaller}
 
 Examples come up all the time in the real world:
 
 -   Given that a mammogram comes back positive, what is the probability that a woman has breast cancer?
 -   Given that a 68-year old man has suffered four previous heart attacks, what is the probability he dies in the next five years?
 -   Given that a patient has a mutation in the CFTR gene, what is the probability their offspring will have cystic fibrosis?
+-   Given the storm doesn't shift north, we have a 60% change of snow
 
 ## Independence and the multiplicative rule {.smaller}
 
@@ -113,11 +151,17 @@ What does the multiplicative rule mean in plain English?
 
 Events $A$ and $B$ are said to be **independent** when
 
+
 ::: {.callout-caution appearance="minimal"}
+
+<div style="text-align: center;">
 
 $$
 P(A \cap B) = P(A) \times P(B)
 $$
+
+</div>
+
 :::
 
 or equivalently, $P(A|B) = P(A)$ or $P(B|A) = P(B)$
@@ -140,7 +184,16 @@ or equivalently, $P(A|B) = P(A)$ or $P(B|A) = P(B)$
 
 - What is $P(B | A)$ ?
     
+## Examples
 
+- Example #1: Randomized Clinical Trial 
+  - Let $A$ = Participant is on a new treatment
+  - Let $B$ = Participant is Older than 50
+
+- Example #2: Genetic Studies
+  - Let $A$ = Participant carries a BRCA1/BRCA2 mutation 
+  - Let $B$ = Participant is diagnosed with breast cancer
+  
 ## Recall: disjoint events
 
 - Definition: Two outcomes are **disjoint** or **mutually exclusive** if they cannot both happen. 
@@ -148,6 +201,18 @@ or equivalently, $P(A|B) = P(A)$ or $P(B|A) = P(B)$
 - For example: If we roll a die, the outcomes 1 and 2 are disjoint since they cannot both occur. 
 
 - On the other hand, the outcomes 1 and "rolling an odd number" are not disjoint since both occur if the outcome of the roll is a 1. 
+
+
+## Disjoint vs. independent events 
+
+- Flipping one coin
+- Let $A$ = heads, $B$ = tails 
+- Are these two outcomes disjoint? 
+
+
+- Are these two outcomes independent?
+
+
 
 
 ## Conditional probabilities and independence {.smaller}
@@ -169,6 +234,10 @@ What was the probability a randomly selected person in the study...
 
 In this study, were dying and coffee drinking independent events?
 :::
+
+## Conditional probabilities and independence {.smaller}
+
+
 
 ## The law of total probability
 
@@ -209,7 +278,7 @@ What was the probability a randomly selected person died? Let's find this using 
 
 -   In an introductory statistics course, 50% of students were undergrads, 40% were master's students, and 10% were PhD students.
 
--   80% of the undergrads didn't give enough sleep, 40% of the master's students didn't get enough sleep, and 10% of the PhD students didn't get enough sleep.
+-   80% of the undergrads didn't get enough sleep, 40% of the master's students didn't get enough sleep, and 10% of the PhD students didn't get enough sleep.
 
 -   What is the probability that a randomly selected student in this class didn't get enough sleep? Are sufficient sleep status and year independent?
 
@@ -284,6 +353,15 @@ What is the probability that a random person in the coffee study...
 
 Let's verify our results using Bayes' rule.
 
+## Solution
+
+A = died
+B = high coffee
+
+\begin{align}
+P(A | B) &= \frac{P(B | A) P(A)}{P(B)} 
+\end{align}
+
 ## Why do we need Bayes' rule?
 
 -   If we have the row and column totals, we can directly calculate these conditional probabilities from a table.
@@ -314,8 +392,5 @@ Let's verify our results using Bayes' rule.
 
 ## Next class
 
-- Lecture 5: Medical diagnostics
+- Lecture 5: Diagnostic testing
 
-## Participation
-
-- Name + How was class (sentence or artistic rendition)

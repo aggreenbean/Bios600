@@ -37,8 +37,7 @@ execute:
 
 - Dr. Howard will shift again
   - **This week** will **also** be avaliable Friday 1-2 pm
-  - Starting **next** week (1/29) Thursdays 3:30-4:30
-  - 3101A McGavern Greenberg
+  - Starting **next** week (1/29) Thursdays 9:30-10:30 in 3101A McGavern Greenberg or by appointment
 
 ## Ensure your code is visible in your PDF document!
 

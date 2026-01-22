@@ -422,10 +422,10 @@ P(A \cap B) = P(A) \times P(B)
 <li>Let <span class="math inline">\(A\)</span> = Participant is on a new treatment</li>
 <li>Let <span class="math inline">\(B\)</span> = Participant is Older than 50</li>
 </ul></li>
-<li>Example #2: Genetic Studies
+<li>Example #2: Electronic Health Records
 <ul>
-<li>Let <span class="math inline">\(A\)</span> = Participant carries a BRCA1/BRCA2 mutation</li>
-<li>Let <span class="math inline">\(B\)</span> = Participant is diagnosed with breast cancer</li>
+<li>Let <span class="math inline">\(A\)</span> = Participant is taking GLP-1</li>
+<li>Let <span class="math inline">\(B\)</span> = Participant has health insurance</li>
 </ul></li>
 </ul>
 </section>
@@ -704,10 +704,6 @@ P(A | B) &amp;= \frac{P(B | A) P(A)}{P(B)} \\
 </section>
 <section id="solution-1" class="slide level2">
 <h2>Solution</h2>
-<p>A = died B = high coffee</p>
-<p><span class="math display">\[\begin{align}
-P(A | B) &amp;= \frac{P(B | A) P(A)}{P(B)}
-\end{align}\]</span></p>
 </section>
 <section id="why-do-we-need-bayes-rule" class="slide level2">
 <h2>Why do we need Bayes’ rule?</h2>
@@ -717,7 +713,7 @@ P(A | B) &amp;= \frac{P(B | A) P(A)}{P(B)}
 <li><p>There are many cases where you would not have row/column totals.</p></li>
 </ul>
 </section>
-<section id="example-medical-diagnosis-with-missing-data" class="slide level2">
+<section id="example-medical-diagnosis-with-missing-data" class="slide level2 smaller">
 <h2>Example: Medical diagnosis with missing data</h2>
 <ul>
 <li><p>Imagine a scenario where a rare disease is being studied.</p></li>

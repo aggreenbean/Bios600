@@ -189,9 +189,9 @@ or equivalently, $P(A|B) = P(A)$ or $P(B|A) = P(B)$
   - Let $A$ = Participant is on a new treatment
   - Let $B$ = Participant is Older than 50
 
-- Example #2: Genetic Studies
-  - Let $A$ = Participant carries a BRCA1/BRCA2 mutation 
-  - Let $B$ = Participant is diagnosed with breast cancer
+- Example #2: Electronic Health Records
+  - Let $A$ = Participant is taking GLP-1 
+  - Let $B$ = Participant has health insurance 
   
 ## Recall: disjoint events
 
@@ -354,12 +354,7 @@ Let's verify our results using Bayes' rule.
 
 ## Solution
 
-A = died
-B = high coffee
 
-\begin{align}
-P(A | B) &= \frac{P(B | A) P(A)}{P(B)} 
-\end{align}
 
 ## Why do we need Bayes' rule?
 
@@ -369,7 +364,7 @@ P(A | B) &= \frac{P(B | A) P(A)}{P(B)}
 
 -   There are many cases where you would not have row/column totals.
 
-## Example: Medical diagnosis with missing data
+## Example: Medical diagnosis with missing data {.smaller}
 
 -   Imagine a scenario where a rare disease is being studied.
 

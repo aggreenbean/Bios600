@@ -355,8 +355,8 @@ Finally, we can also do more sophisticated data creation using `case_when`, whic
 dat <- dat |> 
   mutate(bmi_cat = case_when(
     bmi < 18 ~ "underweight",
-    bmi >= 18 & bmi < 25 ~ "normal"
-    bmi >= 25 & bmi < 30 ~ "oberweight"
+    bmi >= 18 & bmi < 25 ~ "normal",
+    bmi >= 25 & bmi < 30 ~ "oberweight",
     bmi > 30 ~ "obese"
   ))
 
@@ -405,7 +405,7 @@ In your final PDF that you turn in on Gradescope, ensure all code is visible for
 
 a. Run the provided code to determine the bike crashes that occurred in **residential** development areas where the driver age group was **0 to 19**. How many such bike crashes satisfy this criteria? Provide a 1-sentence response to answer this question. 
 
-```{r ex-1}
+```{r }
 #| label: ex-1a
 #| eval: false
 

@@ -33,28 +33,7 @@ ncbikecrash |>
 
 #### (b)
 
-```{r }
-#| label: ex-1b
 
-# edit code below: replace blank with Residential, then run code
-
-ncbikecrash |> 
-  filter(development == "______") |>
-  count(driver_age_group)
-```
-
-### Exercise 2
-
-```{r }
-#| label: ex-2
-
-# edit code: replace blank with driver estimated speed variable
-ncbikecrash |> 
-  count(____________) |>
-  arrange(n)
-```
-
-### Exercise 3
 
 
 ```{r }

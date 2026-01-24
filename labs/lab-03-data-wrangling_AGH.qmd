@@ -22,7 +22,7 @@ Today’s lab will focus on data wrangling using the `tidyverse` (in particular,
 The data are available by typing in the following. Note that we are naming the dataset `ncbikecrash` - you may may the dataset something else if you wish, but make sure that you are using this name consistently throughout the lab!
 
 ```{r}
-ncbikecrash <- read.csv("https://karamccor.github.io/b6002/labs/data/bikecrash.csv")
+ncbikecrash <- read.csv("https://aggreenbean.github.io/Bios600/labs/data/bikecrash.csv")
 ```
 
 Since we are using the `tidyverse` package, we can load the package in the Console.
@@ -455,11 +455,17 @@ Write code that 1) filters to crashes in Durham, Orange, or Wake counties, 2) gr
 
 What was the mean driver age (`driver_age`) involved in a crash in each of those three counties? Display output only for those three counties.
 
-Hint: You can filter by multiple counties using the following line of code. Recall the `|` operator means `OR`:
+::: callout-tip
+
+You can filter by multiple counties using the following line of code. Recall the `|` operator means `OR`:
 
 `filter(county == "Henderson" | county == "Wilmington")`
+:::
 
-Hint: There are some missing values for `driver_age`. You can either filter for rows where the driver age isn’t missing or use the na.rm = T option in the `mean()` function.
+::: callout-tip
+
+There are some missing values for `driver_age`. You can either filter for rows where the driver age isn’t missing or use the na.rm = T option in the `mean()` function.
+:::
 
 ## Exercise 4
 

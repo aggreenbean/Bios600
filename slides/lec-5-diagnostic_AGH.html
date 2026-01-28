@@ -137,8 +137,43 @@
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li><p>Lab 3 Due Friday at 11:59pm</p></li>
-<li><p>HW 2 will be assigned after class, due Sept 11 at 11:59pm.</p></li>
+<li><p>Syllabus has been updated</p></li>
+<li><p><strong>Lab 3</strong> posted, will be the focus of lab <strong>next</strong> Tuesday</p></li>
+<li><p>Not due until next Friday Feb 6 at 11:59 pm</p></li>
+<li><p><strong>HW 2</strong> will be assigned after class, due Feb 5 at 11:59pm.</p></li>
+<li><p>Please take advantage of office hours</p></li>
+<li><p>You will have a lab and HW due the week before the exam</p></li>
+</ul>
+</section>
+<section id="announcements-1" class="slide level2">
+<h2>Announcements</h2>
+<ul>
+<li><p>Exam will be in class - on paper</p></li>
+<li><p>All you need is something to write with</p></li>
+<li><p>We will be splitting up into two classrooms</p>
+<ul>
+<li>McGavern 2301</li>
+<li>This classroom</li>
+</ul></li>
+<li><p>Formula sheet will be provided (will post on Canvas)</p></li>
+<li><p>Thursday before exam will be review class</p></li>
+</ul>
+</section>
+<section id="announcements-2" class="slide level2">
+<h2>Announcements</h2>
+<ul>
+<li><p>Lectures 1-7, Labs 1-4, HW 1-3, AE 1</p></li>
+<li><p>Exam format:</p>
+<ul>
+<li>Code Section</li>
+<li>Applied Section</li>
+<li>Conceptual Section (includes T/F)</li>
+</ul></li>
+<li><p>Will include</p>
+<ul>
+<li>Some multiple choice mostly short answer</li>
+<li>Write out how to calculate probabilities</li>
+</ul></li>
 </ul>
 </section>
 <section id="reading" class="slide level2">
@@ -156,7 +191,13 @@
 <li><p>New chunk, running a chunk</p></li>
 <li><p>Setting <code>message</code> and <code>warning</code> to <code>false</code> when reading in data or loading a package.</p></li>
 <li><p><code>install.packages()</code> vs.&nbsp;<code>library()</code>: Baking analogy!</p></li>
+</ul>
+</section>
+<section id="rstudio-demo-1" class="slide level2">
+<h2>RStudio Demo</h2>
+<ul>
 <li><p>Running code in Console vs.&nbsp;in your quarto document</p></li>
+<li><p>ggplot layers</p></li>
 <li><p>Questions?</p></li>
 </ul>
 </section>
@@ -168,7 +209,7 @@
 <li><p>ROC Curves</p></li>
 </ul>
 </section>
-<section id="conditional-probabilities" class="slide level2">
+<section id="conditional-probabilities" class="slide level2 smaller">
 <h2>Conditional probabilities</h2>
 <p>Suppose we care about the probability that someone has HIV, denoted by <span class="math inline">\(P(HIV+)\)</span>.</p>
 <ul>
@@ -194,7 +235,7 @@
 </div>
 </div>
 </section>
-<section id="medical-diagnostics" class="slide level2">
+<section id="medical-diagnostics" class="slide level2 smaller">
 <h2>Medical diagnostics</h2>
 <p>Suppose we’re interested in the performance of a diagnostic test. Let <span class="math inline">\(A\)</span> be the event that someone has a condition of interest, and let <span class="math inline">\(B\)</span> be the event that a test for that condition is positive.</p>
 <ul>
@@ -285,6 +326,9 @@
 <li><p>Specificity, <span class="math inline">\(P(Test - | HIV -)\)</span>: 99.8%</p></li>
 </ul>
 <p>From CDC statistics for 2016, 14.3/100,000 Americans aged <span class="math inline">\(\geq\)</span> 13 are HIV+.</p>
+</section>
+<section id="rapid-self-administered-hiv-tests-1" class="slide level2">
+<h2>Rapid self-administered HIV tests</h2>
 <p>Suppose a randomly selected American aged <span class="math inline">\(\geq\)</span> 13 has a positive test on this test. What do you think is the probability they are HIV+?</p>
 </section>
 <section id="steps-to-solve-using-bayes-rule" class="slide level2">
@@ -299,10 +343,19 @@
 </section>
 <section id="bayes-rule" class="slide level2 smaller">
 <h2>Bayes’ rule</h2>
-<p>Recall Bayes’ rule below. Also recall that we can expand our denominator using Law of Total Probability.</p>
+<p>Recall Bayes’ rule below.</p>
 <p><span class="math display">\[
 \begin{aligned}
-P(A | B) = \frac{P(A \cap B)}{P(B)} &amp;= \frac{P(B | A) P(A)}{P(B)} \\
+P(A | B) = \frac{P(A \cap B)}{P(B)} &amp;= \frac{P(B | A) P(A)}{P(B)}
+\end{aligned}
+\]</span></p>
+</section>
+<section id="law-of-total-probability" class="slide level2 smaller">
+<h2>Law of Total Probability</h2>
+<p>Recall we can expand our denominator using Law of Total Probability.</p>
+<p><span class="math display">\[
+\begin{aligned}
+P(A | B) &amp;= \frac{P(B | A) P(A)}{P(B)} \\
 &amp;= \frac{P(B | A) P(A) }{P(B | A) P(A) + P(B | A^C) P(A^C)}
 \end{aligned}
 \]</span></p>
@@ -312,9 +365,9 @@ P(A | B) = \frac{P(A \cap B)}{P(B)} &amp;= \frac{P(B | A) P(A)}{P(B)} \\
 <p><strong>Step 1</strong>: Define events as <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.</p>
 <p>Let <span class="math inline">\(A\)</span> be the event of being HIV+ and <span class="math inline">\(B\)</span> be testing positive.</p>
 <p><strong>Step 2</strong>: Write out the quantity of interest using Bayes’ Rule.</p>
-<p><span class="math display">\[P(HIV + | Test +) = \frac{P(Test + | HIV +)P(HIV +)}{P(HIV +)}\]</span></p>
+<p><span class="math display">\[P(HIV + | Test +) = \frac{P(Test + | HIV +)P(HIV +)}{P(Test +)}\]</span></p>
 </section>
-<section id="lets-solve-continued" class="slide level2">
+<section id="lets-solve-continued" class="slide level2 smaller">
 <h2>Let’s Solve! (continued)</h2>
 <p><strong>Step 3</strong>: Expand the denominator using Law of Total Probability. <span class="math display">\[
 =\frac{P(Test + | HIV +)P(HIV +)}{P(Test + | HIV +) P(HIV +) + P(Test + | HIV - ) P(HIV -)}
@@ -327,7 +380,7 @@ P(A | B) = \frac{P(A \cap B)}{P(B)} &amp;= \frac{P(B | A) P(A)}{P(B)} \\
 <li><p><span class="math inline">\(P(HIV - )\)</span> = 1 - prevalence = 1-.000143</p></li>
 </ul>
 </section>
-<section id="lets-solve-continued-1" class="slide level2">
+<section id="lets-solve-continued-1" class="slide level2 smaller">
 <h2>Let’s solve! (continued)</h2>
 <p><strong>Step 5:</strong> Plug in quantities from step 4 and solve.</p>
 <p><span class="math display">\[P(HIV + | Test +)\]</span></p>
@@ -411,6 +464,35 @@ P(A | B) = \frac{P(A \cap B)}{P(B)} &amp;= \frac{P(B | A) P(A)}{P(B)} \\
 <li><p>At each threshold value, there is a tradeoff between sensitivity and specificity.</p></li>
 </ul>
 </section>
+<section id="example" class="slide level2">
+<h2>Example</h2>
+<ul>
+<li><p>American Heart Assocation has CVD risk calculator <a href="https://professional.heart.org/en/guidelines-and-statements/prevent-calculator">PREVENT calculator</a></p></li>
+<li><p>Calculates 10-year risk of total CVD for a patient</p></li>
+<li><p>BP guidelines recommend using this calculator to identify individuals at increased risk of CVD and to guide initiation of antihypertensive therapy</p></li>
+<li><p><strong>Current guidance</strong>: Individuals at 10-year risk of total CVD ≥ 7.5% are recommended to initiate anti-hypertensive therapy</p></li>
+</ul>
+</section>
+<section id="example-1" class="slide level2 smaller">
+<h2>Example</h2>
+<ul>
+<li><strong>Current guidance: 10-Year Risk ≥ 7.5%</strong>
+<ul>
+<li>Some people with 2% risk will have an event (false negative)</li>
+<li>Some with 20% risk don’t have an event (false positive)</li>
+</ul></li>
+<li><strong>Lower Threshold: 10-Year Risk ≥ 2%</strong> - Classifies more people at elevated risk of CVD
+<ul>
+<li>More likely to correctly classify individual with an event (<strong>higher sensitivity</strong>)</li>
+<li>Less likely to correctly classify individuals without an event (<strong>lower specificity</strong>)</li>
+</ul></li>
+<li><strong>Higher Threshold: 10-Year Risk ≥ 80%</strong> - Classifies less people at elevated risk of CVD
+<ul>
+<li>Less likely to correctly classify individual with an event (<strong>lower sensitivity</strong>)</li>
+<li>More likely to correctly classify individuals without an event (<strong>higher specificity</strong>)</li>
+</ul></li>
+</ul>
+</section>
 <section id="roc-curves" class="slide level2">
 <h2>ROC curves</h2>
 <p>Receiver Operating Characteristic curves show how specificity and sensitivity change as the discrimination threshold changes.</p>
@@ -432,7 +514,11 @@ P(A | B) = \frac{P(A \cap B)}{P(B)} &amp;= \frac{P(B | A) P(A)}{P(B)} \\
 
 <img data-src="images/lec-5/roc.png" width="400" class="r-stretch"><p>ROC curves show, for each false positive rate, what the true positive rate is corresponding to that threshold value.</p>
 </section>
-<section id="why-roc-curves" class="slide level2">
+<section id="example-roc-curves" class="slide level2">
+<h2>Example ROC Curves</h2>
+
+<img data-src="lec-5-diagnostic_AGH_files/figure-revealjs/unnamed-chunk-1-1.png" width="576" class="r-stretch"></section>
+<section id="why-roc-curves" class="slide level2 smaller">
 <h2>Why ROC Curves?</h2>
 <ul>
 <li><p>By moving the threshold, we can:</p>
@@ -444,8 +530,7 @@ P(A | B) = \frac{P(A \cap B)}{P(B)} &amp;= \frac{P(B | A) P(A)}{P(B)} \\
 <li><p>The <strong>diagonal line</strong> = random guessing.</p></li>
 <li><p>A “good” test’s ROC curve bows toward the <strong>upper-left corner</strong> (high sensitivity, low false positives).</p></li>
 </ul>
-<p><strong>ROC curves help us evaluate how well a test separates groups<br>
-across all possible thresholds.</strong></p>
+<p><strong>ROC curves help us evaluate how well a test separates groups across all possible thresholds.</strong></p>
 </section>
 <section id="recap" class="slide level2">
 <h2>Recap</h2>
@@ -684,6 +769,82 @@ across all possible thresholds.</strong></p>
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

@@ -13,10 +13,46 @@ execute:
 
 ## Announcements
 
-- Lab 3 Due Friday at 11:59pm
+- Syllabus has been updated 
 
-- HW 2 will be assigned after class, due Sept 11 at 11:59pm.
+- **Lab 3** posted, will be the focus of lab **next** Tuesday
 
+- Not due until next Friday Feb 6 at 11:59 pm
+
+- **HW 2**  will be assigned after class, due Feb 5 at 11:59pm.
+
+- Please take advantage of office hours
+
+- You will have a lab and HW due the week before the exam
+
+## Announcements
+
+- Exam will be in class - on paper
+
+- All you need is something to write with
+
+- We will be splitting up into two classrooms  
+  - McGavern 2301
+  - This classroom
+  
+- Formula sheet will be provided (will post on Canvas)
+- Thursday before exam will be review class
+
+## Announcements
+
+- Lectures 1-7, Labs 1-4, HW 1-3, AE 1
+
+- Exam format: 
+  - Code Section
+  - Applied Section
+  - Conceptual Section (includes T/F)
+  
+- Will include
+  - Some multiple choice mostly short answer
+  - Write out how to calculate probabilities 
+  
+
+    
 ## Reading
 
 -   Pagano and Gavreau: Section 6.4
@@ -35,7 +71,11 @@ execute:
 
 - `install.packages()` vs. `library()`: Baking analogy!
 
+## RStudio Demo
+
 - Running code in Console vs. in your quarto document
+
+- ggplot layers
 
 - Questions?
 
@@ -47,7 +87,7 @@ execute:
  
 - ROC Curves
 
-## Conditional probabilities
+## Conditional probabilities {.smaller}
 
 Suppose we care about the probability that someone has HIV, denoted by $P(HIV+)$.
 
@@ -70,7 +110,7 @@ Which of the three probabilities would we expect to be the highest? The lowest?
 
 :::
 
-## Medical diagnostics
+## Medical diagnostics {.smaller}
 
 Suppose we're interested in the performance of a diagnostic test. Let $A$ be the event that someone has a condition of interest, and let $B$ be the event that a test for that condition is positive.
 
@@ -156,6 +196,8 @@ From the FDA package insert for the OraQuick ADVANCE Rapid HIV-1/2 Antibody test
 
 From CDC statistics for 2016, 14.3/100,000 Americans aged $\geq$ 13 are HIV+.
 
+## Rapid self-administered HIV tests
+
 Suppose a randomly selected American aged $\geq$ 13 has a positive test on this test. What do you think is the probability they are HIV+?
 
 ## Steps to solve using Bayes' Rule
@@ -172,11 +214,21 @@ Suppose a randomly selected American aged $\geq$ 13 has a positive test on this 
 
 ## Bayes' rule {.smaller}
 
-Recall Bayes' rule below. Also recall that we can expand our denominator using Law of Total Probability. 
+Recall Bayes' rule below. 
 
 $$
 \begin{aligned}
-P(A | B) = \frac{P(A \cap B)}{P(B)} &= \frac{P(B | A) P(A)}{P(B)} \\
+P(A | B) = \frac{P(A \cap B)}{P(B)} &= \frac{P(B | A) P(A)}{P(B)} 
+\end{aligned}
+$$
+
+## Law of Total Probability {.smaller}
+
+Recall we can expand our denominator using Law of Total Probability. 
+
+$$
+\begin{aligned}
+P(A | B) &= \frac{P(B | A) P(A)}{P(B)} \\
  &= \frac{P(B | A) P(A) }{P(B | A) P(A) + P(B | A^C) P(A^C)}
 \end{aligned}
 $$
@@ -189,9 +241,9 @@ Let $A$ be the event of being HIV+ and $B$ be testing positive.
 
 **Step 2**: Write out the quantity of interest using Bayes' Rule.
 
-$$P(HIV + | Test +) = \frac{P(Test + | HIV +)P(HIV +)}{P(HIV +)}$$
+$$P(HIV + | Test +) = \frac{P(Test + | HIV +)P(HIV +)}{P(Test +)}$$
 
-## Let's Solve! (continued)
+## Let's Solve! (continued) {.smaller}
 
 **Step 3**: Expand the denominator using Law of Total Probability.
 $$
@@ -209,7 +261,7 @@ $$
 
 - $P(HIV - )$ = 1 - prevalence = 1-.000143
 
-## Let's solve! (continued)
+## Let's solve! (continued) {.smaller}
 
 **Step 5:** Plug in quantities from step 4 and solve. 
 
@@ -284,6 +336,28 @@ Oral HIV tests give positive or negative results depending on levels of HIV anti
 
 -   At each threshold value, there is a tradeoff between sensitivity and specificity.
 
+## Example
+
+- American Heart Assocation has CVD risk calculator [PREVENT calculator](https://professional.heart.org/en/guidelines-and-statements/prevent-calculator)
+
+- Calculates 10-year risk of total CVD for a patient 
+- BP guidelines recommend using this calculator to identify individuals at increased risk of CVD and to guide initiation of antihypertensive therapy
+- **Current guidance**: Individuals at 10-year risk of total CVD ≥ 7.5% are recommended to initiate anti-hypertensive therapy
+
+## Example {.smaller}
+
+- **Current guidance: 10-Year Risk ≥ 7.5%** 
+  - Some people with 2% risk will have an event (false negative) 
+  - Some with 20% risk don't have an event (false positive)
+  
+- **Lower Threshold: 10-Year Risk ≥ 2%** - Classifies more people at elevated risk of CVD
+  - More likely to correctly classify individual with an event (**higher sensitivity**)
+  - Less likely to correctly classify individuals without an event (**lower specificity**)
+  
+- **Higher Threshold: 10-Year Risk ≥ 80%** - Classifies less people at elevated risk of CVD
+  - Less likely to correctly classify individual with an event (**lower sensitivity**)
+  - More likely to correctly classify individuals without an event (**higher specificity**)
+  
 ## ROC curves
 
 Receiver Operating Characteristic curves show how specificity and sensitivity change as the discrimination threshold changes.
@@ -306,7 +380,47 @@ Receiver Operating Characteristic curves show how specificity and sensitivity ch
 
 ROC curves show, for each false positive rate, what the true positive rate is corresponding to that threshold value.
 
-## Why ROC Curves?
+## Example ROC Curves 
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 6
+#| fig-height: 5
+
+library(ggplot2)
+
+aucs <- c(0.5, 0.7, 0.9)
+kvals <- (1 / aucs) - 1   # so AUC = 1/(k+1)
+
+fpr <- seq(0, 1, length.out = 501)
+
+roc_df <- do.call(
+  rbind,
+  lapply(seq_along(aucs), function(i) {
+    data.frame(
+      FPR = fpr,
+      TPR = fpr ^ kvals[i],
+      AUC = factor(paste0("AUC = ", aucs[i]))
+    )
+  })
+)
+
+ggplot(roc_df, aes(x = FPR, y = TPR, color = AUC)) +
+  geom_line(linewidth = 1.2) +
+  geom_abline(intercept = 0, slope = 1, linetype = "dashed") +
+  coord_equal() +
+  labs(
+    title = "ROC Curves",
+    x = "False Positive Rate (1 − Specificity)",
+    y = "True Positive Rate (Sensitivity)"
+  ) +
+  theme_minimal(base_size = 16) +
+  theme(legend.position = "none")
+```
+
+## Why ROC Curves? {.smaller}
 
 - By moving the threshold, we can:
 
@@ -321,9 +435,7 @@ ROC curves show, for each false positive rate, what the true positive rate is co
 - A “good” test’s ROC curve bows toward the **upper-left corner** (high sensitivity, low false positives).
 
 
-**ROC curves help us evaluate how well a test separates groups  
-across all possible thresholds.**
-
+**ROC curves help us evaluate how well a test separates groups across all possible thresholds.**
 
 ## Recap
 

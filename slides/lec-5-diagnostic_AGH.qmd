@@ -71,11 +71,7 @@ execute:
 
 - `install.packages()` vs. `library()`: Baking analogy!
 
-## RStudio Demo
-
 - Running code in Console vs. in your quarto document
-
-- ggplot layers
 
 - Questions?
 

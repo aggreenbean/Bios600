@@ -25,6 +25,19 @@ execute:
 
 - You will have a lab and HW due the week before the exam
 
+## Announcements {.smaller}
+
+- Free Tutoring available! Open sessions and individual sessions.
+
+| Tutor | Open Session Time | Location/Zoom |
+|----------|--------|------------------|
+| Jose Lopez | Wednesdays 2-4pm | [https://unc.zoom.us/j/94988210536](https://unc.zoom.us/j/94988210536) |
+| Jose Lopez | Fridays 8-9:30am | [https://unc.zoom.us/j/94988210536](https://unc.zoom.us/j/94988210536) |
+| Molly Hoch | Fridays 2-4pm | McGavern Greenberg 3104E 
+
+- Email **bios600tutor@unc.edu** to set up an individual appointment. 
+
+
 ## Announcements
 
 - Exam will be in class - on paper

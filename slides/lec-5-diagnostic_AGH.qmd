@@ -279,15 +279,6 @@ $$=\frac{(.993)(.000143)}{(.993)(.000143) + (1-.998)(1-.000143)}$$
 $$ = 0.066 = 6.6\%$$
 Is this result surprising? Why?
 
-## Pause & review
-
-::: {.callout-tip appearance="simple"}
-## Question
-
-- In pairs, review the steps of solving this example. Take turns explaining each of the steps to your partner. (Person 1 explains step 1, person 2 explains step 2, etc.)
-
-:::
-
 ## Interpretation of Result: Oraquick test
 
 -   This calculation is surprising. We would hope that the PPV would be higher.
@@ -316,11 +307,6 @@ $$ = .99 = 99\%$$
 
 -   This is something to look out for! Specificity (i.e. FPR) is important to consider.
 
-## Pause and reflect
-
-- In small groups, reflect on this example and the following takeaway:
-
-::: {.callout-tip appearance="simple"}
 ## Takeaway
 
 - In the US, small prevalence + modest false positive rate is causing the PPV to be much lower than we'd want. 
@@ -328,9 +314,6 @@ $$ = .99 = 99\%$$
 - In Botswana, higher prevalence "corrects" this issue, leading to PPV being much higher (meaning more people who test positive actually have the condition.) 
 
 - With a modest false positive rate, a higher prevalence can help our PPV be higher, yielding a **more useful diagnostic test** for that setting. With lower prevalence, you need to be careful with the conclusions made by a diagnostic test as it could be misleading. 
-
-:::
-
 
 
 ## Discrimination thresholds
@@ -345,9 +328,7 @@ Oral HIV tests give positive or negative results depending on levels of HIV anti
 
 ## Example
 
-- American Heart Assocation has CVD risk calculator [PREVENT calculator](https://professional.heart.org/en/guidelines-and-statements/prevent-calculator)
-
-- Calculates 10-year risk of total CVD for a patient 
+- American Heart Assocation has CVD risk calculator [PREVENT calculator](https://professional.heart.org/en/guidelines-and-statements/prevent-calculator) that provides estimates of probabilities of having a CVD event within the next 10-years
 - BP guidelines recommend using this calculator to identify individuals at increased risk of CVD and to guide initiation of antihypertensive therapy
 - **Current guidance**: Individuals at 10-year risk of total CVD ≥ 7.5% are recommended to initiate anti-hypertensive therapy
 

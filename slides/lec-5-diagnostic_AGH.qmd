@@ -36,9 +36,10 @@ execute:
 | Molly Hoch | Fridays 2-4pm | McGavern Greenberg 3104E 
 
 - Email **bios600tutor@unc.edu** to set up an individual appointment. 
+- I will remain on this zoom until 10:30 today
 
 
-## Announcements
+## Exam Format
 
 - Exam will be in class - on paper
 
@@ -60,17 +61,7 @@ execute:
   - Applied Section
   - Conceptual Section (includes T/F)
   
-- Will include
-  - Some multiple choice mostly short answer
-  - Write out how to calculate probabilities 
-  
-
-    
-## Reading
-
--   Pagano and Gavreau: Section 6.4
-
--   [OpenIntro Statistics](https://www.openintro.org/go/?id=os4_for_screen_readers&referrer=/book/os/index.php): No corresponding section
+- Study guide will be sent out
 
 ## RStudio Demo
 
@@ -87,6 +78,13 @@ execute:
 - Running code in Console vs. in your quarto document
 
 - Questions?
+   
+## Reading
+
+-   Pagano and Gavreau: Section 6.4
+
+-   [OpenIntro Statistics](https://www.openintro.org/go/?id=os4_for_screen_readers&referrer=/book/os/index.php): No corresponding section
+
 
 ## Overview
 

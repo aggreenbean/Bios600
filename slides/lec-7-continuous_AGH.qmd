@@ -17,9 +17,9 @@ execute:
 
 - HW 2 due tonight at 11:59pm
 
-- Application Exercise due tomorrow (Friday) at 11:59pm
-
 - HW 3 (short) will be released after class, due next Thursday at 11:59pm.
+
+- Lab 4 (review of Labs 2 and 3) will be released next week, due next Friday at 11:59 pm
 
 - Today's lecture marks the end of the content for Exam 01! (Today's lecture is included in Exam 01 content.) 
 
@@ -27,7 +27,7 @@ execute:
 
 ## Announcements
 
-- No new labs on 9/16 and 9/23 as we lead up to the exam. These lab sessions will be "TA Office Hours" - time for you to get help on any class material.
+- Please consider Lab next week as "TA Office Hours" - as time for you to get help on any class material including HW 3, Lab 4 and exam review
 
 - If you have any questions, feel free to make a "New Post" on Ed Discussion about it! We are happy to answer any questions, no matter how small. 
 

@@ -14,8 +14,8 @@ execute:
 
 - Lab 3 due **Friday at 11:59pm**.
 - HW 2 due **Thursday at 11:59pm**.
-- Remember there is a 24 hour grace period for these due dates
-- I will drop your lowest lab and HW grade
+- 24 hour grace period for these due dates
+- Lowest lab and lowest HW grade will be dropped 
 
 ## Supplemental reading
 

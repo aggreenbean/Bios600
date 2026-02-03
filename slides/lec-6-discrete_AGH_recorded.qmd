@@ -12,13 +12,10 @@ execute:
 
 ## Announcements
 
-- Today's lab session will cover Lab 3 but also feel free to come by if you need assistance with HW 2! 
-
 - Lab 3 due **Friday at 11:59pm**.
-
 - HW 2 due **Thursday at 11:59pm**.
-
-- Participation activity for today due **Wednesday at 11:59pm**.
+- Remember there is a 24 hour grace period for these due dates
+- I will drop your lowest lab and HW grade
 
 ## Supplemental reading
 
@@ -26,9 +23,36 @@ execute:
 -   [OpenIntro Statistics](https://www.openintro.org/go/?id=os4_for_screen_readers&referrer=/book/os/index.php): 3.4, 4.3, and 4.5
 
 
-## Review on skewness
+## Right-Skewed Distribution 
 
+```{r}
+set.seed(123)
 
+# Simulate data from a normal distribution
+normal_data <- rnorm(400, mean = 0, sd = 1)
+
+# Transform the data to make it right-skewed
+right_skewed_data <- exp(normal_data)
+right_skewed_outlier <- right_skewed_data[right_skewed_data<6]
+
+hist(
+  right_skewed_outlier,
+  breaks = 30,
+  col = "darkgoldenrod3",
+  main = "Histogram",
+  xlab = "Value"
+)
+
+```
+
+## Right-Skewed Distribution 
+
+- Longer tail at the higher numbers (right)
+- Median is towards the lower numbers (left) within the box
+
+```{r}
+boxplot(right_skewed_outlier , col = "darkgoldenrod3", main = "Boxplot", ylab = "Value" )
+```
 
 ## Overview
 
@@ -309,7 +333,7 @@ Thus, the probability distribution of the number of preterm births out of three 
 ::: {.callout-caution appearance="simple"}
 ## Verify
 
-Are these disjoint events, with probabilities in \[0,1\], that all sum to 1?)
+Are these disjoint events, with probabilities in \[0,1\], that all sum to 1?
 :::
 
 ## Extending the Bernoulli distribution
@@ -404,18 +428,6 @@ We can calculate these probabilities in R with the `dbinom()` function:
 #| echo: true
 dbinom(2, size = 3, prob = 0.1)
 ```
-
-## Participation
-
-::: {.callout-tip}
-## Application Exercise in R
-
-- For today's participation, you'll practice some of the functions we learn today using R. 
-
-- In Canvas, download the Quarto template for the Application Exercise for today. Save the file with a sensible name (`ae-01.qmd`) in your project folder.
-
-- Begin by working on Exercises 1 and 2.
-:::
 
 ## The Poisson distribution
 
@@ -551,18 +563,7 @@ For $X \sim Pois(\lambda)$,
 $$P(X=k) = \frac{\lambda^k e^{-\lambda}}{k!}$$
 :::
 
-## ## What about other interval lengths? 
-
-## Participation
-
-::: {.callout-tip}
-## Practice in R
-
-In today's participation, continue with Exercise 3.
-
-When you've completed the exercises, render, save to PDF, and submit on Canvas> Assignments. Due Wednesday at 11:59pm.
-:::
-
+## What about other interval lengths? 
 
 ## Expectation and variance
 

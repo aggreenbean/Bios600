@@ -1,6 +1,6 @@
 ---
 title: "Exam 01 Formula Sheet"
-format: pdf
+format: html
 ---
 
 If needed, you would be provided any of the following formulas on the exam. 

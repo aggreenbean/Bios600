@@ -1,6 +1,6 @@
 ---
 title: "Topics List"
-format: pdf
+format: html
 ---
 
 ## Material covered
@@ -14,8 +14,6 @@ format: pdf
 - `View()` and `glimpse()` and `names()`
 
 - `getwd()`. What does it tell you?
-
-- YAML: what is it, how is it helpful for documentation?
 
 - How to create headers in Quarto
 

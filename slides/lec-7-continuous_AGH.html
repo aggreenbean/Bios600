@@ -9,7 +9,7 @@
 <link href="lec-7-continuous_AGH_files/libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.26">
 
-  <title>Lecture 7: Poisson distribution continued &amp; Continuous distributions</title>
+  <title>Lecture 7: Poisson distribution &amp; Continuous distributions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -193,7 +193,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Lecture 7: Poisson distribution continued &amp; Continuous distributions</h1>
+  <h1 class="title">Lecture 7: Poisson distribution &amp; Continuous distributions</h1>
   <p class="subtitle">BIOS 600 - Spring 2026</p>
 
 <div class="quarto-title-authors">
@@ -204,17 +204,17 @@
 <h2>Announcements</h2>
 <ul>
 <li><p>HW 2 due tonight at 11:59pm</p></li>
-<li><p>HW 3 (short) will be released after class, due next Thursday at 11:59pm.</p></li>
-<li><p>Lab 4 (review of Labs 2 and 3) will be released next week, due next Friday at 11:59 pm</p></li>
+<li><p>HW 3 (short) will be open after class, due next Thursday at 11:59pm.</p></li>
 <li><p>Today’s lecture marks the end of the content for Exam 01! (Today’s lecture is included in Exam 01 content.)</p></li>
-<li><p>Topics list and Formula sheet have been added to Exam 01 Preparation on Canvas.</p></li>
+<li><p>Information, topics list and formula sheet have been added on Canvas.</p></li>
 </ul>
 </section>
 <section id="announcements-1" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li><p>Please consider Lab next week as “TA Office Hours” - as time for you to get help on any class material including HW 3, Lab 4 and exam review</p></li>
-<li><p>If you have any questions, feel free to make a “New Post” on Ed Discussion about it! We are happy to answer any questions, no matter how small.</p></li>
+<li><p>Next Thursday class will be entirely review for exam</p></li>
+<li><p>Please feel free to use Lab next week for Lab 4, HW 3 and/or exam review questions</p></li>
+<li><p>Continue to post on Ed Discussion about any questions you have! We are happy to answer any questions, no matter how small.</p></li>
 </ul>
 </section>
 <section id="overview" class="slide level2">
@@ -222,9 +222,9 @@
 <ul>
 <li><p>Review discrete probability distributions</p></li>
 <li><p>Poisson distribution</p></li>
-<li><p>Work on Application Exercise from last time</p></li>
 <li><p>Expectation and variance</p></li>
 <li><p>Continuous distributions and examples</p></li>
+<li><p>Work on Application Exercise</p></li>
 </ul>
 </section>
 <section id="supplemental-reading" class="slide level2">
@@ -232,6 +232,24 @@
 <ul>
 <li>Pagano and Gavreau: Section 7.4</li>
 <li><a href="https://www.openintro.org/go/?id=os4_for_screen_readers&amp;referrer=/book/os/index.php">OpenIntro Statistics</a>: 3.5, 4.1</li>
+</ul>
+</section>
+<section id="review-what-is-a-random-variable" class="slide level2">
+<h2>Review: What is a random variable?</h2>
+<p>A <strong>random variable</strong> is a quantity whose value depends on the outcome of a random event.</p>
+<ul>
+<li><p>Traditionally, we use capital letters <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span>, <span class="math inline">\(Z\)</span> to denote random variables.</p></li>
+<li><p>The values that random variables take are lowercase <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, <span class="math inline">\(z\)</span></p></li>
+<li><p>So, the probability that random variable <span class="math inline">\(X\)</span> has the value <span class="math inline">\(x\)</span> is denoted by <span class="math inline">\(P(X = x)\)</span></p></li>
+</ul>
+<p>Random variables encountered in this class will be either discrete or continuous.</p>
+</section>
+<section id="review-discrete-random-variables" class="slide level2">
+<h2>Review: Discrete random variables</h2>
+<ul>
+<li><p><strong>Discrete</strong> random variables are those that can take on a countable number of potential values (could be countably infinite!), each associated with a probability of occurring.</p></li>
+<li><p><strong>Bernoulli</strong> random variable - A dichotomous (two-level) random variable <span class="math inline">\(X\)</span> (e.g.&nbsp;dead or alive) with a probability of “success” denoted by <span class="math inline">\(p\)</span>.</p></li>
+<li><p><strong>Binomial</strong> random variable - A random variable Z denotes getting a certain number of <span class="math inline">\(k\)</span> “successes” from a sequence of <span class="math inline">\(n\)</span> independent Bernoulli trials, with probability <span class="math inline">\(p\)</span> of “success”</p></li>
 </ul>
 </section>
 <section id="review-discrete-probability-distributions" class="slide level2 smaller">
@@ -288,7 +306,7 @@
 </section>
 <section id="the-poisson-distribution-1" class="slide level2">
 <h2>The Poisson distribution</h2>
-<p>The <strong>Poisson distribution</strong> gives the probability that <span class="math inline">\(k\)</span> events occur in a given “interval”. There are four assumptions:</p>
+<p>The <strong>Poisson distribution</strong> gives the probability that <span class="math inline">\(k\)</span> events occur in a <strong>given “interval”</strong>. There are four assumptions:</p>
 <ol type="1">
 <li><p>Within any interval, <span class="math inline">\(k\)</span> may take on values 0, 1, 2, 3, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(\infty\)</span></p></li>
 <li><p>Each event occurs independently, both within the same interval, and between intervals</p></li>
@@ -316,15 +334,9 @@
 </div>
 </div>
 </section>
-<section id="poisson-example-alzheimers-disease" class="slide level2">
-<h2>Poisson Example: Alzheimer’s Disease</h2>
+<section id="the-poisson-distribution-3" class="slide level2 smaller">
+<h2>The Poisson distribution</h2>
 <p>Suppose on average, there are 1.5 deaths due to Alzheimer’s Disease in a town each year. For a one-year period in this town, what is the chance that two or more people die from Alzheimer’s?</p>
-<ul>
-<li>Let’s verify that our example follows the four assumptions of a Poisson distribution.</li>
-</ul>
-</section>
-<section id="verify-assumptions" class="slide level2">
-<h2>Verify Assumptions</h2>
 <ol type="1">
 <li><p>Within any interval, the number of AD deaths can range from 0 to <span class="math inline">\(\infty\)</span> (<em>technically</em> not true, but close enough)</p></li>
 <li><p>One individual dying of Alzheimer’s does not affect the chance of another person dying of Alzheimer’s</p></li>
@@ -332,28 +344,9 @@
 <li><p>Two AD deaths cannot occur at the same time (we can always subdivide time intervals such that only one person experiences this event in a given sub-interval)</p></li>
 </ol>
 </section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Practice with Poisson</strong></p>
-</div>
-<div class="callout-content">
-<p>Using the formula for a Poisson distribution, write out how you would calculate the probability of zero Alzheimer’s deaths in a year.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="the-poisson-distribution-3" class="slide level2">
+<section id="the-poisson-distribution-4" class="slide level2">
 <h2>The Poisson distribution</h2>
-<ul>
-<li><p>Thus <span class="math inline">\(Z \sim Pois(1.5)\)</span>, and <span class="math inline">\(P(Z=0)\)</span>, <span class="math inline">\(P(Z=1)\)</span>, and <span class="math inline">\(P(Z\geq 2)\)</span> are disjoint events.</p></li>
-<li><p>So, using the Complement Rule, <span class="math inline">\(P(Z \geq 2) = 1- [P(Z = 0) + P(Z = 1)]\)</span>, where</p></li>
-</ul>
+<p>Thus <span class="math inline">\(Z \sim Pois(1.5)\)</span>, and <span class="math inline">\(P(Z=0)\)</span>, <span class="math inline">\(P(Z=1)\)</span>, and <span class="math inline">\(P(Z\geq 2)\)</span> are disjoint events. So, <span class="math inline">\(P(Z \geq 2) = 1- [P(Z = 0) + P(Z = 1)]\)</span>, where</p>
 <p><span class="math display">\[
 \begin{aligned}
 P(Z=0) &amp;= \frac{1.5^0 \times e^{-1.5}}{0!}\approx 0.223 \\
@@ -410,23 +403,6 @@ P(Z=1) &amp;= \frac{1.5^1 \times e^{-1.5}}{1!}\approx 0.335
 </div>
 </div>
 </section>
-<section id="participation" class="slide level2">
-<h2>Participation</h2>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Application Exercise in R</strong></p>
-</div>
-<div class="callout-content">
-<p>In today’s participation, continue with Exercise 3 in Application Exercise 01 (from last time).</p>
-<p>When you’ve completed the exercises, render, save to PDF, and submit on Canvas&gt; Assignments. Due <strong>Friday at 11:59pm</strong>.</p>
-</div>
-</div>
-</div>
-</section>
 <section id="what-about-other-interval-lengths" class="slide level2">
 <h2>What about other interval lengths?</h2>
 <p>Suppose we have a count random variable that follows a Poisson distribution:</p>
@@ -457,6 +433,9 @@ P(Z=1) &amp;= \frac{1.5^1 \times e^{-1.5}}{1!}\approx 0.335
 </div>
 </div>
 </section>
+<section id="what-about-other-interval-lengths-2" class="slide level2">
+<h2>What about other interval lengths?</h2>
+</section>
 <section id="expectation-and-variance" class="slide level2">
 <h2>Expectation and variance</h2>
 <p>Now that we’ve defined random variables and explored a few distributions, we might be interested in some other aspects of their distributions.</p>
@@ -473,6 +452,149 @@ P(Z=1) &amp;= \frac{1.5^1 \times e^{-1.5}}{1!}\approx 0.335
 <p>This is a property of the <strong>distribution</strong> of <span class="math inline">\(X\)</span>, not of the random variable itself.</p>
 </section>
 <section id="properties-of-bernoulli-and-binomial-random-variables" class="slide level2">
+<h2>Properties of Bernoulli and binomial random variables</h2>
+<ul>
+<li>For <span class="math inline">\(Z \sim Bern(p)\)</span>, <span class="math inline">\(E(Z) = p\)</span> and <span class="math inline">\(Var(Z) = p(1-p)\)</span></li>
+</ul>
+<p><strong>Example</strong>: Let Z be a coin toss. <span class="math inline">\(Z \sim Bern(.5)\)</span>. <span class="math inline">\(E(Z) = .5\)</span> and <span class="math inline">\(Var(Z) = 0.5 \cdot (0.5) = 0.25\)</span>.</p>
+<ul>
+<li><p>For <span class="math inline">\(Z \sim Binom(n, p)\)</span>, <span class="math inline">\(E(Z) = np\)</span> and <span class="math inline">\(Var(Z) = np(1-p)\)</span></p></li>
+<li><p>For <span class="math inline">\(Z \sim Pois(\lambda)\)</span>, <span class="math inline">\(E(Z) = Var(Z) = \lambda\)</span></p></li>
+</ul>
+</section>
+<section id="properties-of-bernoulli-and-binomial-random-variables-1" class="slide level2">
+<h2>Properties of Bernoulli and binomial random variables</h2>
+<ul>
+<li><p>For <span class="math inline">\(Z \sim Bern(p)\)</span>, <span class="math inline">\(E(Z) = p\)</span> and I expect across many trials, the average rate of success would be <span class="math inline">\(p\)</span></p></li>
+<li><p>For <span class="math inline">\(Z \sim Binom(n, p)\)</span>, <span class="math inline">\(E(Z) = np\)</span> and I expect across n trials, I would have <span class="math inline">\(np\)</span> successes</p></li>
+<li><p>For <span class="math inline">\(Z \sim Pois(\lambda)\)</span>, <span class="math inline">\(E(Z) = \lambda\)</span> and I expect for this given interval there would be a total of <span class="math inline">\(\lambda\)</span> events</p></li>
+</ul>
+</section>
+<section id="the-poisson-distribution-5" class="slide level2">
+<h2>The Poisson distribution</h2>
+<ul>
+<li><p>Thus <span class="math inline">\(Z \sim Pois(1.5)\)</span>, and <span class="math inline">\(P(Z=0)\)</span>, <span class="math inline">\(P(Z=1)\)</span>, and <span class="math inline">\(P(Z\geq 2)\)</span> are disjoint events.</p></li>
+<li><p>So, using the Complement Rule, <span class="math inline">\(P(Z \geq 2) = 1- [P(Z = 0) + P(Z = 1)]\)</span>, where</p></li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}
+P(Z=0) &amp;= \frac{1.5^0 \times e^{-1.5}}{0!}\approx 0.223 \\
+P(Z=1) &amp;= \frac{1.5^1 \times e^{-1.5}}{1!}\approx 0.335
+\end{aligned}
+\]</span></p>
+<p>And so <span class="math inline">\(P(Z \geq 2) \approx 1-0.223-0.335 = 0.442\)</span>.</p>
+</section>
+<section id="in-r-2" class="slide level2">
+<h2>In R</h2>
+<p>We can calculate these values in R using the <code>dpois()</code> function:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">dpois</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">lambda =</span> <span class="fl">1.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2231302</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="fu">dpois</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">lambda =</span> <span class="fl">1.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3346952</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a><span class="dv">1</span><span class="sc">-</span> (<span class="fu">dpois</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">lambda =</span> <span class="fl">1.5</span>) <span class="sc">+</span> </span>
+<span id="cb17-2"><a href=""></a>      <span class="fu">dpois</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">lambda =</span> <span class="fl">1.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4421746</code></pre>
+</div>
+</div>
+<p>Note: Each parentheses needs a buddy! Common source of Quarto files not rendering…</p>
+</section>
+<section id="in-r-3" class="slide level2">
+<h2>In R</h2>
+<p>If we wanted to abbreviate our typing (and reduce possibility of typos), we can save our first two probabilities as objects <code>p0</code> and <code>p1</code> to use them later.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>p0 <span class="ot">&lt;-</span> <span class="fu">dpois</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">lambda =</span> <span class="fl">1.5</span>)</span>
+<span id="cb19-2"><a href=""></a>p0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2231302</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>p1 <span class="ot">&lt;-</span> <span class="fu">dpois</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">lambda =</span> <span class="fl">1.5</span>)</span>
+<span id="cb21-2"><a href=""></a>p1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3346952</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="dv">1</span><span class="sc">-</span> (p0 <span class="sc">+</span> p1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4421746</code></pre>
+</div>
+</div>
+</section>
+<section id="participation" class="slide level2">
+<h2>Participation</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Application Exercise in R</strong></p>
+</div>
+<div class="callout-content">
+<p>In today’s participation, continue with Exercise 3 in Application Exercise 01 (from last time).</p>
+<p>When you’ve completed the exercises, render, save to PDF, and submit on Canvas&gt; Assignments. Due <strong>Friday at 11:59pm</strong>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="what-about-other-interval-lengths-3" class="slide level2">
+<h2>What about other interval lengths?</h2>
+<p>Suppose we have a count random variable that follows a Poisson distribution:</p>
+<ul>
+<li><p>Since each event is independent of others and the rate <span class="math inline">\(\lambda\)</span> is constant, <strong>the probability that an event occurs within an interval is proportional to the length of that interval</strong>.</p></li>
+<li><p>E.g., we would expect twice the number of events to occur in an interval of twice the length; we would expect 1/9 times the number of events to occur in an interval 9 times as small; and so on.</p></li>
+</ul>
+</section>
+<section id="what-about-other-interval-lengths-4" class="slide level2 smaller">
+<h2>What about other interval lengths?</h2>
+<p>Suppose on average, there are 1.5 deaths due to Alzheimer’s disease in a town each year.</p>
+<div class="callout callout-tip callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Example:</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li><p>What is the average one-<strong>month</strong> rate of deaths due to Alzheimer’s disease in this town?</p></li>
+<li><p>For any given one-<strong>month</strong> period in this town, what is the probability that exactly one person dies from Alzheimer’s? (Just the expression is fine)</p></li>
+</ol>
+<p>For <span class="math inline">\(X \sim Pois(\lambda)\)</span>,</p>
+<p><span class="math display">\[P(X=k) = \frac{\lambda^k e^{-\lambda}}{k!}\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="expectation-and-variance-1" class="slide level2">
+<h2>Expectation and variance</h2>
+<p>Now that we’ve defined random variables and explored a few distributions, we might be interested in some other aspects of their distributions.</p>
+<p>Suppose we are interested in the probability distribution corresponding to the number of preterm births in a random sample of five independent US births.</p>
+<ul>
+<li><p>How many preterm births should we expect?</p></li>
+<li><p>How “spread out” would this distribution be?</p></li>
+</ul>
+</section>
+<section id="expected-value-1" class="slide level2">
+<h2>Expected value</h2>
+<p>The <strong>expected value</strong> of a discrete random variable <span class="math inline">\(X\)</span> is a weighted average of the possible outcomes:</p>
+<p><span class="math display">\[E(X) = \sum_{\textrm{all } x} x \cdot P(X = x)\]</span></p>
+<p>This is a property of the <strong>distribution</strong> of <span class="math inline">\(X\)</span>, not of the random variable itself.</p>
+</section>
+<section id="properties-of-bernoulli-and-binomial-random-variables-2" class="slide level2">
 <h2>Properties of Bernoulli and binomial random variables</h2>
 <ul>
 <li>For <span class="math inline">\(Z \sim Bern(p)\)</span>, <span class="math inline">\(E(Z) = p\)</span> and <span class="math inline">\(Var(Z) = p(1-p)\)</span></li>
@@ -630,11 +752,11 @@ P(Z=1) &amp;= \frac{1.5^1 \times e^{-1.5}}{1!}\approx 0.335
 <li><p>The total area under the density must be 1</p></li>
 </ul>
 
-<img data-src="lec-7-continuous_AGH_files/figure-revealjs/unnamed-chunk-7-1.png" width="768" class="r-stretch"></section>
+<img data-src="lec-7-continuous_AGH_files/figure-revealjs/unnamed-chunk-13-1.png" width="768" class="r-stretch"></section>
 <section id="with-density-functions-we-work-with-areas-under-the-curve" class="slide level2">
 <h2>With density functions, we work with areas under the curve</h2>
 
-<img data-src="lec-7-continuous_AGH_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<img data-src="lec-7-continuous_AGH_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
 <section id="the-normal-gaussian-distribution" class="slide level2">
 <h2>The normal (Gaussian) distribution</h2>
 <div class="columns">

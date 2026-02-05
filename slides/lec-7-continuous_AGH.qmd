@@ -14,11 +14,11 @@ execute:
 
 - HW 2 due tonight at 11:59pm
 
-- HW 3 (short) will be released after class, due next Thursday at 11:59pm.
+- HW 3 (short) will be open after class, due next Thursday at 11:59pm.
 
 - Today's lecture marks the end of the content for Exam 01! (Today's lecture is included in Exam 01 content.) 
 
-- Topics list and Formula sheet have been added to Exam 01 Preparation on Canvas.
+- Information, topics list and formula sheet have been added on Canvas.
 
 ## Announcements
 
@@ -26,7 +26,7 @@ execute:
 
 - Please feel free to use Lab next week for Lab 4, HW 3 and/or exam review questions
 
-- Also feel free to make a "New Post" on Ed Discussion about any questions you have! We are happy to answer any questions, no matter how small. 
+- Continue to post on Ed Discussion about any questions you have! We are happy to answer any questions, no matter how small. 
 
 ## Overview
 
@@ -45,6 +45,26 @@ execute:
 -   Pagano and Gavreau: Section 7.4
 -   [OpenIntro Statistics](https://www.openintro.org/go/?id=os4_for_screen_readers&referrer=/book/os/index.php): 3.5, 4.1
 
+
+## Review: What is a random variable?
+
+A **random variable** is a quantity whose value depends on the outcome of a random event.
+
+-   Traditionally, we use capital letters $X$, $Y$, $Z$ to denote random variables.
+
+-   The values that random variables take are lowercase $x$, $y$, $z$
+
+-   So, the probability that random variable $X$ has the value $x$ is denoted by $P(X = x)$
+
+Random variables encountered in this class will be either discrete or continuous.
+
+## Review: Discrete random variables
+
+-   **Discrete** random variables are those that can take on a countable number of potential values (could be countably infinite!), each associated with a probability of occurring.
+
+- **Bernoulli** random variable - A dichotomous (two-level) random variable $X$ (e.g. dead or alive) with a probability of "success" denoted by $p$.
+
+- **Binomial** random variable - A random variable Z denotes getting a certain number of $k$ "successes" from a sequence of $n$ independent Bernoulli trials, with probability $p$ of "success"
 
 ## Review: Discrete probability distributions {.smaller}
 
@@ -69,6 +89,8 @@ There are three rules for discrete probability distributions:
 | *X = late/post* | 0.06        |
 :::
 :::
+
+
 
 ## The Poisson distribution
 

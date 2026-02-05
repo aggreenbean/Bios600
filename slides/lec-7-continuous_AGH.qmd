@@ -122,18 +122,22 @@ The **Poisson distribution** gives the probability that $k$ events occur in a **
 
 *What is an "interval"?*
 
-## The Poisson distribution
+## The Poisson distribution {.smaller}
 
-If $X$ has a Poisson distribution, then
+If $X$ has a Poisson distribution, $X$ is $Poisson(\lambda)$,  then
 
 $$P(X=k) = \frac{\lambda^k e^{-\lambda}}{k!}$$
 
 What do these components mean?
 
+  - $k$ = # of events
+  - $\lambda$ = rate, needs to be defined in an interval
+  - $k!$ = k(k-1)(k-2)...(2)(1)
+  
 ::: callout-note
 This expression will always be provided to you if needed.
 :::
-
+  
 ## The Poisson distribution {.smaller}
 
 Suppose on average, there are 1.5 deaths due to Alzheimer's Disease in a town each year. For a one-year period in this town, what is the chance that two or more people die from Alzheimer's?
@@ -146,6 +150,14 @@ Suppose on average, there are 1.5 deaths due to Alzheimer's Disease in a town ea
 
 4.  Two AD deaths cannot occur at the same time (we can always subdivide time intervals such that only one person experiences this event in a given sub-interval)
 
+## Example
+
+::: {.callout-tip}
+## Practice with Poisson
+
+Using the formula for a Poisson distribution, write out how you would calculate the probability of zero Alzheimer's deaths in a year. 
+
+:::
 
 ## The Poisson distribution
 
@@ -261,9 +273,9 @@ This is a property of the **distribution** of $X$, not of the random variable it
 
 -   For $Z \sim Bern(p)$, $E(Z) = p$ and I expect across many trials, the average rate of success would be $p$
 
--   For $Z \sim Binom(n, p)$, $E(Z) = np$ and I expect across n trials, I would have $np$ successes
+-   For $Z \sim Binom(n, p)$, $E(Z) = np$ and I expect if I ran many, many groups of n trials, I would have on average $np$ successes
 
--   For $Z \sim Pois(\lambda)$, $E(Z) = \lambda$ and I expect for this given interval there would be a total of $\lambda$ events
+-   For $Z \sim Pois(\lambda)$, $E(Z) = \lambda$ and I expect if I observe this observe this interval, over and over again, I would expect an average of around $\lambda$ events
 
 
 
@@ -330,9 +342,10 @@ p1
 ::: {.callout-tip}
 ## Application Exercise in R
 
-In today's participation, continue with Exercise 3 in Application Exercise 01 (from last time).
+At the end of class today we are going to work through Application Exercise 01 (in Canvas) at the end of class, and will go over at the beginning of next class
 
-When you've completed the exercises, render, save to PDF, and submit on Canvas> Assignments. Due **Friday at 11:59pm**.
+You **do not** need to submit anything - everyone will get 100% participation today
+
 :::
 
 ## What about other interval lengths?

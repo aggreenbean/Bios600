@@ -315,11 +315,16 @@
 </ol>
 <p><em>What is an “interval”?</em></p>
 </section>
-<section id="the-poisson-distribution-2" class="slide level2">
+<section id="the-poisson-distribution-2" class="slide level2 smaller">
 <h2>The Poisson distribution</h2>
-<p>If <span class="math inline">\(X\)</span> has a Poisson distribution, then</p>
+<p>If <span class="math inline">\(X\)</span> has a Poisson distribution, <span class="math inline">\(X\)</span> is <span class="math inline">\(Poisson(\lambda)\)</span>, then</p>
 <p><span class="math display">\[P(X=k) = \frac{\lambda^k e^{-\lambda}}{k!}\]</span></p>
 <p>What do these components mean?</p>
+<ul>
+<li><span class="math inline">\(k\)</span> = # of events</li>
+<li><span class="math inline">\(\lambda\)</span> = rate, needs to be defined in an interval</li>
+<li><span class="math inline">\(k!\)</span> = k(k-1)(k-2)…(2)(1)</li>
+</ul>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -343,6 +348,22 @@
 <li><p>The AD death rate is constant in this town</p></li>
 <li><p>Two AD deaths cannot occur at the same time (we can always subdivide time intervals such that only one person experiences this event in a given sub-interval)</p></li>
 </ol>
+</section>
+<section id="example" class="slide level2">
+<h2>Example</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Practice with Poisson</strong></p>
+</div>
+<div class="callout-content">
+<p>Using the formula for a Poisson distribution, write out how you would calculate the probability of zero Alzheimer’s deaths in a year.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="the-poisson-distribution-4" class="slide level2">
 <h2>The Poisson distribution</h2>
@@ -466,8 +487,8 @@ P(Z=1) &amp;= \frac{1.5^1 \times e^{-1.5}}{1!}\approx 0.335
 <h2>Properties of Bernoulli and binomial random variables</h2>
 <ul>
 <li><p>For <span class="math inline">\(Z \sim Bern(p)\)</span>, <span class="math inline">\(E(Z) = p\)</span> and I expect across many trials, the average rate of success would be <span class="math inline">\(p\)</span></p></li>
-<li><p>For <span class="math inline">\(Z \sim Binom(n, p)\)</span>, <span class="math inline">\(E(Z) = np\)</span> and I expect across n trials, I would have <span class="math inline">\(np\)</span> successes</p></li>
-<li><p>For <span class="math inline">\(Z \sim Pois(\lambda)\)</span>, <span class="math inline">\(E(Z) = \lambda\)</span> and I expect for this given interval there would be a total of <span class="math inline">\(\lambda\)</span> events</p></li>
+<li><p>For <span class="math inline">\(Z \sim Binom(n, p)\)</span>, <span class="math inline">\(E(Z) = np\)</span> and I expect if I ran many, many groups of n trials, I would have on average <span class="math inline">\(np\)</span> successes</p></li>
+<li><p>For <span class="math inline">\(Z \sim Pois(\lambda)\)</span>, <span class="math inline">\(E(Z) = \lambda\)</span> and I expect if I observe this observe this interval, over and over again, I would expect an average of around <span class="math inline">\(\lambda\)</span> events</p></li>
 </ul>
 </section>
 <section id="the-poisson-distribution-5" class="slide level2">
@@ -543,8 +564,8 @@ P(Z=1) &amp;= \frac{1.5^1 \times e^{-1.5}}{1!}\approx 0.335
 <p><strong>Application Exercise in R</strong></p>
 </div>
 <div class="callout-content">
-<p>In today’s participation, continue with Exercise 3 in Application Exercise 01 (from last time).</p>
-<p>When you’ve completed the exercises, render, save to PDF, and submit on Canvas&gt; Assignments. Due <strong>Friday at 11:59pm</strong>.</p>
+<p>At the end of class today we are going to work through Application Exercise 01 (in Canvas) at the end of class, and will go over at the beginning of next class</p>
+<p>You <strong>do not</strong> need to submit anything - everyone will get 100% participation today</p>
 </div>
 </div>
 </div>

@@ -14,7 +14,7 @@ execute:
 
 - HW 2 due tonight at 11:59pm
 
-- HW 3 (short) will be open after class, due next Thursday at 11:59pm.
+- HW 3 (short) due next Thursday at 11:59pm.
 
 - Today's lecture marks the end of the content for Exam 01! (Today's lecture is included in Exam 01 content.) 
 
@@ -137,10 +137,12 @@ What do these components mean?
 ::: callout-note
 This expression will always be provided to you if needed.
 :::
-  
+
 ## The Poisson distribution {.smaller}
 
-Suppose on average, there are 1.5 deaths due to Alzheimer's Disease in a town each year. For a one-year period in this town, what is the chance that two or more people die from Alzheimer's?
+Suppose on average, there are 1.5 deaths due to Alzheimer's Disease in a town each year. For a one-year period in this town, what is the chance of zero Alzheimer's deaths in a year?
+
+**Let's first verify the four assumptions of a Poisson distribution:**
 
 1.  Within any interval, the number of AD deaths can range from 0 to $\infty$ (*technically* not true, but close enough)
 
@@ -159,9 +161,12 @@ Using the formula for a Poisson distribution, write out how you would calculate 
 
 :::
 
-## The Poisson distribution
 
-Thus $Z \sim Pois(1.5)$, and $P(Z=0)$, $P(Z=1)$, and $P(Z\geq 2)$ are disjoint events. So, $P(Z \geq 2) = 1- [P(Z = 0) + P(Z = 1)]$, where
+## The Poisson distribution {.smaller}
+- What is the chance that two or more people die from Alzheimer's?
+- $Z \sim Pois(1.5)$, and $P(Z=0)$, $P(Z=1)$, and $P(Z\geq 2)$ are disjoint events. 
+
+- So, using the Complement Rule, $P(Z \geq 2) = 1- [P(Z = 0) + P(Z = 1)]$, where
 
 $$
 \begin{aligned}
@@ -241,102 +246,6 @@ $$P(X=k) = \frac{\lambda^k e^{-\lambda}}{k!}$$
 
 ## What about other interval lengths? 
 
-## Expectation and variance
-
-Now that we've defined random variables and explored a few distributions, we might be interested in some other aspects of their distributions.
-
-Suppose we are interested in the probability distribution corresponding to the number of preterm births in a random sample of five independent US births.
-
--   How many preterm births should we expect?
-
--   How "spread out" would this distribution be?
-
-## Expected value
-
-The **expected value** of a discrete random variable $X$ is a weighted average of the possible outcomes:
-
-$$E(X) = \sum_{\textrm{all } x} x \cdot P(X = x)$$
-
-This is a property of the **distribution** of $X$, not of the random variable itself.
-
-## Properties of Bernoulli and binomial random variables
-
--   For $Z \sim Bern(p)$, $E(Z) = p$ and $Var(Z) = p(1-p)$
-
-**Example**: Let Z be a coin toss. $Z \sim Bern(.5)$. $E(Z) = .5$ and $Var(Z) = 0.5 \cdot (0.5) = 0.25$.
-
--   For $Z \sim Binom(n, p)$, $E(Z) = np$ and $Var(Z) = np(1-p)$
-
--   For $Z \sim Pois(\lambda)$, $E(Z) = Var(Z) = \lambda$
-
-## Properties of Bernoulli and binomial random variables
-
--   For $Z \sim Bern(p)$, $E(Z) = p$ and I expect across many trials, the average rate of success would be $p$
-
--   For $Z \sim Binom(n, p)$, $E(Z) = np$ and I expect if I ran many, many groups of n trials, I would have on average $np$ successes
-
--   For $Z \sim Pois(\lambda)$, $E(Z) = \lambda$ and I expect if I observe this observe this interval, over and over again, I would expect an average of around $\lambda$ events
-
-
-
-## The Poisson distribution
-
-- Thus $Z \sim Pois(1.5)$, and $P(Z=0)$, $P(Z=1)$, and $P(Z\geq 2)$ are disjoint events. 
-
-- So, using the Complement Rule, $P(Z \geq 2) = 1- [P(Z = 0) + P(Z = 1)]$, where
-
-$$
-\begin{aligned}
-P(Z=0) &= \frac{1.5^0 \times e^{-1.5}}{0!}\approx 0.223 \\
-P(Z=1) &= \frac{1.5^1 \times e^{-1.5}}{1!}\approx 0.335
-\end{aligned}
-$$
-
-And so $P(Z \geq 2) \approx 1-0.223-0.335 = 0.442$.
-
-## In R
-
-We can calculate these values in R using the `dpois()` function:
-
-```{r}
-#| echo: true
-dpois(x = 0, lambda = 1.5)
-```
-
-```{r}
-#| echo: true
-dpois(x = 1, lambda = 1.5)
-```
-
-```{r}
-#| echo: true
-1- (dpois(x = 0, lambda = 1.5) + 
-      dpois(x = 1, lambda = 1.5))
-```
-
-Note: Each parentheses needs a buddy! Common source of Quarto files not rendering...
-
-## In R
-
-If we wanted to abbreviate our typing (and reduce possibility of typos), we can save our first two probabilities as objects `p0` and `p1` to use them later.
-
-```{r}
-#| echo: true
-p0 <- dpois(x = 0, lambda = 1.5)
-p0
-```
-
-```{r}
-#| echo: true
-p1 <- dpois(x = 1, lambda = 1.5)
-p1
-```
-
-```{r}
-#| echo: true
-1- (p0 + p1)
-```
-
 ## Participation
 
 ::: {.callout-tip}
@@ -347,33 +256,6 @@ At the end of class today we are going to work through Application Exercise 01 (
 You **do not** need to submit anything - everyone will get 100% participation today
 
 :::
-
-## What about other interval lengths?
-
-Suppose we have a count random variable that follows a Poisson distribution:
-
--   Since each event is independent of others and the rate $\lambda$ is constant, **the probability that an event occurs within an interval is proportional to the length of that interval**.
-
--   E.g., we would expect twice the number of events to occur in an interval of twice the length; we would expect 1/9 times the number of events to occur in an interval 9 times as small; and so on.
-
-## What about other interval lengths? {.smaller}
-
-Suppose on average, there are 1.5 deaths due to Alzheimer's disease in a town each year.
-
-::: {.callout-tip appearance="simple"}
-## Example:
-
-1.  What is the average one-**month** rate of deaths due to Alzheimer's disease in this town?
-
-2.  For any given one-**month** period in this town, what is the probability that exactly one person dies from Alzheimer's? (Just the expression is fine)
-
-For $X \sim Pois(\lambda)$,
-
-$$P(X=k) = \frac{\lambda^k e^{-\lambda}}{k!}$$
-:::
-
-
-
 ## Expectation and variance
 
 Now that we've defined random variables and explored a few distributions, we might be interested in some other aspects of their distributions.
@@ -392,7 +274,7 @@ $$E(X) = \sum_{\textrm{all } x} x \cdot P(X = x)$$
 
 This is a property of the **distribution** of $X$, not of the random variable itself.
 
-## Properties of Bernoulli and binomial random variables
+## Properties of Bernoulli random variables
 
 -   For $Z \sim Bern(p)$, $E(Z) = p$ and $Var(Z) = p(1-p)$
 
@@ -403,16 +285,15 @@ These formulas will always be provided to you if needed.
 ::: {.callout-tip}
 ## Example
 
-Let Z be a coin toss. What is $E(Z)$ and $Var(Z)$?
+Let Z be a fair coin toss. What is $E(Z)$ and $Var(Z)$?
 
 :::
 
-$Z \sim Bern(.5)$. 
+## Why are these important?
 
-$E(Z) = .5$ 
+-   The expectation is the average value (weighted by the probability of each value occurring)
 
-$Var(Z) = 0.5 \cdot (0.5) = 0.25$.
-
+-   The variance describes the expected spread of values around the population expectation (thus, variance is in fact an expectation itself!)
 
 
 ## Properties of binomial and Poisson random variables
@@ -426,11 +307,17 @@ $Var(Z) = 0.5 \cdot (0.5) = 0.25$.
 These formulas will always be provided to you if needed.
 :::
 
-## Why are these important?
+## Properties of Bernoulli, binomial and Poisson random variables
 
--   The expectation is the average value (weighted by the probability of each value occurring)
+-   For $Z \sim Bern(p)$, $E(Z) = p$ and I expect across many trials, the average rate of success would be $p$
 
--   The variance describes the expected spread of values around the population expectation (thus, variance is in fact an expectation itself!)
+-   For $Z \sim Binom(n, p)$, $E(Z) = np$ and I expect if I ran many, many groups of n trials, I would have on average $np$ successes
+
+-   For $Z \sim Pois(\lambda)$, $E(Z) = \lambda$ and I expect if I observe this interval, over and over again, I would expect an average of around $\lambda$ events across all intervals
+
+
+
+
 
 # Continuous distributions
 
@@ -542,27 +429,30 @@ polygon(c(0.5, x_shade, 1.5), c(0, y_shade, 0), col = "darkgoldenrod3", border =
 
 ```
 
-## The normal (Gaussian) distribution
+## The normal (Gaussian) distribution {.smaller}
 
 ::: columns
 ::: {.column width="70%"}
+
 For the **normal distribution**,
 
-::: poll
-$$f(x) = \frac{1}{\sqrt{2\pi \sigma^2}} \textrm{exp}\Bigl\{-\frac{1}{2} \frac{(x - \mu)^2}{\sigma^2}\Bigr\}$$
-:::
+$$
+f(x) = \frac{1}{\sqrt{2\pi \sigma^2}} \textrm{exp}\Bigl\{-\frac{1}{2} \frac{(x - \mu)^2}{\sigma^2}\Bigr\}
+$$
 
 where $\mu$ is the mean and $\sigma^2$ is the variance.
 
--   We often write $N(\mu, \sigma^2)$.
-:::
+- We often write $N(\mu, \sigma^2)$.
 
 You do NOT need to know this formula for the exam.
+
+:::
 
 ::: {.column width="30%"}
 ![](images/lec-7/gauss.jpg)
 :::
 :::
+
 
 ## 68-95-99.7
 
@@ -611,6 +501,8 @@ Let's calculate a z-score and find out!
 - Review discrete distributions
 
 - Poisson distribution and Alzheimer's example
+
+- Expectations and variances
 
 - Continuous distributions, density functions
 

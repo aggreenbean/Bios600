@@ -13,7 +13,7 @@ Due Friday, February 13 at 11:59pm.
 
 3. "Save As" into your class project folder with a new name: "`lab-04.qmd`".
 
-4. Replace "Your Name Here" with your name in the YAML (the header of the document). Also, replace "Today's Date Here" with today's date. You may delete everything under the YAML. 
+4. Replace "Your Name Here" with your name in the YAML (the header of the document). Also, it's good practice to add in the date as we have been doing. Add **date: "February 9, 2026"** to the YAML. You may delete everything under the YAML. 
 
 5. Render your document to make sure your YAML is rendering correctly.
 
@@ -40,7 +40,7 @@ library(tidyverse)
 
 Today’s lab will is more practice with ggplot and the tidyverse. You will also learn about loading data into R and setting a working directory to look for data.
 
-Fast foods have been criticized as offering unhealthy foods which are calorically dense, high in sodium and added sugars, and low in vitamins and minerals. Today’s dataset was compiled by Joey Stanley at BYU and consists of information regarding McDonald’s menu items.
+Fast foods have been criticized as offering unhealthy foods which are calorically dense, high in sodium and added sugars, and low in vitamins and minerals. Today’s dataset was compiled by Joey Stanley at BYU and consists of information regarding McDonald’s menu items. 
 
 ::: callout-tip
 

@@ -56,7 +56,7 @@ Previously, you loaded data directly into R by using the `read.csv` command that
 You can still do so, but need to point R to reference the appropriate space on your computer. For instance, if I downloaded the McDonald’s Menu Items dataset to my Downloads folder and named it `file.csv`, I might be able to load the dataset into R under the name `mcd` with the following command:
 
 ```{r eval = F}
-mcd <- read.csv("C:/Users/Kara/Downloads/file.csv")
+mcd <- read.csv("C:/Users/aghoward/Downloads/file.csv")
 ```
 
 Note that `file.csv`, the name of the file on your computer, could be different from the object name in R (this case, `mcd`).

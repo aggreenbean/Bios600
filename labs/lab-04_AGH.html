@@ -153,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Previously, you loaded data directly into R by using the <code>read.csv</code> command that pointed to a website. But what if you had a dataset on your computer?</p>
 <p>You can still do so, but need to point R to reference the appropriate space on your computer. For instance, if I downloaded the McDonald’s Menu Items dataset to my Downloads folder and named it <code>file.csv</code>, I might be able to load the dataset into R under the name <code>mcd</code> with the following command:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mcd <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"C:/Users/Kara/Downloads/file.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mcd <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"C:/Users/aghoward/Downloads/file.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Note that <code>file.csv</code>, the name of the file on your computer, could be different from the object name in R (this case, <code>mcd</code>).</p>
 <p>However, file paths can be quite long. There’s a better way! This is where our project folder comes in.</p>
@@ -168,7 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "C:/Users/aghoward/OneDrive - University of North Carolina at Chapel Hill/Documents/GitHub/Bios600/labs"</code></pre>
+<pre><code>[1] "C:/Users/aghoward/OneDrive - University of North Carolina at Chapel Hill/Documents/bios600_labs"</code></pre>
 </div>
 </div>
 </section>

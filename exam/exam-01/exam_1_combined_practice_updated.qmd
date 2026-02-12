@@ -88,7 +88,7 @@ B. `dbinom(10, size = 7, prob = 0.8)`
 
 C. `dbinom(7, size = 10, prob = 0.8)`  
 
-D. `ppois(7, lambda = 8)` 
+D. `dpois(7, lambda = 8)` 
 ```
 
 Elena Epidata is an epidemiologist exploring health trends in the U.S. population. She is using a dataset similar to **NHANES**, which includes variables such as **age, BMI, blood pressure, and cholesterol** for a sample of adults. Elena is new to R and is practicing basic data exploration.

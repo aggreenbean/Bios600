@@ -154,4 +154,4 @@ b.  $P(X \ge 2) = 1 - P(X < 2) = 1 - P(X = 0) - P(X = 1)$
 
 $P(X \ge 2) = 1 - \frac{e^{-3} 3^0}{0!} - \frac{e^{-3} 3^1}{1!}$
 
-c.  Answer is (B): `1 - ppois(1, lambda = 3)`. Note that this is the same as `1 - (dpois(0, lambda = 3) + dpois(1, lambda = 3))`.
+c.  Answer is (B): `1 - dpois(0, lambda = 3) - dpois(1, lambda = 3)` note this is the same as `1 - ppois(1, lambda = 3)` since when we use ppois, vs dpois, this captures cumulative probability so the probability of X$\lteq$ 1. But since we did not go over the difference between ppois or pbinom in class, I will only give you functions with dbinom or dpois - you are welcome though to use both

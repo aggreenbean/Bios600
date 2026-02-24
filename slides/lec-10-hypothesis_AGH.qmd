@@ -127,7 +127,7 @@ library(tidyverse)
 
 - The central limit theorem tells us that the distribution of means of samples of size 30 from this population is also normal, with mean $\mu = 100$ and $SE = \sigma/ \sqrt{n} = 15 \sqrt{30} \approx 2.7$
 
-## Remember IQ example?
+## Remember IQ example? {.smaller}
 
 - Remember here I **know** $\sigma$, I can derive 95\% confidence interval for the BIOS 600 students average IQ
 
@@ -284,8 +284,8 @@ t.test(df$sample_data, mu = 0.020)
 ```
 
 - Where does -2.6012 come from?
-
-## Two-sided tests of hypotheses
+ 
+## Two-sided tests of hypotheses {.smaller}
 
 -   To conduct the hypothesis test, we use what we learned about the sampling distribution of the sample mean $\bar{X}$. If the underlying population is normally distributed (or $n$ is pretty large), then the random variable
 
@@ -367,9 +367,7 @@ p_high
 
 ## Back to IQ example
 
-- Here I've generated a sample of 30 students with IQs on average ~ 120 points
-
-- Does this mean that that the average IQ score for BIOS 600 students is the same as that in the larger population?
+- Here a sample of 30 students with IQs on average of 120 points. Can we test if the average IQ score for BIOS 600 students is the same as that in the larger population?
 
 - $H_0$ = 
 
@@ -389,7 +387,7 @@ t.test(bios600, mu = 100)
 
 ## Back to IQ example
 
-- Here I've generated a sample of 30 students with IQs on average ~ 120 points
+- Here I've generated a sample of 30 students with IQs on average ~ 105 points
 
 ```{r}
 #| echo: false
@@ -436,7 +434,6 @@ t.test(bios600, mu = 100)
 |----------------------|------------------|------------------|
 | Fail to reject $H_0$ | correct decision | Type II Error    |
 | Reject $H_0$         | Type I Error     | correct decision |
-
 
 
 -   **Type I Error**: rejecting $H_0$ when it is actually true (falsely rejecting the null hypothesis)

@@ -1,9 +1,9 @@
 ---
 title: "HW 5"
-format: pdf
+format: html
 ---
 
-Due: Thursday, October 9, 11:59pm.
+Due: Thursday, March 5, 11:59pm.
 
 ## AI use
 

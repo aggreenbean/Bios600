@@ -490,10 +490,14 @@ We set up the hypotheses to cover all possibilities for $\mu$ and consider three
 
 - Let's go back to the IQ example
 
-- $H_0$ = Are BIOS 600 students smarter than average?
+- Are BIOS 600 students smarter than average? 
+  -   $H_0$ = 
+  -   $H_A$ = 
 
 
-- $H_0$ = Are BIOS 600 students IQs different than the average?
+- Are BIOS 600 students IQs different than the average?
+  -   $H_0$ = 
+  -   $H_A$ = 
 
 ## Why not use a one-sided test?
 

@@ -16,7 +16,9 @@ execute:
 
 - For T/F and multiple choice questions this will involve adding one or two sentences explaining the choice
 
-- Upload a scanned copy of **both** your exam and seperate sheets of reworked questions to Canvas 
+- Upload a scanned copy of **both** your exam and separate sheets of reworked questions to Canvas under **Exam 1 - Corrected Problems**
+
+- If you need additional time past March 6th please reach out
 
 ## Announcements
 
@@ -24,11 +26,11 @@ execute:
 
 - Lab 5 due Tomorrow (Friday) at 11:59pm.
 
-- HW 5 will be released after class. HW 5 is due next **Thursday 10/9 at 11:59pm**.
+- HW 5 will be released after class. HW 5 is due next **Thursday 3/5 at 11:59pm**.
 
 ## Course feedback
 
-On Canvas, fill out the short survey on how lab went this week and on potential alternate tutoring times. 
+On Canvas, fill out the short survey on how lab is going
 
 
 ## Overview

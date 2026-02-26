@@ -24,7 +24,10 @@ execute:
 
 - I have updated weights for grades posted on Canvas
 
-- Final exam will be **May 5** from 8-11 am
+- I have updated syllabus on Canvas
+  - Final exam will be **May 5** from 8-11 am
+
+## Announcements
 
 - HW 4 due Tonight at 11:59pm.
 
@@ -35,6 +38,12 @@ execute:
 ## Course feedback
 
 On Canvas, fill out the short survey on how lab is going
+
+## Exam question
+
+- Write out all the events contained in the set $(A \cup B)^C$ for one dice roll:
+  - A: Number is $\lt$ 5
+  - B: Roll an even number 
 
 ## Overview
 

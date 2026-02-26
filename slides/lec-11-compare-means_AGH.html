@@ -237,6 +237,66 @@
 <li><p>OI: 7.3</p></li>
 </ul>
 </section>
+<section id="review-type-i-and-type-ii-error-rates" class="slide level2">
+<h2>Review: Type I and Type II error rates</h2>
+<ul>
+<li>Suppose we test the null hypothesis <span class="math inline">\(H_0\)</span>:<span class="math inline">\(\mu = \mu_0\)</span>. We could potentially make two types of errors:</li>
+</ul>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Truth</th>
+<th><span class="math inline">\(\mu = \mu_0\)</span></th>
+<th><span class="math inline">\(\mu \neq \mu_0\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Fail to reject <span class="math inline">\(H_0\)</span></td>
+<td>correct decision</td>
+<td>Type II Error</td>
+</tr>
+<tr class="even">
+<td>Reject <span class="math inline">\(H_0\)</span></td>
+<td>Type I Error</td>
+<td>correct decision</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><strong>Type I Error</strong>: rejecting <span class="math inline">\(H_0\)</span> when it is actually true (falsely rejecting the null hypothesis)</p></li>
+<li><p><strong>Type II Error</strong>: not rejecting <span class="math inline">\(H_0\)</span> when it is false (falsely failing to reject the null hypothesis)</p></li>
+</ul>
+</section>
+<section id="review-type-i-and-type-ii-error-rates-1" class="slide level2">
+<h2>Review: Type I and Type II error rates</h2>
+<p>For <span class="math inline">\(H_{0}\)</span>: Patient does not have a disease - <strong>Type I Error</strong> is equivalent to saying the test is positive when person does not have disease (false positive) - <strong>Type II Error</strong> is equivalent to saying the test is negative when person does have disease (false negative)</p>
+</section>
+<section id="review-type-i-and-type-ii-error-rates-2" class="slide level2">
+<h2>Review: Type I and Type II error rates</h2>
+<ul>
+<li><p><strong>Remember</strong>:</p>
+<ul>
+<li><p><strong>Sensitivity</strong>: true positive rate, probability that the test is positive given the condition is present</p></li>
+<li><p><strong>Specificity</strong>: 1 minus the false positive rate, probability that the test is negative given the condition is <strong>not</strong> present</p></li>
+</ul></li>
+<li><p>Low sensitivity → more false negatives → higher Type II error</p></li>
+<li><p>Low specificity → more false positives → higher Type I error</p></li>
+</ul>
+</section>
+<section id="review-type-i-and-type-ii-error-rates-3" class="slide level2">
+<h2>Review: Type I and Type II error rates</h2>
+<ul>
+<li>If you lower <span class="math inline">\(\alpha\)</span> for example from 0.05 to 0.01
+<ul>
+<li>Lowers chance of <strong>Type I</strong> error (rejecting <span class="math inline">\(H_0\)</span> when it is actually true) but since its now harder in general to reject <span class="math inline">\(H_0\)</span> I am increasing the chance of a <strong>Type II</strong> error (not rejecting <span class="math inline">\(H_0\)</span> when it is false)</li>
+</ul></li>
+<li>If you increase <span class="math inline">\(\alpha\)</span> for example from 0.10 to 0.15
+<ul>
+<li>Increases change of <strong>Type I</strong> error (rejecting <span class="math inline">\(H_0\)</span> when it is actually true) but since its now easier in general to reject <span class="math inline">\(H_0\)</span> I am decreasing the chance of a <strong>Type II</strong> error (not rejecting <span class="math inline">\(H_0\)</span> when it is false)</li>
+</ul></li>
+</ul>
+</section>
 <section id="review-hypothesis-testing-steps" class="slide level2">
 <h2>Review: Hypothesis testing steps</h2>
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -273,7 +333,7 @@
 </ul>
 
 <img data-src="images/lec-11/paired.png" width="200" class="r-stretch"></section>
-<section id="paired-samples" class="slide level2">
+<section id="paired-samples" class="slide level2 smaller">
 <h2>Paired samples</h2>
 <p>Samples are often paired for a variety of reasons</p>
 <ul>
@@ -281,6 +341,21 @@
 <li><p>Subjects may be matched so that members of each pair are as much alike as possible with respect to important characteristics like age and sex (e.g., matched case-control study)</p></li>
 </ul>
 <p>Pairing can <strong>control for unwanted sources of variation</strong> that might otherwise influence the results of a comparison. Matching within subject (e.g., baseline and follow-up) is a powerful way to eliminate subject-specific factors.</p>
+</section>
+<section id="paired-or-matched-samples-1" class="slide level2 smaller">
+<h2>Paired or matched samples</h2>
+<ul>
+<li>Comparing BMI among twins raised apart
+<ul>
+<li><span class="math inline">\(H_{0}\)</span>: There is no difference in BMI between twins raised apart</li>
+<li><span class="math inline">\(H_{0}\)</span>: There is a difference in BMI between twins raised apart</li>
+</ul></li>
+<li>Compare hippocampal volume (continuous, mm³) measured by MRI between individuals with Alzheimer’s disease and individuals (matched based on age, sex and education level) without Alzheimer’s disease
+<ul>
+<li><span class="math inline">\(H_{0}\)</span>: There is no difference in hippocampal volume between individuals with Alzheimer’s disease and the matched controls</li>
+<li><span class="math inline">\(H_{A}\)</span>: There is a difference in hippocampal volume between individuals with Alzheimer’s disease and the matched controls</li>
+</ul></li>
+</ul>
 </section>
 <section id="designing-a-study-impaired-driving" class="slide level2">
 <h2>Designing a study: impaired driving</h2>
@@ -361,7 +436,7 @@
 </div>
 </div>
 </section>
-<section id="step-2-continued" class="slide level2">
+<section id="step-2-continued" class="slide level2 smaller">
 <h2>Step 2 continued</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>licorice <span class="sc">|&gt;</span></span>
@@ -589,8 +664,7 @@ mean of x
 <section id="next-class" class="slide level2">
 <h2>Next class</h2>
 <ul>
-<li><p>No class on Tuesday. Enjoy your Wellness Day.</p></li>
-<li><p>Thursday’s class: ANOVA</p></li>
+<li>ANOVA</li>
 </ul>
 
 </section>

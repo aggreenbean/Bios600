@@ -1,9 +1,9 @@
 ---
-title: "hw-07"
-format: pdf
+title: "HW 7"
+format: html
 ---
 
-Due: Thursday, Nov 20, 2025 at 11:59PM
+Due: Thursday, April 16 at 11:59PM
 
 ```{r}
 #| echo: true

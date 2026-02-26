@@ -1,9 +1,9 @@
 ---
 title: "Lab 6: Code Style"
-format: pdf
+format: html
 ---
 
-Due Friday, October 24 at 11:59pm.
+Due Friday, March 6 at 11:59pm.
 
 ## Today's lab
 

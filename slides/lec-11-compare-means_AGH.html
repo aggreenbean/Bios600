@@ -632,6 +632,10 @@ mean difference
 <section id="but-wait.." class="slide level2">
 <h2>But wait..</h2>
 <div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a><span class="fu">t.test</span>(training_diff<span class="sc">$</span>diff, </span>
+<span id="cb17-2"><a href=""></a>       <span class="at">mu =</span> <span class="dv">0</span>,</span>
+<span id="cb17-3"><a href=""></a>       <span class="at">alternative =</span> <span class="st">"two.sided"</span>,</span>
+<span id="cb17-4"><a href=""></a>       <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
@@ -647,11 +651,36 @@ mean of x
 </div>
 </div>
 </section>
+<section id="but-wait..-1" class="slide level2">
+<h2>But wait..</h2>
+</section>
 <section id="takeaway" class="slide level2">
 <h2>Takeaway</h2>
 <ul>
 <li>A paired t-test is the same as a one-sample t-test on the differences.</li>
 </ul>
+</section>
+<section id="what-happens-when-we-change-conf.level" class="slide level2">
+<h2>What happens when we change conf.level?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="fu">t.test</span>(training_diff<span class="sc">$</span>diff, </span>
+<span id="cb19-2"><a href=""></a>       <span class="at">mu =</span> <span class="dv">0</span>,</span>
+<span id="cb19-3"><a href=""></a>       <span class="at">alternative =</span> <span class="st">"two.sided"</span>,</span>
+<span id="cb19-4"><a href=""></a>       <span class="at">conf.level =</span> <span class="fl">0.80</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  training_diff$diff
+t = -5.2671, df = 9, p-value = 0.0005158
+alternative hypothesis: true mean is not equal to 0
+80 percent confidence interval:
+ -2.032749 -1.187251
+sample estimates:
+mean of x 
+    -1.61 </code></pre>
+</div>
+</div>
 </section>
 <section id="recap" class="slide level2">
 <h2>Recap</h2>

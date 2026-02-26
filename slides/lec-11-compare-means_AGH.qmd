@@ -348,15 +348,27 @@ training_diff
 
 ## But wait..
 
-```{r}
+```{r, echo=TRUE}
 t.test(training_diff$diff, 
        mu = 0,
        alternative = "two.sided",
        conf.level = 0.95)
 ```
+
+## But wait..
+
 ## Takeaway
 
 - A paired t-test is the same as a one-sample t-test on the differences. 
+
+## What happens when we change conf.level?
+
+```{r, echo=TRUE}
+t.test(training_diff$diff, 
+       mu = 0,
+       alternative = "two.sided",
+       conf.level = 0.80)
+```
 
 ## Recap
 

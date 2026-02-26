@@ -22,6 +22,8 @@ execute:
 
 ## Announcements
 
+- I have updated weights for grades posted on Canvas
+
 - HW 4 due Tonight at 11:59pm.
 
 - Lab 5 due Tomorrow (Friday) at 11:59pm.

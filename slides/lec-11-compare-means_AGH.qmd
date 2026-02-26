@@ -24,6 +24,8 @@ execute:
 
 - I have updated weights for grades posted on Canvas
 
+- Final exam will be **May 5** from 8-11 am
+
 - HW 4 due Tonight at 11:59pm.
 
 - Lab 5 due Tomorrow (Friday) at 11:59pm.

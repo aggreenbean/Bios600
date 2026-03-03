@@ -12,7 +12,11 @@ execute:
 
 ## Announcements
 
--   Lab 6 due Friday 10/24 at 11:59pm.
+-   HW 6 due Thursday **March 12th** at 11:59pm. 
+
+-   Lab 7 due Friday **March 13th** at 11:59pm.
+
+-   Professor Howard is out of the office and **will not** have office hours
 
 ## Very optional reading
 

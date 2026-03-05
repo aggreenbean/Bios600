@@ -203,15 +203,31 @@
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li><p>Lab 5 session today. Watch the video ahead of time and attend at 3:30 if you need help.</p></li>
-<li><p>Lab 5 due Tuesday 10/21 at 11:59pm (due to fall break)</p></li>
-<li><p>No HW until next week - enjoy your fall break!</p></li>
+<li><p>HW 5 due <strong>today</strong> at 11:59 pm</p></li>
+<li><p>Lab 6 due <strong>Friday</strong> at 11:59 pm</p></li>
+<li><p>HW 6 will be assigned after class today</p></li>
+</ul>
+</section>
+<section id="announcements-1" class="slide level2">
+<h2>Announcements</h2>
+<ul>
+<li><p>I have extended due dates for exam corrections to March 13</p></li>
+<li><p>If you need more time please reach out <strong>ahead</strong> of March 13</p></li>
+</ul>
+</section>
+<section id="announcements-2" class="slide level2">
+<h2>Announcements</h2>
+<ul>
+<li><p>I will be <strong>out of the office</strong> all of next week (March 9-13)</p></li>
+<li><p>I will <strong>not</strong> have office hours but will be available by email but slower to respond than normal</p></li>
+<li><p>Molly will be continuing our lectures</p></li>
+<li><p>We will be wrapping up material covered in Exam 2 the week after spring break</p></li>
 </ul>
 </section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
 <ul>
-<li><p>Review AE 03 from last time.</p></li>
+<li><p>Bonferroni correction</p></li>
 <li><p>Chi-square test and example</p></li>
 <li><p>Fisher exact test and example</p></li>
 </ul>
@@ -223,22 +239,81 @@
 <li><p>OI: Sections 5.2, 5.3, 6.1, 6.2, 6.4</p></li>
 </ul>
 </section>
-<section id="application-exercise" class="slide level2">
-<h2>Application Exercise</h2>
-<div class="callout callout-tip callout-titled callout-style-default">
+<section id="ae-03" class="slide level2">
+<h2>AE 03</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">ggplot</span>(bp_data, </span>
+<span id="cb1-2"><a href=""></a>       <span class="fu">aes</span>(<span class="at">x =</span> group, <span class="at">y =</span> reduction, <span class="at">fill =</span> group)) <span class="sc">+</span></span>
+<span id="cb1-3"><a href=""></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb1-4"><a href=""></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Systolic BP Reduction by Intervention"</span>,</span>
+<span id="cb1-5"><a href=""></a>       <span class="at">x =</span> <span class="st">"Intervention"</span>,</span>
+<span id="cb1-6"><a href=""></a>       <span class="at">y =</span> <span class="st">"Reduction in systolic BP (mmHg)"</span>) <span class="sc">+</span></span>
+<span id="cb1-7"><a href=""></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb1-8"><a href=""></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ae-03-1" class="slide level2">
+<h2>AE 03</h2>
+
+<img data-src="lec-13-proportions_AGH_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<section id="ae-03-2" class="slide level2">
+<h2>AE 03</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>anova_model <span class="ot">&lt;-</span> <span class="fu">aov</span>(reduction <span class="sc">~</span> group, <span class="at">data =</span> bp_data)</span>
+<span id="cb2-2"><a href=""></a><span class="fu">summary</span>(anova_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)  
+group        2  161.1   80.53   3.145  0.048 *
+Residuals   87 2227.6   25.60                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>What did we conclude at <span class="math inline">\(\alpha = 0.05\)</span>?</p>
+</section>
+<section id="bonferroni-correction" class="slide level2">
+<h2>Bonferroni correction</h2>
+<ul>
+<li><p>As we showed earlier, conducting multiple tests on a data set increases the <strong>family-wise error rate</strong> - the probability of making at least one Type I error (false positive) when performing multiple, simultaneous hypothesis tests</p></li>
+<li><p>One very conservative way to ensure this is not the case is to simply divide <span class="math inline">\(\alpha\)</span> by the number of tests to be done and to use that as the significance level.</p></li>
+<li><p>This procedure is called the <strong>Bonferroni correction</strong>.</p></li>
+</ul>
+</section>
+<section id="bonferroni-correction-1" class="slide level2">
+<h2>Bonferroni correction</h2>
+<ul>
+<li><p>For example: for two tests, to preserve an overall 0.05 type I error rate, the Bonferroni correction would use <span class="math inline">\(\alpha/2=0.025\)</span> as the significance level for each individual test instead of 0.05.</p></li>
+<li><p>Bonferroni is a conservative correction, making it harder to reject the null hypothesis, but it is a safe bet in controlling the Type I error rate.</p></li>
+</ul>
+</section>
+<section id="pets-and-stress-group-differences" class="slide level2">
+<h2>Pets and stress: group differences</h2>
+<ul>
+<li><p>We can compare the groups using a Bonferroni correction (here we have three tests, so the significance level for each test is <span class="math inline">\(\alpha/3\)</span>).</p></li>
+<li><p>The raw (uncorrected) p-values for the t-test comparing friend vs.&nbsp;pet was <span class="math inline">\(&lt;0.0001\)</span>; for friend vs.&nbsp;neither was 0.021, and for pet vs.&nbsp;neither was 0.009.</p></li>
+</ul>
+</section>
+<section id="in-small-groups" class="slide level2">
+<h2>In small groups!!</h2>
+<div class="callout callout-tip callout-titled callout-style-simple">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>AE 03</strong></p>
+<p><strong>Let’s say I wanted to compare HbA1c scores across individuals with 4 different categories, so I have 6 comparisons of insurance groups with <span class="math inline">\(\alpha=0.05\)</span></strong></p>
 </div>
 <div class="callout-content">
-<p>In small groups, take a few minutes to review AE 03.</p>
 <ul>
-<li><p>If you’re already done, take turns presenting the exercises to a partner (explain the code, explain how you got your conclusion.)</p></li>
-<li><p>If you still need some time to work on it, take this time to do so.</p></li>
+<li>Private Insurance vs.&nbsp;Medicaid - 0.098</li>
+<li>Private Insurance vs.&nbsp;Medicare - 0.018</li>
+<li>Private Insurance vs.&nbsp;Uninsured - 0.00002</li>
+<li>Medicaid vs.&nbsp;Medicare - 0.427</li>
+<li>Medicaid vs.&nbsp;Uninsured - 0.038</li>
+<li>Medicare vs.&nbsp;Uninsured - 0.004</li>
 </ul>
+<p>What significance level would I use for each pairwise test?</p>
+<p>What would I conclude?</p>
 </div>
 </div>
 </div>
@@ -282,7 +357,7 @@
 </table>
 <p>Is there an association between serotype and mortality?</p>
 </section>
-<section id="chi-square-tests" class="slide level2">
+<section id="chi-square-tests" class="slide level2 smaller">
 <h2>Chi-square tests</h2>
 <p><span class="math inline">\(H_0\)</span>: There is no association between serotype and mortality</p>
 <p><span class="math inline">\(H_1\)</span>: There is an association between serotype and mortality</p>
@@ -319,7 +394,7 @@
 </table>
 <p>What counts might we expect under <span class="math inline">\(H_0\)</span>?</p>
 </section>
-<section id="intuition-joint-and-marginal-probabilities" class="slide level2">
+<section id="intuition-joint-and-marginal-probabilities" class="slide level2 smaller">
 <h2>Intuition: Joint and Marginal Probabilities</h2>
 <ul>
 <li><p>Suppose we look at two variables: <strong>Serotype</strong> and <strong>Mortality</strong> (Alive or Dead).</p></li>
@@ -382,7 +457,7 @@
 </table>
 </div></div>
 </section>
-<section id="what-would-happen-if-these-two-variables-were-independent" class="slide level2">
+<section id="what-would-happen-if-these-two-variables-were-independent" class="slide level2 smaller">
 <h2>What would happen if these two variables were independent?</h2>
 <ul>
 <li>Under the <strong>null hypothesis of independence</strong>, the chance of being both “Serotype 10” <strong>and</strong> “Alive” should just be:</li>
@@ -404,12 +479,12 @@ E_{10,Alive} = P(\text{Serotype 10}) \times P(\text{Alive}) \times N
 P(\text{Serotype 10}) = \frac{44}{78}, \quad P(\text{Alive}) = \frac{61}{78}, \quad N = 78
 \]</span></p>
 </section>
-<section id="compute-expected-count-under-independence" class="slide level2">
+<section id="compute-expected-count-under-independence" class="slide level2 smaller">
 <h2>Compute expected count under independence</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Compute expected count under independence</span></span>
-<span id="cb1-2"><a href=""></a>expected_10_alive <span class="ot">&lt;-</span> (<span class="dv">44</span><span class="sc">/</span><span class="dv">78</span>) <span class="sc">*</span> (<span class="dv">61</span><span class="sc">/</span><span class="dv">78</span>) <span class="sc">*</span> <span class="dv">78</span></span>
-<span id="cb1-3"><a href=""></a>expected_10_alive</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="co"># Compute expected count under independence</span></span>
+<span id="cb4-2"><a href=""></a>expected_10_alive <span class="ot">&lt;-</span> (<span class="dv">44</span><span class="sc">/</span><span class="dv">78</span>) <span class="sc">*</span> (<span class="dv">61</span><span class="sc">/</span><span class="dv">78</span>) <span class="sc">*</span> <span class="dv">78</span></span>
+<span id="cb4-3"><a href=""></a>expected_10_alive</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 34.41026</code></pre>
 </div>
@@ -431,25 +506,29 @@ P(\text{Serotype 10}) = \frac{44}{78}, \quad P(\text{Alive}) = \frac{61}{78}, \q
 <h2>Visualizing Observed vs Expected Counts</h2>
 <p>Let’s visualize how the <strong>observed</strong> counts compare to the <strong>expected</strong> counts under independence.</p>
 
-<img data-src="lec-13-proportions_AGH_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<img data-src="lec-13-proportions_AGH_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<section id="visualizing-observed-vs-expected-counts-1" class="slide level2">
+<h2>Visualizing Observed vs Expected Counts</h2>
+<p>What if we do not assume independence?</p>
+</section>
 <section id="chi-square-tests-1" class="slide level2">
 <h2>Chi-square tests</h2>
 <p>The <strong>chi-square test</strong> compares the observed frequencies in each cell to the expected count under <span class="math inline">\(H_0\)</span>; if the total differences are large enough, we reject <span class="math inline">\(H_0\)</span>:</p>
 <p><span class="math display">\[\chi^2 = \sum_{i=1}^{r \times c}\frac{(O_i - E_i)^2}{E_i}\]</span></p>
-<p>which has a <span class="math inline">\(\chi^2_{(r - 1) \times (c-1)}\)</span> distribution, under <span class="math inline">\(H_0\)</span>.</p>
+<p>which has a <span class="math inline">\(\chi^2_{(r - 1) \times (c-1)}\)</span> distribution, with <span class="math inline">\(r\)</span> = Number of rows, <span class="math inline">\(c\)</span> = number of columns, under <span class="math inline">\(H_0\)</span>.</p>
 </section>
 <section id="chi-square-tests-2" class="slide level2">
 <h2>Chi-square tests</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">37</span>, <span class="dv">7</span>, <span class="dv">24</span>, <span class="dv">10</span>), </span>
-<span id="cb3-2"><a href=""></a>               <span class="at">byrow =</span> T, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
-<span id="cb3-3"><a href=""></a>data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">37</span>, <span class="dv">7</span>, <span class="dv">24</span>, <span class="dv">10</span>), </span>
+<span id="cb6-2"><a href=""></a>               <span class="at">byrow =</span> T, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb6-3"><a href=""></a>data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
 [1,]   37    7
 [2,]   24   10</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">chisq.test</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">chisq.test</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test with Yates' continuity correction
@@ -469,8 +548,13 @@ X-squared = 1.3359, df = 1, p-value = 0.2478</code></pre>
 <section id="fishers-exact-test" class="slide level2">
 <h2>Fisher’s exact test</h2>
 <ul>
-<li><p>The chi-square test relies on asymptotic results (i.e.&nbsp;large sample size), which might not be appropriate if we have small cell counts (common rules of thumb are &gt;5 or &gt;10 observed in each cell).</p></li>
-<li><p><strong>Fisher’s exact test</strong> calculates an exact p-value under a specific distributional assumption.</p></li>
+<li>The chi-square test relies on asymptotic results (i.e.&nbsp;large sample size), which might not be appropriate if we have small cell counts (common rules of thumb are &gt;5 or &gt;10 observed in each cell).</li>
+</ul>
+</section>
+<section id="fishers-exact-test-1" class="slide level2 smaller">
+<h2>Fisher’s exact test</h2>
+<ul>
+<li><strong>Fisher’s exact test</strong> tests the same hypotheses at Chi-squared tests <strong>but</strong> calculates an exact p-value under a specific distributional assumption.</li>
 </ul>
 <table class="caption-top">
 <thead>
@@ -503,7 +587,7 @@ X-squared = 1.3359, df = 1, p-value = 0.2478</code></pre>
 </tbody>
 </table>
 </section>
-<section id="fishers-exact-test-1" class="slide level2">
+<section id="fishers-exact-test-2" class="slide level2">
 <h2>Fisher’s exact test</h2>
 <p>Fisher’s exact test relies on the <strong>hypergeometric distribution</strong> (don’t worry about this, seriously).</p>
 <table class="caption-top">
@@ -538,7 +622,7 @@ X-squared = 1.3359, df = 1, p-value = 0.2478</code></pre>
 </table>
 <p>Conditionally on the margins (assumed fixed), then each of the individual cells is distributed according to the hypergeometric distribution. We can thus calculate the exact probabilities of obtaining specific <em>tables</em>.</p>
 </section>
-<section id="fishers-exact-test-2" class="slide level2">
+<section id="fishers-exact-test-3" class="slide level2">
 <h2>Fisher’s exact test</h2>
 <p>Observed data:</p>
 <table class="caption-top">
@@ -573,7 +657,7 @@ X-squared = 1.3359, df = 1, p-value = 0.2478</code></pre>
 </table>
 <p>We could use the hypergeometric distribution to calculate the probability of seeing this table, assuming 61 total alive patients, 17 dead, and 44 and 34 infections of serotypes 10 and 31, respectively (lots of factorials, so you could imagine it wasn’t fun before modern computers).</p>
 </section>
-<section id="fishers-exact-test-3" class="slide level2">
+<section id="fishers-exact-test-4" class="slide level2">
 <h2>Fisher’s exact test</h2>
 <p>Another “possible” table:</p>
 <table class="caption-top">
@@ -611,7 +695,7 @@ X-squared = 1.3359, df = 1, p-value = 0.2478</code></pre>
 <li><p>Again we could use the hypergeometric distribution to calculate the probability of observing the cell counts conditionally on fixed margins.</p></li>
 </ul>
 </section>
-<section id="fishers-exact-test-4" class="slide level2">
+<section id="fishers-exact-test-5" class="slide level2">
 <h2>Fisher’s exact test</h2>
 <p>Fisher’s exact test relies on constructing <em>all possible</em> contingency tables with the same margins, and then summing up probabilities of all tables as extreme or more extreme than the observed data.</p>
 <div class="callout callout-tip callout-titled callout-style-simple">
@@ -628,13 +712,13 @@ X-squared = 1.3359, df = 1, p-value = 0.2478</code></pre>
 </div>
 </div>
 </section>
-<section id="fishers-exact-test-5" class="slide level2">
+<section id="fishers-exact-test-6" class="slide level2">
 <h2>Fisher’s exact test</h2>
 <p><span class="math inline">\(H_0\)</span>: The proportion of deaths is the same for Serotype 10 and Serotype 31 (no association between serotype and outcome).</p>
 <p><span class="math inline">\(H_A\)</span>: The proportion of deaths differs between serotypes (there <em>is</em> an association)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">37</span>, <span class="dv">7</span>, <span class="dv">24</span>, <span class="dv">10</span>), <span class="at">byrow =</span> T, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
-<span id="cb7-2"><a href=""></a>data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">37</span>, <span class="dv">7</span>, <span class="dv">24</span>, <span class="dv">10</span>), <span class="at">byrow =</span> T, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb10-2"><a href=""></a>data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
 [1,]   37    7
@@ -645,7 +729,7 @@ X-squared = 1.3359, df = 1, p-value = 0.2478</code></pre>
 <section id="conducting-the-fishers-exact-test" class="slide level2">
 <h2>Conducting the Fisher’s Exact test</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">fisher.test</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="fu">fisher.test</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Fisher's Exact Test for Count Data
@@ -671,7 +755,31 @@ odds ratio
 <li><p>There is no statistically significant evidence of an association between serotype and survival status in this sample.</p></li>
 </ul>
 </section>
-<section id="odds-ratios" class="slide level2 smaller">
+<section id="odds-ratios" class="slide level2">
+<h2>Odds ratios</h2>
+<ul>
+<li><p>If the probability of an event happening is <span class="math inline">\(p\)</span></p></li>
+<li><p>The odds of an event happening are <span class="math inline">\(\frac{p}{1-p}\)</span></p></li>
+<li><p>For a fair coin flip</p>
+<ul>
+<li><span class="math inline">\(P(heads)=0.5\)</span></li>
+<li>Odds of heads = <span class="math inline">\(\frac{0.5}{1-0.5}\)</span> = 1</li>
+<li>Heads is equally likely as not-heads (tails)</li>
+</ul></li>
+</ul>
+</section>
+<section id="odds-ratios-1" class="slide level2">
+<h2>Odds ratios</h2>
+<ul>
+<li>For a scenario where 20 people have a disease and 80 people do not
+<ul>
+<li><span class="math inline">\(P(disease)=\frac{20}{100}=0.2\)</span></li>
+<li>Odds of having disease = <span class="math inline">\(\frac{.2}{1-0.2}=\frac{0.2}{0.8}=\frac{1}{4}\)</span> = 0.25</li>
+<li>Disease occurs 1 time for every 4 times it does not occur</li>
+</ul></li>
+</ul>
+</section>
+<section id="odds-ratios-2" class="slide level2">
 <h2>Odds ratios</h2>
 <table class="caption-top">
 <thead>
@@ -704,9 +812,54 @@ odds ratio
 </tbody>
 </table>
 <ul>
+<li><p>Odds of death among serotype 10 patient = <span class="math inline">\(\frac{P(death | S_{10})}{P(alive | S_{10})}\)</span></p></li>
+<li><p>Odds of death among serotype 10 patients = <span class="math inline">\(\frac{7/44}{37/44} = 7/37\)</span></p></li>
+</ul>
+</section>
+<section id="odds-ratios-3" class="slide level2">
+<h2>Odds ratios</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Serotype</th>
+<th>Alive</th>
+<th>Dead</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Serotype 10</td>
+<td>37</td>
+<td>7</td>
+<td>44</td>
+</tr>
+<tr class="even">
+<td>Serotype 31</td>
+<td>24</td>
+<td>10</td>
+<td>34</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>61</td>
+<td>17</td>
+<td>78</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Odds of death among serotype 31 patient = <span class="math inline">\(\frac{P(death | S_{31})}{P(alive | S_{31})}\)</span></p></li>
+<li><p>Odds of death among serotype 31 patients = <span class="math inline">\(\frac{10/34}{24/34} = 10/24\)</span></p></li>
+</ul>
+</section>
+<section id="odds-ratios-4" class="slide level2">
+<h2>Odds ratios</h2>
+<ul>
 <li><p>Odds of death among serotype 10 patients = <span class="math inline">\(\frac{7/44}{37/44} = 7/37\)</span></p></li>
 <li><p>Odds of death among serotype 31 patients = <span class="math inline">\(\frac{10/34}{24/34} = 10/24\)</span></p></li>
 <li><p><strong>Odds ratio</strong> of death comparing 31 to 10 is thus <span class="math inline">\(\frac{10/24}{7/37} \approx 2.2\)</span></p></li>
+<li><p>The odds of death in the serotype 31 group are about 2.2 times the odds of death in the serotype 10 group</p></li>
 </ul>
 </section>
 <section id="r-by-c-tables" class="slide level2">
@@ -805,10 +958,14 @@ X-squared = 2.2755, df = 1, p-value = 0.1314</code></pre>
 </div>
 </div>
 </section>
+<section id="practice-1" class="slide level2">
+<h2>Practice</h2>
+</section>
 <section id="overview-1" class="slide level2">
 <h2>Overview</h2>
 <ul>
 <li><p>Reviewed AE 03 from last time.</p></li>
+<li><p>Bonferroni correction</p></li>
 <li><p>Chi-square test and example</p></li>
 <li><p>Fisher exact test and example (use if sample sizes aren’t large enough)</p></li>
 </ul>
@@ -817,7 +974,7 @@ X-squared = 2.2755, df = 1, p-value = 0.1314</code></pre>
 <h2>Next Class</h2>
 <ul>
 <li><p>Tuesday’s class: Non-Parametric Methods</p></li>
-<li><p>Enjoy Fall Break!</p></li>
+<li><p>Reminder: Molly will be teaching next week</p></li>
 </ul>
 
 </section>

@@ -16,7 +16,7 @@ execute:
 
 - HW 6 due **Tuesday, March 24**
 
-- AE 04 due Friday at 11:59pm
+- AE 04 due **Tuesday, March 24**
 
 - Professor Howard is out of the office and **will not** have office hours
 
@@ -284,3 +284,5 @@ Head to Canvas and begin working on Application Exercise (AE) 04: Power and Samp
 ## Next Class
 
 - Comparing two continuous variables
+
+- Enjoy Spring Break!!

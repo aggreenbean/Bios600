@@ -36,6 +36,8 @@ execute:
 
 ## Overview
 
+- Reviewed AE 03 from last time
+
 - Bonferroni correction
 
 - Chi-square test and example
@@ -47,6 +49,7 @@ execute:
 -   P&G Chapters 14, 15
 
 -   OI: Sections 5.2, 5.3, 6.1, 6.2, 6.4
+
 ```{r, echo=FALSE}
 library(tidyverse)
 set.seed(2025)

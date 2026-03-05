@@ -227,6 +227,7 @@
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
 <ul>
+<li><p>Reviewed AE 03 from last time</p></li>
 <li><p>Bonferroni correction</p></li>
 <li><p>Chi-square test and example</p></li>
 <li><p>Fisher exact test and example</p></li>
@@ -314,6 +315,84 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </ul>
 <p>What significance level would I use for each pairwise test?</p>
 <p>What would I conclude?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="what-if-the-outcome-is-categorical" class="slide level2 smaller">
+<h2>What if the outcome is categorical?</h2>
+<p>So far, we’ve focused on comparing <strong>means</strong> of <strong>continuous</strong> outcomes between groups</p>
+<p><strong>Examples</strong>: mean heart rate, mean BMI</p>
+<p>But sometimes the outcome we want to compare is <strong>categorical</strong> (yes/no or categories)</p>
+<p><strong>Examples</strong>: smoker vs.&nbsp;non-smoker, disease vs.&nbsp;no disease</p>
+<p>Instead of comparing <strong>means</strong>, we compare <strong>proportions</strong> (or <strong>counts</strong>) across groups.</p>
+<div title="Think">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Think</strong></p>
+</div>
+<div class="callout-content">
+<p>Does the distribution of categories differ across groups?</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-association-questions" class="slide level2">
+<h2>Example association questions</h2>
+<ul>
+<li><p>Is the <strong># of cigarettes smoked a day</strong> associated with <strong>lung cancer</strong></p></li>
+<li><p>Is <strong>smoking status</strong> associated with <strong>lung cancer</strong>?</p></li>
+<li><p>Is <strong>hrs of exercise per week</strong> associated with <strong>heart disease</strong>?</p></li>
+<li><p>Is <strong>exercise category (low / moderate / high)</strong> associated with <strong>heart disease</strong>?</p></li>
+</ul>
+</section>
+<section id="motivation-comparisons-of-interest" class="slide level2">
+<h2>Motivation: Comparisons of Interest</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 24%">
+<col style="width: 52%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Predictor Type</th>
+<th>Outcome Type</th>
+<th>Common Tests / Topics</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Categorical</td>
+<td>Categorical</td>
+<td>Fisher’s exact test, <span class="math inline">\(\chi^2\)</span> test</td>
+</tr>
+<tr class="even">
+<td>Categorical</td>
+<td>Continuous</td>
+<td>t-tests, ANOVA</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Same big question, different summary:</p>
+<ul>
+<li>Continuous outcome → compare <strong>means</strong></li>
+<li>Categorical outcome → compare <strong>proportions</strong> (or <strong>counts</strong>)</li>
+</ul>
 </div>
 </div>
 </div>
@@ -468,6 +547,9 @@ P(\text{Serotype 10 and Alive}) = P(\text{Serotype 10}) \times P(\text{Alive})
 <ul>
 <li>We can multiply these probabilities by the total number of observations to find the <strong>expected counts</strong>.</li>
 </ul>
+</section>
+<section id="what-would-happen-if-these-two-variables-were-independent-1" class="slide level2 smaller">
+<h2>What would happen if these two variables were independent?</h2>
 <p>For example:</p>
 <p><span class="math display">\[
 E_{10,Alive} = P(\text{Serotype 10}) \times P(\text{Alive}) \times N
@@ -543,6 +625,52 @@ X-squared = 1.3359, df = 1, p-value = 0.2478</code></pre>
 <h2>Conclusion</h2>
 <ul>
 <li><strong>Conclusion</strong>: Since the p-value is greater than 0.05, we fail to reject the null hypothesis. There is not enough evidence to conclude that survival differs between Serotype 10 and Serotype 31.</li>
+</ul>
+</section>
+<section id="an-equivalent-hypothesis" class="slide level2">
+<h2>An equivalent hypothesis</h2>
+<p>Under <span class="math inline">\(H_{0}\)</span> There is no association between serotype and mortality, we have independence between serotype and mortality.</p>
+<p>If two variables are <strong>independent</strong>:</p>
+<p><span class="math display">\[P(A|B) = P(A)\]</span></p>
+<p>Under <span class="math inline">\(H_{0}\)</span>, serotype and death are <strong>independent</strong> which means:</p>
+<p><span class="math display">\[P(\text{death}|S_{10}) = P(\text{death}|S_{31}) = P(\text{death})\]</span></p>
+</section>
+<section id="pneumococcal-disease-2" class="slide level2">
+<h2>Pneumococcal disease</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Serotype</th>
+<th>Alive</th>
+<th>Dead</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Serotype 10</td>
+<td>37</td>
+<td>7</td>
+<td>44</td>
+</tr>
+<tr class="even">
+<td>Serotype 31</td>
+<td>24</td>
+<td>10</td>
+<td>34</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>61</td>
+<td>17</td>
+<td>78</td>
+</tr>
+</tbody>
+</table>
+<p>Is the <strong>proportion who die</strong> different between serotypes?</p>
+<ul>
+<li><span class="math inline">\(P(\text{death}|S_{10}) = 7/44 = 0.16\)</span></li>
+<li><span class="math inline">\(P(\text{death}|S_{31}) = 10/34 = 0.29\)</span></li>
 </ul>
 </section>
 <section id="fishers-exact-test" class="slide level2">
@@ -974,7 +1102,7 @@ X-squared = 2.2755, df = 1, p-value = 0.1314</code></pre>
 <h2>Next Class</h2>
 <ul>
 <li><p>Tuesday’s class: Non-Parametric Methods</p></li>
-<li><p>Reminder: Molly will be teaching next week</p></li>
+<li><p>Reminder: Dr.&nbsp;Howard will be absent next week <strong>but</strong> Molly will be teaching next week</p></li>
 </ul>
 
 </section>

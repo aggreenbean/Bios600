@@ -144,6 +144,49 @@ What would I conclude?
 
 :::
 
+## What if the outcome is categorical? {.smaller}
+
+So far, we’ve focused on comparing **means** of **continuous** outcomes between groups
+
+**Examples**: mean heart rate, mean BMI
+
+But sometimes the outcome we want to compare is **categorical** (yes/no or categories)
+
+**Examples**: smoker vs. non-smoker, disease vs. no disease
+
+
+Instead of comparing **means**, we compare **proportions** (or **counts**) across groups.
+
+::: {.callout-tip title="Think"}
+Does the distribution of categories differ across groups?
+:::
+
+## Example association questions
+
+- Is the **# of cigarettes smoked a day** associated with **lung cancer**
+
+- Is **smoking status** associated with **lung cancer**?
+
+- Is **hrs of exercise per week** associated with **heart disease**?  
+
+- Is **exercise category (low / moderate / high)** associated with **heart disease**?
+
+
+## Motivation: Comparisons of Interest
+
+| Predictor Type      | Outcome Type           | Common Tests / Topics                             | 
+|----------------------|------------------------|---------------------------------------------------|
+| Categorical          | Categorical            | Fisher’s exact test, $\chi^2$ test                      |
+| Categorical          | Continuous             | t-tests, ANOVA    |
+
+::: {.callout-note}
+Same big question, different summary:
+
+- Continuous outcome → compare **means**
+- Categorical outcome → compare **proportions** (or **counts**)
+:::
+
+
 ## Pneumococcal disease
 
 The World Health Organization estimates that in developing countries 814,000 children under the age of five die annually from invasive pneumococcal disease (IPD), with an estimated 1.6 million deaths affecting all ages globally.
@@ -208,6 +251,7 @@ data <- data.frame(
 
 What counts might we expect under $H_0$?
 
+
 ## Intuition: Joint and Marginal Probabilities {.smaller}
 
 - Suppose we look at two variables: **Serotype** and **Mortality** (Alive or Dead).
@@ -247,6 +291,9 @@ P(\text{Serotype 10 and Alive}) = P(\text{Serotype 10}) \times P(\text{Alive})
 $$
 
 - We can multiply these probabilities by the total number of observations to find the **expected counts**.
+
+
+## What would happen if these two variables were independent? {.smaller}
 
 For example:
 
@@ -365,6 +412,31 @@ What might we conclude at $\alpha = .05$?
 ## Conclusion
 
 -   **Conclusion**: Since the p-value is greater than 0.05, we fail to reject the null hypothesis. There is not enough evidence to conclude that survival differs between Serotype 10 and Serotype 31. 
+
+## An equivalent hypothesis
+
+Under $H_{0}$ There is no association between serotype and mortality, we have independence between serotype and mortality.
+
+If two variables are **independent**:
+
+$$P(A|B) = P(A)$$
+
+Under $H_{0}$, serotype and death are **independent** which means:
+
+$$P(\text{death}|S_{10}) = P(\text{death}|S_{31}) = P(\text{death})$$
+
+## Pneumococcal disease
+
+| Serotype     | Alive | Dead | Total |
+|--------------|------|------|------|
+| Serotype 10  | 37   | 7    | 44   |
+| Serotype 31  | 24   | 10   | 34   |
+| Total        | 61   | 17   | 78   |
+
+Is the **proportion who die** different between serotypes?
+
+  - $P(\text{death}|S_{10}) = 7/44 = 0.16$
+  - $P(\text{death}|S_{31}) = 10/34 = 0.29$
 
 ## Fisher's exact test 
 
@@ -581,4 +653,4 @@ Write out the code to 1) construct the data matrix and 2) to conduct a chi squar
 
 - Tuesday's class: Non-Parametric Methods
 
-- Reminder: Molly will be teaching next week
+- Reminder: Dr. Howard will be absent next week **but** Molly will be teaching next week

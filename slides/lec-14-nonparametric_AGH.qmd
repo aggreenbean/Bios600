@@ -36,9 +36,9 @@ execute:
 
 -   For the methods we have studied so far, we have assumed the populations from which the data were drawn were either normally distributed or approximately so. This is a necessary property for the tests to be valid.
 
--   Because the distributional form is assumed known, with only values of $\mu$ and $\sigma$ unknown, these methods are known as **parametric** methods.
+-   Because the distributional form is assumed known, with only values of $\mu$ and $\sigma$ unknown, these methods are known as **parametric** methods (e.g. t-test, ANOVA).
 
--   **Nonparametric methods** make fewer assumptions about the nature of the underlying distributions and may be appropriate when some assumptions of parametric methods are not satisfied.
+-   **Nonparametric methods** make fewer assumptions about the nature of the underlying distributions and may be appropriate when some assumptions of parametric methods are not satisfied (small sample size).
 
 ## Sign test
 
@@ -96,6 +96,16 @@ $H_0$: Median difference in colds = 0 (i.e. same number of positive and negative
 
 $H_A$: Median difference in colds $\neq$ 0 (i.e. different number of positive and negative signs)
 
+-   We have two possible outcomes (positive **or** negative signs)
+
+-   With two outcomes possible, we have a binomial distribution, with $p$ = Probability of success (defined by number of positive signs)
+
+## Sign test for cold data
+
+$H_0$: Median difference in colds = 0 (i.e. same number of positive and negative signs)
+
+$H_A$: Median difference in colds $\neq$ 0 (i.e. different number of positive and negative signs)
+
 -   Remember, we had 9 successes out of 12 trials.
 
 -   What is the probability we see 9 successes out of 12 trials in a binomial distribution (or more extreme, *in either direction*), if the null hypothesis that $p=0.5$ is true?
@@ -103,8 +113,10 @@ $H_A$: Median difference in colds $\neq$ 0 (i.e. different number of positive an
 ## Conducting the sign test
 
 We can calculate, for $X\sim Binom(12,0.5)$,
-
+<br>
 $P(X=9) + P(X=10) + P(X=11) + P(X=12)$
+<br>
+**Remember $P(X\geq 9) = 1-P(X<8)$**
 
 and then double it (for the two-sided test).
 
@@ -195,7 +207,7 @@ Duration of Effusion for Each Pair (Days):
 What is $H_0$?
 :::
 
-## Example: middle ear effusion 
+## Example: middle ear effusion {.smaller}
 
 Duration of Effusion for Each Pair (Days):
 
@@ -218,6 +230,26 @@ Duration of Effusion for Each Pair (Days):
 -   Sum of positive ranks is smaller than sum of negative ranks
 
 -   Sum of positive ranks = 8 + 6 + 2 + 3 = 19 = $T$
+
+## Example: middle ear effusion {.smaller}
+
+Duration of Effusion for Each Pair (Days):
+
+\tiny
+
+|                 | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  | 11  | 12  | 13  | 14  |
+|-------------|-----|-----|-----|-----|-----|--------|--------|------|-----|---------|------|------|-----|--------|
+| Breast   | 26  | 3   | 12  | 28  | 7   | 39  | 12  | 30  | 7   | 15  | 65  | 10  | 19  | 11  |
+| Bottle  | 18  | 7   | 6   | 33  | 7   | 57  | 29  | 28  | 8   | 27  | 78  | 17  | 16  | 35  |
+| Diff  | 8   | -4  | 6   | -5  | 0   | -18 | -17 | 2   | -1  | -12 | -13 | -7  | 3   | -24 |
+| Abs(Diff)  | 8   | 4   | 6   | 5   | 0   | 18  | 17  | 2   | 1   | 12  | 13  | 7   | 3   | 24  |
+| Rank        | 8   | 4   | 6   | 5   | NA  | 12  | 11  | 2   | 1   | 9   | 10  | 7   | 3   | 13  |
+| Signed Rank | 8   | -4  | 6   | -5  | NA  | -12 | -11 | 2   | -1  | -9  | -10 | -7  | 3   | -13 |
+
+
+\normalsize
+
+13 non-zero ranks
 
 -   $z_T = \frac{19-\frac{13(14)}{4}}{\sqrt{\frac{13(14)(27)}{24}}} = \frac{19-45.5}{3} = -1.85$ $\rightarrow$ Now, let's calculate our p-value.
 
@@ -255,7 +287,7 @@ The **Wilcoxon Rank Sum Test**:
 
 -   We'll use software to perform this test.
 
-## Example: Exercise capacity and coronary artery disease {.smaller}
+## Example: Exercise capacity and coronary artery disease (CAD) {.smaller}
 
 -   Consider data from a two-group study of exercise capacity.
 
@@ -271,7 +303,7 @@ The **Wilcoxon Rank Sum Test**:
 
 -   SD median: 984
 
-## Example: Exercise capacity and coronary artery disease 
+## Example: Exercise capacity and CAD {.smaller}
 
 
 
@@ -348,7 +380,7 @@ z; p_value
 
 -   As it turns out, we reject $H_0$ and conclude the two groups do not have the same median. The median exercise time in the SD group is higher compared to the 3VD group.
 
-## Why do we use $U_1$ when computing $z$?
+## Why do we use $U_1$ when computing $z$? {.smaller}
 
 - When approximating the test statistic using the normal distribution:
 
@@ -440,7 +472,7 @@ The p-value is \< 0.0001. What may we conclude?
 
 -   Again, we can step-down and look at pairwise differences. In this case, we would use the Wilcoxon Rank-Sum test (why?).
 
-## 🧪 When to Use Kruskal–Wallis vs. ANOVA
+## When to Use Kruskal–Wallis vs. ANOVA {.smaller}
 
 \footnotesize
 

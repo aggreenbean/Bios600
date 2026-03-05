@@ -14,9 +14,11 @@ execute:
 
 - Lab 6 due Friday at 11:59pm
 
-- AE 04 due Monday 10/28 at 11:59pm
+- HW 6 due **Tuesday, March 24**
 
-- HW 6 will be assigned later today, due next Thursday at 11:59pm
+- AE 04 due Friday at 11:59pm
+
+- Professor Howard is out of the office and **will not** have office hours
 
 ## Overview
 
@@ -96,7 +98,7 @@ How do these four considerations affect power?
 Let's check out this interactive visualization to see how this all works for a one-sample z-test.
 
 
-## Power Depends On...
+## Power Depends On... {.smaller}
 
 | Factor | Change | Effect on Power | Intuition |
 |:-------|:-------:|:-------------|:-----------------|
@@ -173,7 +175,7 @@ beta <- .20 # type 2 error rate
 qnorm(1-alpha/2); qnorm(1-beta)
 ```
 
-## Plugging in our values
+## Plugging in our values {.smaller}
 
 $= \left[\frac{.008(1.96 + 0.84)}{0.002}\right]^2$
 
@@ -273,7 +275,7 @@ power.t.test(power = 0.90,
 
 Head to Canvas and begin working on Application Exercise (AE) 04: Power and Sample Size Calculation. 
 
-- AE 04 is due **Monday 10/27 at 11:59pm**. 
+- AE 04 is due **Tuesday 3/24 at 11:59pm**. 
 
 - (Turn in a PDF on Canvas.)
 

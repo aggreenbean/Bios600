@@ -203,7 +203,9 @@
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Lab 6 due Friday 10/24 at 11:59pm.</li>
+<li><p>HW 6 due Thursday <strong>March 12th</strong> at 11:59pm.</p></li>
+<li><p>Lab 7 due Friday <strong>March 13th</strong> at 11:59pm.</p></li>
+<li><p>Professor Howard is out of the office and <strong>will not</strong> have office hours</p></li>
 </ul>
 </section>
 <section id="very-optional-reading" class="slide level2">
@@ -225,8 +227,8 @@
 <h2>Why nonparametric methods?</h2>
 <ul>
 <li><p>For the methods we have studied so far, we have assumed the populations from which the data were drawn were either normally distributed or approximately so. This is a necessary property for the tests to be valid.</p></li>
-<li><p>Because the distributional form is assumed known, with only values of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> unknown, these methods are known as <strong>parametric</strong> methods.</p></li>
-<li><p><strong>Nonparametric methods</strong> make fewer assumptions about the nature of the underlying distributions and may be appropriate when some assumptions of parametric methods are not satisfied.</p></li>
+<li><p>Because the distributional form is assumed known, with only values of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> unknown, these methods are known as <strong>parametric</strong> methods (e.g.&nbsp;t-test, ANOVA).</p></li>
+<li><p><strong>Nonparametric methods</strong> make fewer assumptions about the nature of the underlying distributions and may be appropriate when some assumptions of parametric methods are not satisfied (small sample size).</p></li>
 </ul>
 </section>
 <section id="sign-test" class="slide level2">
@@ -449,14 +451,22 @@
 <p><span class="math inline">\(H_0\)</span>: Median difference in colds = 0 (i.e.&nbsp;same number of positive and negative signs)</p>
 <p><span class="math inline">\(H_A\)</span>: Median difference in colds <span class="math inline">\(\neq\)</span> 0 (i.e.&nbsp;different number of positive and negative signs)</p>
 <ul>
+<li><p>We have two possible outcomes (positive <strong>or</strong> negative signs)</p></li>
+<li><p>With two outcomes possible, we have a binomial distribution, with <span class="math inline">\(p\)</span> = Probability of success (defined by number of positive signs)</p></li>
+</ul>
+</section>
+<section id="sign-test-for-cold-data-1" class="slide level2">
+<h2>Sign test for cold data</h2>
+<p><span class="math inline">\(H_0\)</span>: Median difference in colds = 0 (i.e.&nbsp;same number of positive and negative signs)</p>
+<p><span class="math inline">\(H_A\)</span>: Median difference in colds <span class="math inline">\(\neq\)</span> 0 (i.e.&nbsp;different number of positive and negative signs)</p>
+<ul>
 <li><p>Remember, we had 9 successes out of 12 trials.</p></li>
 <li><p>What is the probability we see 9 successes out of 12 trials in a binomial distribution (or more extreme, <em>in either direction</em>), if the null hypothesis that <span class="math inline">\(p=0.5\)</span> is true?</p></li>
 </ul>
 </section>
 <section id="conducting-the-sign-test" class="slide level2">
 <h2>Conducting the sign test</h2>
-<p>We can calculate, for <span class="math inline">\(X\sim Binom(12,0.5)\)</span>,</p>
-<p><span class="math inline">\(P(X=9) + P(X=10) + P(X=11) + P(X=12)\)</span></p>
+<p>We can calculate, for <span class="math inline">\(X\sim Binom(12,0.5)\)</span>, <br> <span class="math inline">\(P(X=9) + P(X=10) + P(X=11) + P(X=12)\)</span> <br> <strong>Remember <span class="math inline">\(P(X\geq 9) = 1-P(X&lt;8)\)</span></strong></p>
 <p>and then double it (for the two-sided test).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">pbinom</span>(<span class="dv">8</span>, <span class="dv">12</span>, <span class="fl">0.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -623,7 +633,7 @@
 </div>
 </div>
 </section>
-<section id="example-middle-ear-effusion-2" class="slide level2">
+<section id="example-middle-ear-effusion-2" class="slide level2 smaller">
 <h2>Example: middle ear effusion</h2>
 <p>Duration of Effusion for Each Pair (Days):</p>
 <table class="caption-top" style="width:100%;">
@@ -772,7 +782,156 @@
 <ul>
 <li><p>Sum of positive ranks is smaller than sum of negative ranks</p></li>
 <li><p>Sum of positive ranks = 8 + 6 + 2 + 3 = 19 = <span class="math inline">\(T\)</span></p></li>
-<li><p><span class="math inline">\(z_T = \frac{19-\frac{13(14)}{4}}{\sqrt{\frac{13(14)(27)}{24}}} = \frac{19-45.5}{3} = -1.85\)</span> <span class="math inline">\(\rightarrow\)</span> Now, let’s calculate our p-value.</p></li>
+</ul>
+</section>
+<section id="example-middle-ear-effusion-3" class="slide level2 smaller">
+<h2>Example: middle ear effusion</h2>
+<p>Duration of Effusion for Each Pair (Days):</p>
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 9%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+<th>14</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Breast</td>
+<td>26</td>
+<td>3</td>
+<td>12</td>
+<td>28</td>
+<td>7</td>
+<td>39</td>
+<td>12</td>
+<td>30</td>
+<td>7</td>
+<td>15</td>
+<td>65</td>
+<td>10</td>
+<td>19</td>
+<td>11</td>
+</tr>
+<tr class="even">
+<td>Bottle</td>
+<td>18</td>
+<td>7</td>
+<td>6</td>
+<td>33</td>
+<td>7</td>
+<td>57</td>
+<td>29</td>
+<td>28</td>
+<td>8</td>
+<td>27</td>
+<td>78</td>
+<td>17</td>
+<td>16</td>
+<td>35</td>
+</tr>
+<tr class="odd">
+<td>Diff</td>
+<td>8</td>
+<td>-4</td>
+<td>6</td>
+<td>-5</td>
+<td>0</td>
+<td>-18</td>
+<td>-17</td>
+<td>2</td>
+<td>-1</td>
+<td>-12</td>
+<td>-13</td>
+<td>-7</td>
+<td>3</td>
+<td>-24</td>
+</tr>
+<tr class="even">
+<td>Abs(Diff)</td>
+<td>8</td>
+<td>4</td>
+<td>6</td>
+<td>5</td>
+<td>0</td>
+<td>18</td>
+<td>17</td>
+<td>2</td>
+<td>1</td>
+<td>12</td>
+<td>13</td>
+<td>7</td>
+<td>3</td>
+<td>24</td>
+</tr>
+<tr class="odd">
+<td>Rank</td>
+<td>8</td>
+<td>4</td>
+<td>6</td>
+<td>5</td>
+<td>NA</td>
+<td>12</td>
+<td>11</td>
+<td>2</td>
+<td>1</td>
+<td>9</td>
+<td>10</td>
+<td>7</td>
+<td>3</td>
+<td>13</td>
+</tr>
+<tr class="even">
+<td>Signed Rank</td>
+<td>8</td>
+<td>-4</td>
+<td>6</td>
+<td>-5</td>
+<td>NA</td>
+<td>-12</td>
+<td>-11</td>
+<td>2</td>
+<td>-1</td>
+<td>-9</td>
+<td>-10</td>
+<td>-7</td>
+<td>3</td>
+<td>-13</td>
+</tr>
+</tbody>
+</table>
+<p>13 non-zero ranks</p>
+<ul>
+<li><span class="math inline">\(z_T = \frac{19-\frac{13(14)}{4}}{\sqrt{\frac{13(14)(27)}{24}}} = \frac{19-45.5}{3} = -1.85\)</span> <span class="math inline">\(\rightarrow\)</span> Now, let’s calculate our p-value.</li>
 </ul>
 </section>
 <section id="calculating-the-p-value" class="slide level2">
@@ -811,8 +970,8 @@
 <li><p>We’ll use software to perform this test.</p></li>
 </ul>
 </section>
-<section id="example-exercise-capacity-and-coronary-artery-disease" class="slide level2 smaller">
-<h2>Example: Exercise capacity and coronary artery disease</h2>
+<section id="example-exercise-capacity-and-coronary-artery-disease-cad" class="slide level2 smaller">
+<h2>Example: Exercise capacity and coronary artery disease (CAD)</h2>
 <ul>
 <li><p>Consider data from a two-group study of exercise capacity.</p></li>
 <li><p>Two groups of men, one with diagnosed three-vessel coronary artery disease (3VD), and the other group of men with suspected disease (SD) in one or more vessels.</p></li>
@@ -823,8 +982,8 @@
 <li><p>SD median: 984</p></li>
 </ul>
 </section>
-<section id="example-exercise-capacity-and-coronary-artery-disease-1" class="slide level2">
-<h2>Example: Exercise capacity and coronary artery disease</h2>
+<section id="example-exercise-capacity-and-cad" class="slide level2 smaller">
+<h2>Example: Exercise capacity and CAD</h2>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -998,7 +1157,7 @@
 <li>As it turns out, we reject <span class="math inline">\(H_0\)</span> and conclude the two groups do not have the same median. The median exercise time in the SD group is higher compared to the 3VD group.</li>
 </ul>
 </section>
-<section id="why-do-we-use-u_1-when-computing-z" class="slide level2">
+<section id="why-do-we-use-u_1-when-computing-z" class="slide level2 smaller">
 <h2>Why do we use <span class="math inline">\(U_1\)</span> when computing <span class="math inline">\(z\)</span>?</h2>
 <ul>
 <li>When approximating the test statistic using the normal distribution:</li>
@@ -1091,8 +1250,8 @@ Kruskal-Wallis chi-squared = 21.662, df = 2, p-value = 1.978e-05</code></pre>
 <li>Again, we can step-down and look at pairwise differences. In this case, we would use the Wilcoxon Rank-Sum test (why?).</li>
 </ul>
 </section>
-<section id="when-to-use-kruskalwallis-vs.-anova" class="slide level2">
-<h2>🧪 When to Use Kruskal–Wallis vs.&nbsp;ANOVA</h2>
+<section id="when-to-use-kruskalwallis-vs.-anova" class="slide level2 smaller">
+<h2>When to Use Kruskal–Wallis vs.&nbsp;ANOVA</h2>
 <table class="caption-top">
 <colgroup>
 <col style="width: 21%">

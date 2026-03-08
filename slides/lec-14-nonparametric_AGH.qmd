@@ -14,7 +14,9 @@ execute:
 
 -   HW 6 due Thursday **March 12th** at 11:59pm. 
 
--   Lab 7 due Friday **March 13th** at 11:59pm.
+-   Lab this week has shifted to TA office hours, Lab 7 will not be due until after Exam 2
+
+-   Encourage you all to attend follow up on questions about HW 6 and/or understanding any questions remaining on previous homeworks and labs
 
 -   Professor Howard is out of the office and **will not** have office hours
 

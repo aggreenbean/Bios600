@@ -25,7 +25,8 @@ In the code below, check for the following, to make sure the code adheres to goo
 #| label: ex-1
 #| eval: FALSE
 
-# f2 is a function that finds a distance between points on two normal distributions that the user specifies.
+# f2 is a function that finds a distance between points
+#on two normal distributions that the user specifies.
 
 f2<-function(x,m1,m2,sd1,sd2){0.5*abs(dnorm(x,mean=m1,sd=sd1)-dnorm(x,mean=m2,sd=sd2))}
 

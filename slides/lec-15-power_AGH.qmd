@@ -12,9 +12,9 @@ execute:
 
 ## Announcements
 
-- Lab 6 due Friday at 11:59pm
+- No Lab due this week 
 
-- HW 6 due **Tuesday, March 24**
+- HW 6 can turn in early, firm deadline for **Tuesday, March 24**
 
 - AE 04 due **Tuesday, March 24**
 

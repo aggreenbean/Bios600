@@ -3,7 +3,7 @@ title: "HW 6"
 format: html
 ---
 
-Due Thursday, March 12 at 11:59pm.
+Due Tuesday, March 24 at 11:59pm.
 
 ## AI use
 

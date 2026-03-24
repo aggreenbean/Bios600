@@ -203,22 +203,23 @@
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Hope everyone had a great spring break!</li>
+<li><p>Hope everyone had a great spring break!</p></li>
+<li><p>No new lab this week, the session at 3:30pm is just TA Office Hours.</p></li>
+<li><p>Next new lab is Tuesday, April 7</p></li>
 </ul>
 </section>
 <section id="announcements-1" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li><p>HW 6 Due <strong>Thursday at 11:59pm</strong>. Will be graded by the end of the weekend.</p></li>
-<li><p>No new lab this week, the session at 3:30pm is just TA Office Hours.</p></li>
+<li><p>HW 6 Due <strong>Thursday at 11:59pm</strong></p></li>
 <li><p>Exam 02 is in-class on Tuesday, March 31</p></li>
 <li><p>Thursday’s class will be review for exam.</p></li>
-<li><p>Next new lab is Tuesday, April 7</p></li>
 </ul>
 </section>
 <section id="exam-02-info" class="slide level2">
 <h2>Exam 02 Info</h2>
 <ul>
+<li><p>Exam will cover material <strong>before</strong> spring break, this includes non-parametric tests and power and sample size lectures</p></li>
 <li><p>Exam 02 Info</p></li>
 <li><p>Exam 02 Formula sheet</p></li>
 <li><p>Exam 02 Topics</p></li>
@@ -231,7 +232,74 @@
 <li><p>OI: Section 8.1</p></li>
 </ul>
 </section>
-<section id="motivation-comparisons-of-interest" class="slide level2">
+<section id="mapping-parametric-to-nonparametric-tests" class="slide level2 smaller">
+<h2>Mapping Parametric to Non‑Parametric Tests</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 28%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Non‑Parametric Test</th>
+<th>Parametric Test</th>
+<th>Key Features</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Sign test</strong></td>
+<td>Paired t‑test</td>
+<td>Uses only <strong>direction</strong> (+/–) of paired differences; ignores magnitude; requires only independence</td>
+</tr>
+<tr class="even">
+<td><strong>Wilcoxon signed‑rank</strong></td>
+<td>Paired t‑test</td>
+<td>Uses <strong>magnitude + direction</strong> of paired differences; requires <strong>symmetric distribution</strong> of differences</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mapping-parametric-to-nonparametric-tests-1" class="slide level2 smaller">
+<h2>Mapping Parametric to Non‑Parametric Tests</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 36%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Non‑Parametric</th>
+<th>Parametric Test</th>
+<th>Key Features</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Mann–Whitney U/</strong> <br> <strong>Wilcoxon rank‑sum</strong></td>
+<td>Two‑sample t‑test</td>
+<td>Rank‑based comparison of two independent groups</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Kruskal–Wallis</strong></td>
+<td>One‑way ANOVA</td>
+<td>Rank‑based comparison of 3+ independent groups</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="components-of-power-analysis" class="slide level2">
+<h2>Components of Power Analysis</h2>
+
+<img data-src="images/lec-15/star-power.png" class="r-stretch"></section>
+<section id="motivation-comparisons-of-interest" class="slide level2 smaller">
 <h2>Motivation: Comparisons of Interest</h2>
 <table class="caption-top">
 <colgroup>
@@ -320,7 +388,7 @@
 <h2>Visualizing <span class="math inline">\(\rho\)</span></h2>
 
 <img data-src="lec-16-compare_AGH_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
-<section id="pearsons-correlation-coefficient" class="slide level2">
+<section id="pearsons-correlation-coefficient" class="slide level2 smaller">
 <h2>Pearson’s correlation coefficient</h2>
 <p><strong>Pearson’s correlation</strong> <span class="math inline">\(r\)</span> gives and estimate of <span class="math inline">\(\rho\)</span> as follows. Assuming our observed data are the pairs <span class="math inline">\((x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\)</span>, we can calculate <span class="math inline">\(r\)</span> as</p>
 <p><span class="math display">\[r = \frac{1}{n} \sum_{i=1}^n \left(\frac{x_i - \bar{X}}{S_x}\right)\left(\frac{y_i - \bar{Y}}{S_y}\right)\]</span></p>
@@ -385,13 +453,35 @@
 <section id="example" class="slide level2">
 <h2>Example</h2>
 <ul>
+<li><p><code>mtcars</code> is a built-in R dataset, taken from the 1974 Motor Trend US magazine. It has fuel consumption and 10 aspects of automobile design/performance for 32 automobiles.</p></li>
+<li><p><code>mtcars</code> is built <strong>into</strong> R, and I can just load the dataset</p></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># Loading the dataset mtcars</span></span>
+<span id="cb2-2"><a href=""></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb2-3"><a href=""></a><span class="co">#Looking at first 5 variables for the first few observations</span></span>
+<span id="cb2-4"><a href=""></a><span class="fu">head</span>(mtcars[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   mpg cyl disp  hp drat
+Mazda RX4         21.0   6  160 110 3.90
+Mazda RX4 Wag     21.0   6  160 110 3.90
+Datsun 710        22.8   4  108  93 3.85
+Hornet 4 Drive    21.4   6  258 110 3.08
+Hornet Sportabout 18.7   8  360 175 3.15
+Valiant           18.1   6  225 105 2.76</code></pre>
+</div>
+</div>
+</section>
+<section id="example-1" class="slide level2">
+<h2>Example</h2>
+<ul>
 <li><code>mtcars</code> is a built-in R dataset, taken from the 1974 Motor Trend US magazine. It has fuel consumption and 10 aspects of automobile design/performance for 32 automobiles.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># Compute a correlation matrix</span></span>
-<span id="cb2-2"><a href=""></a><span class="fu">data</span>(mtcars)</span>
-<span id="cb2-3"><a href=""></a>corr <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">cor</span>(mtcars), <span class="dv">1</span>) <span class="co"># round to 1 decimal</span></span>
-<span id="cb2-4"><a href=""></a><span class="fu">head</span>(corr[, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="co"># Compute a correlation matrix</span></span>
+<span id="cb4-2"><a href=""></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb4-3"><a href=""></a>corr <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">cor</span>(mtcars), <span class="dv">1</span>) <span class="co"># round to 1 decimal</span></span>
+<span id="cb4-4"><a href=""></a><span class="fu">head</span>(corr[, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      mpg  cyl disp   hp drat   wt
 mpg   1.0 -0.9 -0.8 -0.8  0.7 -0.9
@@ -406,16 +496,16 @@ wt   -0.9  0.8  0.9  0.7 -0.7  1.0</code></pre>
 <section id="plotting-the-correlation-code" class="slide level2">
 <h2>Plotting the correlation: code</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="co"># Visualize the correlation matrix</span></span>
-<span id="cb4-2"><a href=""></a><span class="co"># --------------------------------</span></span>
-<span id="cb4-3"><a href=""></a><span class="co"># method = "square" (default)</span></span>
-<span id="cb4-4"><a href=""></a><span class="fu">ggcorrplot</span>(corr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="co"># Visualize the correlation matrix</span></span>
+<span id="cb6-2"><a href=""></a><span class="co"># --------------------------------</span></span>
+<span id="cb6-3"><a href=""></a><span class="co"># method = "square" (default)</span></span>
+<span id="cb6-4"><a href=""></a><span class="fu">ggcorrplot</span>(corr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="plotting-the-correlation-output" class="slide level2">
 <h2>Plotting the correlation: output</h2>
 
-<img data-src="lec-16-compare_AGH_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<img data-src="lec-16-compare_AGH_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
 <section id="testing-the-correlation" class="slide level2">
 <h2>Testing the correlation</h2>
 <ul>
@@ -423,9 +513,9 @@ wt   -0.9  0.8  0.9  0.7 -0.7  1.0</code></pre>
 </ul>
 <p><span class="math display">\[H_0: \rho = 0 \quad \text{vs.} \quad H_A: \rho \neq 0\]</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># Compute a matrix of correlation p-values</span></span>
-<span id="cb5-2"><a href=""></a>p.mat <span class="ot">&lt;-</span> <span class="fu">cor_pmat</span>(mtcars)</span>
-<span id="cb5-3"><a href=""></a><span class="fu">head</span>(p.mat[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="co"># Compute a matrix of correlation p-values</span></span>
+<span id="cb7-2"><a href=""></a>p.mat <span class="ot">&lt;-</span> <span class="fu">cor_pmat</span>(mtcars)</span>
+<span id="cb7-3"><a href=""></a><span class="fu">head</span>(p.mat[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              mpg          cyl         disp           hp
 mpg  0.000000e+00 6.112687e-10 9.380327e-10 1.787835e-07
@@ -440,16 +530,36 @@ wt   1.293959e-10 1.217567e-07 1.222320e-11 4.145827e-05</code></pre>
 <section id="example-code" class="slide level2">
 <h2>Example: code</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">ggcorrplot</span>(p.mat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">ggcorrplot</span>(p.mat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="lec-16-compare_AGH_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
+<img data-src="lec-16-compare_AGH_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
 <section id="r-graph-gallery" class="slide level2">
 <h2>R Graph Gallery</h2>
 <p><a href="https://r-graph-gallery.com/">R Graph Gallery</a> has lots of examples, with code!</p>
 <ul>
 <li>Along with many other types of plots.</li>
 </ul>
+</section>
+<section id="your-turn" class="slide level2">
+<h2>Your turn</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>AE 05</strong></p>
+</div>
+<div class="callout-content">
+<p>Head to Canvas and begin working on Application Exercise (AE) 05: Comparing two continuous variables.</p>
+<ul>
+<li><p>AE 05 is due <strong>Friday 4/3 at 11:59pm</strong>.</p></li>
+<li><p>Turn in a PDF on Canvas.</p></li>
+</ul>
+</div>
+</div>
+</div>
 </section>
 <section id="next-class" class="slide level2">
 <h2>Next class</h2>

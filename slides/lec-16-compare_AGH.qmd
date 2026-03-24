@@ -14,23 +14,21 @@ execute:
 
 - Hope everyone had a great spring break! 
 
+- No new lab this week, the session at 3:30pm is just TA Office Hours.
 
+- Next new lab is Tuesday, April 7
 
 ## Announcements
 
-- HW 6 Due **Thursday at 11:59pm**. Will be graded by the end of the weekend. 
-
-- No new lab this week, the session at 3:30pm is just TA Office Hours.
+- HW 6 Due **Thursday at 11:59pm**
 
 - Exam 02 is in-class on Tuesday, March 31
 
 - Thursday's class will be review for exam. 
 
-- Next new lab is Tuesday, April 7
-
 ## Exam 02 Info
 
-- Exam will cover material **before** spring break, this includes non-parametric and power and sample size lectures
+- Exam will cover material **before** spring break, this includes non-parametric tests and power and sample size lectures
 
 - Exam 02 Info
 
@@ -44,9 +42,28 @@ execute:
 
 -   OI: Section 8.1
 
-## Review from last week 
+
+## Mapping Parametric to Non‑Parametric Tests  {.smaller}
+
+| Non‑Parametric Test | Parametric Test | Key Features |
+|----------------|------------|--------------|
+| **Sign test** | Paired t‑test | Uses only **direction** (+/–) of paired differences; ignores magnitude; requires only independence |
+| **Wilcoxon signed‑rank** | Paired t‑test | Uses **magnitude + direction** of paired differences; requires **symmetric distribution** of differences |
+
+## Mapping Parametric to Non‑Parametric Tests {.smaller}
+
+| Non‑Parametric | Parametric Test | Key Features |
+|----------------|-----------------|--------------|
+| **Mann–Whitney U/** <br> **Wilcoxon rank‑sum** | Two‑sample t‑test | Rank‑based comparison of two independent groups |
+|  |||
+| **Kruskal–Wallis** | One‑way ANOVA | Rank‑based comparison of 3+ independent groups 
 
 
+
+
+## Components of Power Analysis
+
+![](images/lec-15/star-power.png)
 
 ## Motivation: Comparisons of Interest {.smaller}
 
@@ -282,6 +299,22 @@ library(ggcorrplot)
 
 - Let's check out [some examples](https://cran.r-project.org/web/packages/ggcorrplot/readme/README.html).
 
+
+## Example
+
+- `mtcars` is a built-in R dataset, taken from the 1974 Motor Trend US magazine. It has fuel consumption and 10 aspects of automobile design/performance for 32 automobiles. 
+
+- `mtcars` is built **into** R, and I can just load the dataset
+
+```{r}
+#| echo: true
+# Loading the dataset mtcars
+data(mtcars)
+#Looking at first 5 variables for the first few observations
+head(mtcars[, 1:5])
+```
+
+
 ## Example
 
 - `mtcars` is a built-in R dataset, taken from the 1974 Motor Trend US magazine. It has fuel consumption and 10 aspects of automobile design/performance for 32 automobiles. 
@@ -293,6 +326,7 @@ data(mtcars)
 corr <- round(cor(mtcars), 1) # round to 1 decimal
 head(corr[, 1:6])
 ```
+
 ## Plotting the correlation: code
 
 ```{r}
@@ -336,18 +370,25 @@ head(p.mat[, 1:4])
 ggcorrplot(p.mat)
 ```
 
-
-
-
-
-
-
-
 ## R Graph Gallery
 
 [R Graph Gallery](https://r-graph-gallery.com/) has lots of examples, with code!
 
 - Along with many other types of plots. 
+
+## Your turn
+
+::: callout-tip
+
+## AE 05
+
+Head to Canvas and begin working on Application Exercise (AE) 05: Comparing two continuous variables. 
+
+- AE 05 is due **Friday 4/3 at 11:59pm**. 
+
+- Turn in a PDF on Canvas.
+
+:::
 
 ## Next class
 

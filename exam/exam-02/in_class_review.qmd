@@ -94,7 +94,7 @@ c.  Suppose that instead we calculated a one-sided test. The new alternative wou
 
 $H_A$: The supplement group has shorter recovery times than the placebo group.
 
-Suppose that we computed the test-statistic and got a p-value of .0047. What is your conclusion at a 5% significance level?
+Suppose that we computed the test-statistic and got a p-value of .25. What is your conclusion at a 5% significance level?
 
 11.  Below are two power calculations. In which object (`p1` or `p2`) will the power be higher? Why?
 

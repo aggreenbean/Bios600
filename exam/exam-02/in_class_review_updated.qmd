@@ -150,7 +150,7 @@ e. Based on the output below, what conclusion should the researcher draw at $\al
 
 # Simulate data (not shown to students)
 set.seed(2026)
-cortisol <- rnorm(40, mean = 19.8, sd = 4)   # hidden from output
+cortisol <- rnorm(50, mean = 19.8, sd = 4)   # hidden from output
 
 # Run the one-sample t-test shown to students
 t_output <- t.test(cortisol, mu = 15)

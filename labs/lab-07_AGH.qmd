@@ -60,7 +60,10 @@ Let's plot these two variables to see if this correlation makes sense:
 ```{r}
 mtcars |>
   ggplot(aes(x = mpg, y = hp)) +
-  geom_point()
+  geom_point()+
+  labs(x = "Miles per Gallon", 
+       y = "Horsepower", 
+       title = "MPG vs. Horsepower")
 ```
 
 
@@ -79,18 +82,23 @@ mtcars |>
   labs(x = "Miles per Gallon", 
        y = "Weight (1000 lbs)", 
        title = "MPG vs. Weight")
-plot(mtcars$mpg, mtcars$wt, 
-     main="MPG vs Weight", 
-     xlab="Miles per Gallon", 
-     ylab="Weight (1000 lbs)")
 ```
+Both approaches produce the same plot. The difference is just where we tell R to find the data. Using the pipe (|>), we pass mtcars into ggplot() from the left. Using the data = argument, we put it directly inside ggplot(). Either style works — use whichever feels more readable to you.
 
+```{r echo = T}
+ggplot(mtcars, aes(x = mpg, y = wt)) +
+  geom_point() +
+  labs(x = "Miles per Gallon", 
+       y = "Weight (1000 lbs)", 
+       title = "MPG vs. Weight")
+```
 The scatterplot suggests a negative relationship between `mpg` and `wt`: as the weight of a car increases, fuel efficiency tends to decrease.
 
 ```{r echo = T}
 # Pearson correlation between mpg and wt
 cor(mtcars$mpg, mtcars$wt)
 ```
+
 For correlation, order doesn't matter:
 
 ```{r}
@@ -111,6 +119,18 @@ The correlation matrix shows a strong negative correlation between `mpg` and bot
 ```{r}
 # Correlation plot using ggcorrplot
 ggcorrplot(corr_matrix, lab = TRUE)
+```
+
+Let's look visually at that relationship between hp and wt
+
+```{r}
+# Scatter plot between mpg and wt
+mtcars |>
+  ggplot(aes(x = hp, y = wt)) +
+  geom_point() +
+  labs(x = "Horsepower", 
+       y = "Weight (1000 lbs)", 
+       title = "Horsepower vs. Weight")
 ```
 
 The `ggcorrplot` package offers lots of versatility in terms of visualizing correlation matrices. See [documentation here](http://www.sthda.com/english/wiki/ggcorrplot-visualization-of-a-correlation-matrix-using-ggplot2) for several options. 

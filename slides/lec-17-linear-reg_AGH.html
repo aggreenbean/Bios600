@@ -207,7 +207,7 @@
 <h2>Announcements</h2>
 <ul>
 <li><p>No HW until next week.</p></li>
-<li><p>Lab 7 (new lab) will be posted on April 6</p></li>
+<li><p>Lab 7 (new lab) today - due Friday April 10th</p></li>
 </ul>
 </section>
 <section id="uploading-an-excel-file" class="slide level2">
@@ -231,6 +231,105 @@
 <li>Let me or the TAs know if you need help reading in a data file.</li>
 </ul>
 </section>
+<section id="topics-covered-in-lab-today" class="slide level2">
+<h2>Topics covered in lab today</h2>
+<ul>
+<li>In lab today you’ll hear about two additional concepts
+<ul>
+<li>Partial correlation</li>
+<li>Spearman’s correlation coefficients</li>
+</ul></li>
+</ul>
+</section>
+<section id="partial-correlation" class="slide level2">
+<h2>Partial correlation</h2>
+<ul>
+<li><p>Let’s say I have an example of 100 adults, I have data on:</p>
+<ul>
+<li>Age (in years)</li>
+<li>Cognitive function score - ranging from 0-100</li>
+<li>Systolic blood pressure (SBP)</li>
+</ul></li>
+<li><p><strong>Is higher SBP is associated with lower cognitive scores?</strong></p></li>
+<li><p>We anticipate</p>
+<ul>
+<li>Older individuals have lower cognitive fuction scores</li>
+<li>Older individuals have higher SBP</li>
+</ul></li>
+</ul>
+</section>
+<section id="partial-correlation-1" class="slide level2">
+<h2>Partial correlation</h2>
+<ul>
+<li>Age could be a <strong>confounder</strong>
+<ul>
+<li>Age is associated with the exposure (SBP)</li>
+<li>Age is associated with the outcome (cognitive function)</li>
+</ul></li>
+<li>If I look at the association between sBP and cognitive function I might get a biased estimate
+<ul>
+<li>Could make it look like two things are related when they aren’t</li>
+<li>Could make the relationship look larger or smaller than it really is</li>
+</ul></li>
+</ul>
+</section>
+<section id="partial-correlation-2" class="slide level2">
+<h2>Partial correlation</h2>
+<ul>
+<li><p>We’ll get into more common methods (and a bit more detail on these ideas on Thursday)</p></li>
+<li><p>But <strong>partial correlation</strong> is one approach</p></li>
+<li><p>Isolates the direct association, preventing misleading results caused by confounding variables</p></li>
+<li><p>Partial correlation removes age’s influence from both variables, then asks - <strong>what’s left</strong></p></li>
+</ul>
+</section>
+<section id="partial-correlation-3" class="slide level2">
+<h2>Partial correlation</h2>
+<p>Here’s the example dataset, with age, sbp and cognitive function</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  id age sbp cog
+1  1  77 127  86
+2  2  36 101  95
+3  3  42  99  87
+4  4  45  91  90
+5  5  38 100  97
+6  6  39  83  81</code></pre>
+</div>
+</div>
+</section>
+<section id="partial-correlation-4" class="slide level2">
+<h2>Partial correlation</h2>
+<p>Pearson correlation</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.3453696</code></pre>
+</div>
+</div>
+<p>Partial correlation</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>    estimate  p.value statistic   n gp  Method
+1 0.07222411 0.477442 0.7131875 100  1 pearson</code></pre>
+</div>
+</div>
+<p>measure the strength and direction of the linear relationship between two continuous variables while removing the influence of one or more additional control variables. It</p>
+</section>
+<section id="spearman-example" class="slide level2">
+<h2>Spearman example</h2>
+<ul>
+<li><p>Pearson is parameteric - using magnitude and values - hen x goes up, does y tend to go up?” — it doesn’t care how much. Pearson cares about the exact magnitudes</p></li>
+<li><p>Spearman is using ranks - when x goes up, does y tend to go up — it doesn’t care how much Monotonic vs.&nbsp;Linear: A linear relationship is monotonic (constantly increasing/decreasing), but a monotonic relationship is not necessarily linear (e.g., exponential growth). Spearman detects both. Rank Transformation: By converting raw data to ranks, it assesses if ranks align, ignoring the magnitude of differences between values. Robustness: Because it uses ranks, it is less sensitive to extreme outliers than Pearson’s correlation. When to Use: Use Spearman for ordinal data, skewed data, or non-linear monotonic data. Handbook of Biological Statistics Handbook of Biological Statistics +5 While Spearman can detect linear relationships (if the data is linear, it is also monotonic), its primary advantage is assessing non-linear, monotonic associations</p></li>
+</ul>
+<p>*** for quadratric no** but for this case** yes <strong>give example of exponetntial</strong> <strong>less robust to outliers</strong></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6032796</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9695302</code></pre>
+</div>
+</div>
+</section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
 <ul>
@@ -241,7 +340,7 @@
 <section id="back-to-lab-2" class="slide level2">
 <h2>Back to Lab 2…</h2>
 
-<img data-src="lec-17-linear-reg_AGH_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<img data-src="lec-17-linear-reg_AGH_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
 <section id="correlation-and-regression" class="slide level2 smaller">
 <h2>Correlation and regression</h2>
 <ul>
@@ -264,7 +363,7 @@
 <section id="back-to-lab-2-1" class="slide level2 smaller">
 <h2>Back to Lab 2…</h2>
 
-<img data-src="lec-17-linear-reg_AGH_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"><ul>
+<img data-src="lec-17-linear-reg_AGH_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"><ul>
 <li><p>We see the regression line relating exercise and obesity %</p></li>
 <li><p>Points represent actual data values; note that the line is not a perfect fit</p></li>
 </ul>
@@ -272,13 +371,13 @@
 <section id="code-for-previous-slide" class="slide level2">
 <h2>Code for previous slide</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>cdc <span class="sc">|&gt;</span></span>
-<span id="cb2-2"><a href=""></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Obesity, <span class="at">y =</span> Exercise)) <span class="sc">+</span></span>
-<span id="cb2-3"><a href=""></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb2-4"><a href=""></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb2-5"><a href=""></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Adequate aerobic activity (%)"</span>, </span>
-<span id="cb2-6"><a href=""></a>       <span class="at">y =</span> <span class="st">"Obesity (%)"</span>) <span class="sc">+</span></span>
-<span id="cb2-7"><a href=""></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> F) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>cdc <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href=""></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Obesity, <span class="at">y =</span> Exercise)) <span class="sc">+</span></span>
+<span id="cb7-3"><a href=""></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb7-4"><a href=""></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb7-5"><a href=""></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Adequate aerobic activity (%)"</span>, </span>
+<span id="cb7-6"><a href=""></a>       <span class="at">y =</span> <span class="st">"Obesity (%)"</span>) <span class="sc">+</span></span>
+<span id="cb7-7"><a href=""></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> F) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="the-linear-model" class="slide level2">
@@ -337,8 +436,8 @@
 <section id="model-output" class="slide level2 smaller">
 <h2>Model output</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(Obesity <span class="sc">~</span> Exercise, <span class="at">data =</span> cdc)</span>
-<span id="cb3-2"><a href=""></a><span class="fu">summary</span>(fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(Obesity <span class="sc">~</span> Exercise, <span class="at">data =</span> cdc)</span>
+<span id="cb8-2"><a href=""></a><span class="fu">summary</span>(fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -364,11 +463,11 @@ F-statistic: 59.25 on 1 and 48 DF,  p-value: 6.336e-10</code></pre>
 <section id="a-neater-way" class="slide level2">
 <h2>A neater way</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">library</span>(tidymodels)</span>
-<span id="cb5-2"><a href=""></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb5-3"><a href=""></a></span>
-<span id="cb5-4"><a href=""></a><span class="fu">tidy</span>(fit) <span class="sc">|&gt;</span></span>
-<span id="cb5-5"><a href=""></a>  <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb10-2"><a href=""></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb10-3"><a href=""></a></span>
+<span id="cb10-4"><a href=""></a><span class="fu">tidy</span>(fit) <span class="sc">|&gt;</span></span>
+<span id="cb10-5"><a href=""></a>  <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top">
 <thead>
@@ -406,8 +505,8 @@ F-statistic: 59.25 on 1 and 48 DF,  p-value: 6.336e-10</code></pre>
 <section id="even-better" class="slide level2">
 <h2>Even better</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">tidy</span>(fit) <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href=""></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>) <span class="co"># round to 3 digits</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="fu">tidy</span>(fit) <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href=""></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>) <span class="co"># round to 3 digits</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top">
 <thead>
@@ -493,14 +592,14 @@ F-statistic: 59.25 on 1 and 48 DF,  p-value: 6.336e-10</code></pre>
 <section id="lets-check" class="slide level2">
 <h2>Let’s check</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">hist</span>(cdc<span class="sc">$</span>Exercise)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="fu">hist</span>(cdc<span class="sc">$</span>Exercise)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="lec-17-linear-reg_AGH_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+<img data-src="lec-17-linear-reg_AGH_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
 <section id="lets-check-1" class="slide level2">
 <h2>Let’s check</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">min</span>(cdc<span class="sc">$</span>Exercise)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">min</span>(cdc<span class="sc">$</span>Exercise)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 37.4</code></pre>
 </div>
@@ -571,7 +670,7 @@ F-statistic: 59.25 on 1 and 48 DF,  p-value: 6.336e-10</code></pre>
 <section id="some-additional-output" class="slide level2 smaller">
 <h2>Some additional output</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="fu">summary</span>(fit)<span class="sc">$</span>r.squared</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="fu">summary</span>(fit)<span class="sc">$</span>r.squared</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.55243</code></pre>
 </div>

@@ -1,14 +1,11 @@
 ---
 title: "Lecture 18: Multiple Linear Regression"
-subtitle: "BIOS 600 - Fall 2025"
+subtitle: "BIOS 600 - Spring 2026"
 institute: "UNC - Chapel Hill"
-logo: "images/logo600-beamer.png"
-format: 
-  beamer:
-    fonttheme: professionalfonts
-    fontsize: 36pt
-    urlcolor: teal
-    slide-level: 2
+logo: "images/logo_600.png"
+format:
+  revealjs:
+    css: reveal-custom.css
 execute:
   freeze: auto
 ---

@@ -3,7 +3,7 @@ title: "Lab 7"
 format: html
 ---
 
-Due Friday, March 13 11:59pm
+Due Friday, April 10 11:59pm
 
 ## Set up
 
@@ -143,7 +143,7 @@ The partial correlation between mpg and hp, controlling for wt, is approximately
 
 ## Spearman's correlation
 
-Spearman’s correlation is a rank-based measure and is useful when the relationship between two variables might not be linear, or when there may be outliers present in the data. 
+Spearman’s correlation is a rank-based measure and is useful when the relationship between two variables might not be linear (only capturing certain types of non-linear associations), or when there may be outliers present in the data. 
 
 Spearman’s correlation is different from Pearson’s correlation in that it doesn’t assume a linear relationship. Instead, it measures how well the relationship between two variables can be described using a **monotonic function**. In a monotonic relationship, as one variable increases (or decreases), the other variable either always increases or always decreases, though not necessarily at a constant rate.
 

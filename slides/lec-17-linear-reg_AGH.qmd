@@ -1,29 +1,20 @@
 ---
 title: "Lecture 17: Introduction to linear regression"
-subtitle: "BIOS 600 - Fall 2025"
+subtitle: "BIOS 600 - Spring 2026"
 institute: "UNC - Chapel Hill"
-logo: "images/logo600-beamer.png"
-format: 
-  beamer:
-    fonttheme: professionalfonts
-    fontsize: 36pt
-    urlcolor: teal
-    slide-level: 2
+logo: "images/logo_600.png"
+format:
+  revealjs:
+    css: reveal-custom.css
 execute:
   freeze: auto
 ---
 
 ## Announcements
 
-- Let's go over the project instructions!
-
-- Project proposals due Tuesday, Nov 11 at 11:59pm
-  - Only one person should turn in the proposal per group (On Canvas). Other group members should write in the Text Entry box: [Group Member] turned in the proposal for our group.
-
-- Video upload instructions will be posted tomorrow (Friday). 
-
 - No HW until next week.
 
+- Lab 7 (new lab) today - due Friday April 10th
 
 ## Uploading an excel file
 
@@ -47,6 +38,46 @@ data <- read_excel("data/biostats_data.xlsx")
 
 - Let me or the TAs know if you need help reading in a data file. 
 
+## Topics covered in lab today
+
+- In lab today you'll hear about two additional concepts
+  - Partial correlation
+  - Spearman correlation coefficients
+
+## Partial correlation
+
+
+
+measure the strength and direction of the linear relationship between two continuous variables while removing the influence of one or more additional control variables. It isolates the direct association, preventing misleading results caused by confounding variables
+
+
+
+
+## Spearman example 
+
+- Pearson is parameteric - using magnitude and values - hen x goes up, does y tend to go up?" — it doesn't care how much. Pearson cares about the exact magnitudes
+
+- Spearman is using ranks - when x goes up, does y tend to go up — it doesn't care how much
+Monotonic vs. Linear: A linear relationship is monotonic (constantly increasing/decreasing), but a monotonic relationship is not necessarily linear (e.g., exponential growth). Spearman detects both.
+Rank Transformation: By converting raw data to ranks, it assesses if ranks align, ignoring the magnitude of differences between values.
+Robustness: Because it uses ranks, it is less sensitive to extreme outliers than Pearson's correlation.
+When to Use: Use Spearman for ordinal data, skewed data, or non-linear monotonic data. 
+Handbook of Biological Statistics
+Handbook of Biological Statistics
+ +5
+While Spearman can detect linear relationships (if the data is linear, it is also monotonic), its primary advantage is assessing non-linear, monotonic associations
+
+*** for quadratric no** but for this case** yes
+**give example of exponetntial**
+**less robust to outliers**
+
+```{r}
+x <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 100)   # outlier at end
+y <- c(2, 4, 5, 4, 5, 7, 8, 9, 10, 11)
+
+cor(x, y, method = "pearson")   # pulls low due to outlier
+cor(x, y, method = "spearman")  # robust, stays high
+```
 
 ## Reading
 
@@ -58,7 +89,7 @@ data <- read_excel("data/biostats_data.xlsx")
 
 ```{r}
 library(tidyverse)
-cdc <- read.csv("https://karamccor.github.io/b6002/labs/data/cdc_cleaned.csv")
+cdc <- read.csv("https://aggreenbean.github.io/Bios600/labs/data/cdc_cleaned.csv")
 ```
 
 ```{r}
@@ -267,7 +298,7 @@ Assumptions of the model $y_i = \beta_0 + \beta_1 x_1 + \epsilon_i$ include:
 
 -   The variance $σ^2$ is constant across all values of $x$; this is called **homogeneity of variance**
 
-## Hypothesis testing
+## Hypothesis testing {.smaller}
 
 -   The primary hypothesis test of interest is usually $H_0:β_1=0$ (There is no association between exercise and obesity percentage) versus $H_1:β_1≠0$ (there is an association between exercise and obesity percentage.)
 

@@ -41,8 +41,8 @@ On Canvas, fill out the short survey on how lab is going
 
 ## Exam question
 
-- Write out all the events contained in the set $(A \cup B)^C$ for one dice roll:
-  - A: Number is $\lt$ 5
+- Write out all the events contained in the set $(A \cup B)^C$:
+  - A: Number one one dice roll is $\lt$ 5
   - B: Roll an even number 
 
 ## Overview

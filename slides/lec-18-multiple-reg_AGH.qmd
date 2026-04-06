@@ -12,13 +12,9 @@ execute:
 
 ## Announcements
 
-- Project proposals due **tonight, 11:59pm**.
+- Lab 7 due **Friday, April 10th**
 
-- Lab 7 due **Friday Nov 14, 2025**
-
-- HW will be assigned later this week
-
-- Exams will be passed back on Thursday.
+- Exams will be passed back on Tuesday
 
 ## Reading
 
@@ -37,11 +33,11 @@ library(tidymodels)
 library(kableExtra)
 ```
 
-## Review: Assumptions of linear regression
+## Review: Assumptions of linear regression {.smaller}
 
 ::: callout-tip
 
-## Review
+## Review 
 
 1.  Independent observations
 
@@ -57,7 +53,7 @@ library(kableExtra)
 
 - We can do so by "**running regression diagnostics**" - which means checking the assumptions within our regression model. 
 
-## Regression diagnostics: independence
+## Regression diagnostics: independence {.smaller}
 
 We just have to think through this one, unfortunately.
 
@@ -87,6 +83,67 @@ We just have to think through this one, unfortunately.
 
 ## Regression diagnostics: equal variances
 
+```{r}
+#| echo: false
+#| eval: true
+library(ggplot2)
+set.seed(42)
+
+n <- 100
+fitted_vals <- seq(1, 10, length.out = n)
+
+# --- Plot 1: Non-equal variance (funnel shape) ---
+residuals_hetero <- rnorm(n, mean = 0, sd = 0.3 * fitted_vals)
+
+df_hetero <- data.frame(fitted = fitted_vals, residuals = residuals_hetero)
+
+df_hetero |> ggplot(aes(x = fitted, y = residuals)) +
+  geom_point(shape = 16, alpha = 0.6, size = 3) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "darkred") +
+  geom_vline(xintercept = mean(fitted_vals), color = "darkred", linewidth = 1) +
+  labs(x = expression(hat(y)[i] ~ "(Fitted)"),
+    y = expression(hat(epsilon)[i] ~ "(Residuals)")
+  ) +
+  theme_minimal()
+```
+## Regression diagnostics: equal variances
+```{r}
+
+# --- Plot 2: Violates linearity (curved/quadratic pattern) ---
+residuals_nonlinear <- -1.5 * (fitted_vals - 5.5)^2 + 10 + rnorm(n, sd = 5)
+residuals_nonlinear <- residuals_nonlinear - mean(residuals_nonlinear)
+
+df_nonlinear <- data.frame(fitted = fitted_vals, residuals = residuals_nonlinear)
+
+df_nonlinear |> ggplot(aes(x = fitted, y = residuals)) +
+  geom_point(shape = 16, alpha = 0.6, size = 3) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "darkred") +
+  labs(
+    x = expression(hat(y)[i] ~ "(Fitted)"),
+    y = expression(hat(epsilon)[i] ~ "(Residuals)")
+  ) +
+  theme_minimal()
+```
+
+## Regression diagnostic: equal variances
+
+```{r}
+#| echo: false
+#| eval: true
+# --- Plot 3: Equal variance (looks good!) ---
+residuals_homo <- rnorm(n, mean = 0, sd = 1.5)
+
+df_homo <- data.frame(fitted = fitted_vals, residuals = residuals_homo)
+
+df_homo |> ggplot(aes(x = fitted, y = residuals)) +
+  geom_point(shape = 16, alpha = 0.6, size = 3) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "darkred") +
+  labs(
+    x = expression(hat(y)[i] ~ "(Fitted)"),
+    y = expression(hat(epsilon)[i] ~ "(Residuals)")
+  ) +
+  theme_minimal()
+```
 ## Regression diagnostics: normality of errors
 
 -   Use a histogram of the residuals to check normality. There are more advanced methods and plots, but we won't talk about them here
@@ -115,8 +172,6 @@ hist(fit$residuals)
 ```
 
 ## Back to Lab 02 {.smaller}
-
-
 
 In Lab 2 we examined the regression of obesity percentage on adequate exercise percentage.
 
@@ -270,6 +325,54 @@ summary(model)
 
 **Conclusion**: In this case, the p-value (4.572e-15) was lower than the pre-specified significance cut-off. There is sufficient evidence to suggest that at least one predictor (Exercise and/or Smoking) has a non-zero linear association with obesity %.
 
+## Example: Confounding
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(tidymodels)
+library(knitr)
+library(ppcor)
+# Simulate data
+set.seed(7)
+n <- 100
+
+age <- round(rnorm(n, mean = 50, sd = 12))
+sbp <- round(105 + 0.65 * (age - 50) + rnorm(n, 0, 9))
+cog <- round(82 + 0.40 * (age - 50) + 0.00 * (sbp - 130) + rnorm(n, 0, 7))
+
+study <- data.frame(id = 1:n, age, sbp, cog)
+```
+
+- Let's go back to our example to test if higher SBP is associated with lower cognitive scores where we think age might be a confounder
+
+- If I just include SBP as a predictor, what does the model suggest?
+
+```{r}
+study_sbp <- lm(cog ~ sbp, 
+                   data = study)
+tidy(study_sbp) |>
+  kable(digits = 3)
+```
+
+## Example: Confounding
+
+- From our earlier findings, age was associated with both exposure and outcome
+
+```{r}
+cor(study[, c("sbp", "cog", "age")])
+```
+## Example: Confounding
+
+- Now, if I include both SBP and age as predictors, what does the model suggest?
+
+```{r}
+study_age <- lm(cog ~ sbp + age, 
+                   data = study)
+tidy(study_age) |>
+  kable(digits = 3)
+```
+
+
 ## Multiple Regression in Real Life
 
 ::: callout-tip
@@ -361,7 +464,7 @@ How would you interpret the estimates?
 
 - Wait a minute! R automatically assigned the lowest level of HDI as the reference level. Let's see how we can change the reference level:
 
-```{r}
+```{r, echo=TRUE}
 cdc_new <- cdc |>
   mutate(HDI_relevel = fct_relevel(HDI, "Top ten"))
 ```

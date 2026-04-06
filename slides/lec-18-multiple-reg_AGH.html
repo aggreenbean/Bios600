@@ -206,10 +206,8 @@
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li><p>Project proposals due <strong>tonight, 11:59pm</strong>.</p></li>
-<li><p>Lab 7 due <strong>Friday Nov 14, 2025</strong></p></li>
-<li><p>HW will be assigned later this week</p></li>
-<li><p>Exams will be passed back on Thursday.</p></li>
+<li><p>Lab 7 due <strong>Friday, April 10th</strong></p></li>
+<li><p>Exams will be passed back on Tuesday</p></li>
 </ul>
 </section>
 <section id="reading" class="slide level2">
@@ -227,7 +225,7 @@
 <span id="cb1-3"><a href=""></a><span class="fu">library</span>(kableExtra)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="review-assumptions-of-linear-regression" class="slide level2">
+<section id="review-assumptions-of-linear-regression" class="slide level2 smaller">
 <h2>Review: Assumptions of linear regression</h2>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -252,7 +250,7 @@
 <li><p>We can do so by “<strong>running regression diagnostics</strong>” - which means checking the assumptions within our regression model.</p></li>
 </ul>
 </section>
-<section id="regression-diagnostics-independence" class="slide level2">
+<section id="regression-diagnostics-independence" class="slide level2 smaller">
 <h2>Regression diagnostics: independence</h2>
 <p>We just have to think through this one, unfortunately.</p>
 <ul>
@@ -289,7 +287,16 @@
 </section>
 <section id="regression-diagnostics-equal-variances" class="slide level2">
 <h2>Regression diagnostics: equal variances</h2>
-</section>
+
+<img data-src="lec-18-multiple-reg_AGH_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<section id="regression-diagnostics-equal-variances-1" class="slide level2">
+<h2>Regression diagnostics: equal variances</h2>
+
+<img data-src="lec-18-multiple-reg_AGH_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<section id="regression-diagnostic-equal-variances" class="slide level2">
+<h2>Regression diagnostic: equal variances</h2>
+
+<img data-src="lec-18-multiple-reg_AGH_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
 <section id="regression-diagnostics-normality-of-errors" class="slide level2">
 <h2>Regression diagnostics: normality of errors</h2>
 <ul>
@@ -304,7 +311,7 @@
 <span id="cb2-3"><a href=""></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>,<span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="lec-18-multiple-reg_AGH_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<img data-src="lec-18-multiple-reg_AGH_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
 <section id="checking-assumptions-for-our-model-1" class="slide level2">
 <h2>Checking assumptions for our model…</h2>
 <div class="cell">
@@ -312,12 +319,12 @@
 <span id="cb3-2"><a href=""></a><span class="fu">hist</span>(fit<span class="sc">$</span>residuals)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="lec-18-multiple-reg_AGH_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<img data-src="lec-18-multiple-reg_AGH_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
 <section id="back-to-lab-02" class="slide level2 smaller">
 <h2>Back to Lab 02</h2>
 <p>In Lab 2 we examined the regression of obesity percentage on adequate exercise percentage.</p>
 
-<img data-src="lec-18-multiple-reg_AGH_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"><p>Do we think this is the only factor that can help us predict obesity percentage?</p>
+<img data-src="lec-18-multiple-reg_AGH_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"><p>Do we think this is the only factor that can help us predict obesity percentage?</p>
 </section>
 <section id="multiple-regression" class="slide level2 smaller">
 <h2>Multiple regression</h2>
@@ -581,6 +588,102 @@ F-statistic: 72.28 on 2 and 47 DF,  p-value: 4.572e-15</code></pre>
 <h2>Hypotheses of interest</h2>
 <p><strong>Conclusion</strong>: In this case, the p-value (4.572e-15) was lower than the pre-specified significance cut-off. There is sufficient evidence to suggest that at least one predictor (Exercise and/or Smoking) has a non-zero linear association with obesity %.</p>
 </section>
+<section id="example-confounding" class="slide level2">
+<h2>Example: Confounding</h2>
+<ul>
+<li><p>Let’s go back to our example to test if higher SBP is associated with lower cognitive scores where we think age might be a confounder</p></li>
+<li><p>If I just include SBP as a predictor, what does the model suggest?</p></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">49.297</td>
+<td style="text-align: right;">7.518</td>
+<td style="text-align: right;">6.557</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sbp</td>
+<td style="text-align: right;">0.309</td>
+<td style="text-align: right;">0.070</td>
+<td style="text-align: right;">4.427</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="example-confounding-1" class="slide level2">
+<h2>Example: Confounding</h2>
+<ul>
+<li>From our earlier findings, age was associated with both exposure and outcome</li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>          sbp       cog       age
+sbp 1.0000000 0.4082618 0.6637731
+cog 0.4082618 1.0000000 0.4830672
+age 0.6637731 0.4830672 1.0000000</code></pre>
+</div>
+</div>
+</section>
+<section id="example-confounding-2" class="slide level2">
+<h2>Example: Confounding</h2>
+<ul>
+<li>Now, if I include both SBP and age as predictors, what does the model suggest?</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">55.022</td>
+<td style="text-align: right;">7.400</td>
+<td style="text-align: right;">7.435</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sbp</td>
+<td style="text-align: right;">0.118</td>
+<td style="text-align: right;">0.089</td>
+<td style="text-align: right;">1.330</td>
+<td style="text-align: right;">0.187</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">age</td>
+<td style="text-align: right;">0.284</td>
+<td style="text-align: right;">0.088</td>
+<td style="text-align: right;">3.218</td>
+<td style="text-align: right;">0.002</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
 <section id="multiple-regression-in-real-life" class="slide level2">
 <h2>Multiple Regression in Real Life</h2>
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -656,9 +759,9 @@ F-statistic: 72.28 on 2 and 47 DF,  p-value: 4.572e-15</code></pre>
 <section id="interpretation-of-dummy-variables-1" class="slide level2">
 <h2>Interpretation of dummy variables</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Obesity <span class="sc">~</span> HDI, <span class="at">data =</span> cdc)</span>
-<span id="cb8-2"><a href=""></a><span class="fu">tidy</span>(fit2) <span class="sc">|&gt;</span></span>
-<span id="cb8-3"><a href=""></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Obesity <span class="sc">~</span> HDI, <span class="at">data =</span> cdc)</span>
+<span id="cb9-2"><a href=""></a><span class="fu">tidy</span>(fit2) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href=""></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top">
 <thead>
@@ -703,6 +806,10 @@ F-statistic: 72.28 on 2 and 47 DF,  p-value: 4.572e-15</code></pre>
 <ul>
 <li>Wait a minute! R automatically assigned the lowest level of HDI as the reference level. Let’s see how we can change the reference level:</li>
 </ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>cdc_new <span class="ot">&lt;-</span> cdc <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">HDI_relevel =</span> <span class="fu">fct_relevel</span>(HDI, <span class="st">"Top ten"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <ul>
 <li><p>This reorders the factor levels so that “<code>Top ten</code>” becomes the first (reference) level.</p></li>
 <li><p>Now, when we run the regression, the model will automatically use <code>Top ten</code> as the baseline.</p></li>
@@ -752,10 +859,10 @@ F-statistic: 72.28 on 2 and 47 DF,  p-value: 4.572e-15</code></pre>
 <section id="interpretation-of-dummy-variables-2" class="slide level2">
 <h2>Interpretation of dummy variables</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>fit3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Obesity <span class="sc">~</span> Exercise <span class="sc">+</span> HDI_relevel, </span>
-<span id="cb9-2"><a href=""></a>           <span class="at">data =</span> cdc_new)</span>
-<span id="cb9-3"><a href=""></a><span class="fu">tidy</span>(fit3) <span class="sc">|&gt;</span></span>
-<span id="cb9-4"><a href=""></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>fit3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Obesity <span class="sc">~</span> Exercise <span class="sc">+</span> HDI_relevel, </span>
+<span id="cb11-2"><a href=""></a>           <span class="at">data =</span> cdc_new)</span>
+<span id="cb11-3"><a href=""></a><span class="fu">tidy</span>(fit3) <span class="sc">|&gt;</span></span>
+<span id="cb11-4"><a href=""></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top">
 <thead>

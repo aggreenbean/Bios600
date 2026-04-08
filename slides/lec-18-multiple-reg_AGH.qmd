@@ -14,6 +14,12 @@ execute:
 
 - Lab 7 due **Friday, April 10th**
 
+- No HW #7
+
+- **Final lab** - Lab 8 - will be next week
+
+- Practice problems for exam will be posted week of April 20th
+
 - Exams will be passed back on Tuesday
 
 ## Reading
@@ -305,13 +311,13 @@ We might also test multiple parameters at once (for instance, all the slopes):
 
 -   $H_0: \beta_1 = \beta_2 = 0$ vs. $H_1:$ at least one of the $\beta_k$ is not 0. (variable has a linear association with exercise %)
 
-This is given by an F test (much like ANOVA!) with numerator df equal to the number of parameters being tested (here, the number of slopes, i.e. 3) and denominator df equal to $n−k$ (number of observations minus number of estimated model parameters, *including* the intercept).
+This is given by an F test (much like ANOVA!) with numerator df equal to the number of parameters being tested (here, the number of slopes, i.e. 2) and denominator df equal to $n−k$ (number of observations minus number of estimated model parameters, *including* the intercept).
 
 ::: {.callout-tip appearance="simple"}
 What might we conclude for the overall F test for our model, assuming $\alpha = 0.05$?
 :::
 
-## F-test 
+## F-test {.smaller}
 
 This information is given in the original `summary(model)`:
 
@@ -325,7 +331,9 @@ summary(model)
 
 **Conclusion**: In this case, the p-value (4.572e-15) was lower than the pre-specified significance cut-off. There is sufficient evidence to suggest that at least one predictor (Exercise and/or Smoking) has a non-zero linear association with obesity %.
 
-## Example: Confounding
+## Pause for a photo!
+
+## Example: Is SBP associated with cognitive scores
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 library(tidyverse)
@@ -343,9 +351,14 @@ cog <- round(82 + 0.40 * (age - 50) + 0.00 * (sbp - 130) + rnorm(n, 0, 7))
 study <- data.frame(id = 1:n, age, sbp, cog)
 ```
 
-- Let's go back to our example to test if higher SBP is associated with lower cognitive scores where we think age might be a confounder
+- Let's go back to our example to test if higher SBP is associated with lower cognitive scores
 
-- If I just include SBP as a predictor, what does the model suggest?
+## Example: Is SBP associated with cognitive scores?
+
+::: {.callout-tip}
+##  In small groups
+Do both parameter estimates ($\hat{\beta}_0$, $\hat{\beta}_1$)make sense to interpret here? If so, how would you interpret each one?
+:::
 
 ```{r}
 study_sbp <- lm(cog ~ sbp, 
@@ -363,7 +376,10 @@ cor(study[, c("sbp", "cog", "age")])
 ```
 ## Example: Confounding
 
-- Now, if I include both SBP and age as predictors, what does the model suggest?
+::: {.callout-tip}
+##  In small groups
+Now that we're controlling for age, how does your interpretation of $\hat{\beta}_{1}$ change?
+:::
 
 ```{r}
 study_age <- lm(cog ~ sbp + age, 

@@ -207,6 +207,9 @@
 <h2>Announcements</h2>
 <ul>
 <li><p>Lab 7 due <strong>Friday, April 10th</strong></p></li>
+<li><p>No HW #7</p></li>
+<li><p><strong>Final lab</strong> - Lab 8 - will be next week</p></li>
+<li><p>Practice problems for exam will be posted week of April 20th</p></li>
 <li><p>Exams will be passed back on Tuesday</p></li>
 </ul>
 </section>
@@ -545,7 +548,7 @@ F-statistic: 72.28 on 2 and 47 DF,  p-value: 4.572e-15</code></pre>
 <ul>
 <li><span class="math inline">\(H_0: \beta_1 = \beta_2 = 0\)</span> vs.&nbsp;<span class="math inline">\(H_1:\)</span> at least one of the <span class="math inline">\(\beta_k\)</span> is not 0. (variable has a linear association with exercise %)</li>
 </ul>
-<p>This is given by an F test (much like ANOVA!) with numerator df equal to the number of parameters being tested (here, the number of slopes, i.e.&nbsp;3) and denominator df equal to <span class="math inline">\(n−k\)</span> (number of observations minus number of estimated model parameters, <em>including</em> the intercept).</p>
+<p>This is given by an F test (much like ANOVA!) with numerator df equal to the number of parameters being tested (here, the number of slopes, i.e.&nbsp;2) and denominator df equal to <span class="math inline">\(n−k\)</span> (number of observations minus number of estimated model parameters, <em>including</em> the intercept).</p>
 <div class="callout callout-tip callout-style-simple">
 <div class="callout-body">
 <div class="callout-icon-container">
@@ -557,7 +560,7 @@ F-statistic: 72.28 on 2 and 47 DF,  p-value: 4.572e-15</code></pre>
 </div>
 </div>
 </section>
-<section id="f-test" class="slide level2">
+<section id="f-test" class="slide level2 smaller">
 <h2>F-test</h2>
 <p>This information is given in the original <code>summary(model)</code>:</p>
 <div class="cell">
@@ -588,12 +591,30 @@ F-statistic: 72.28 on 2 and 47 DF,  p-value: 4.572e-15</code></pre>
 <h2>Hypotheses of interest</h2>
 <p><strong>Conclusion</strong>: In this case, the p-value (4.572e-15) was lower than the pre-specified significance cut-off. There is sufficient evidence to suggest that at least one predictor (Exercise and/or Smoking) has a non-zero linear association with obesity %.</p>
 </section>
-<section id="example-confounding" class="slide level2">
-<h2>Example: Confounding</h2>
+<section id="pause-for-a-photo" class="slide level2">
+<h2>Pause for a photo!</h2>
+</section>
+<section id="example-is-sbp-associated-with-cognitive-scores" class="slide level2">
+<h2>Example: Is SBP associated with cognitive scores</h2>
 <ul>
-<li><p>Let’s go back to our example to test if higher SBP is associated with lower cognitive scores where we think age might be a confounder</p></li>
-<li><p>If I just include SBP as a predictor, what does the model suggest?</p></li>
+<li>Let’s go back to our example to test if higher SBP is associated with lower cognitive scores</li>
 </ul>
+</section>
+<section id="example-is-sbp-associated-with-cognitive-scores-1" class="slide level2">
+<h2>Example: Is SBP associated with cognitive scores?</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>In small groups</strong></p>
+</div>
+<div class="callout-content">
+<p>Do both parameter estimates (<span class="math inline">\(\hat{\beta}_0\)</span>, <span class="math inline">\(\hat{\beta}_1\)</span>)make sense to interpret here? If so, how would you interpret each one?</p>
+</div>
+</div>
+</div>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top">
@@ -626,7 +647,7 @@ F-statistic: 72.28 on 2 and 47 DF,  p-value: 4.572e-15</code></pre>
 </div>
 </div>
 </section>
-<section id="example-confounding-1" class="slide level2">
+<section id="example-confounding" class="slide level2">
 <h2>Example: Confounding</h2>
 <ul>
 <li>From our earlier findings, age was associated with both exposure and outcome</li>
@@ -640,11 +661,21 @@ age 0.6637731 0.4830672 1.0000000</code></pre>
 </div>
 </div>
 </section>
-<section id="example-confounding-2" class="slide level2">
+<section id="example-confounding-1" class="slide level2">
 <h2>Example: Confounding</h2>
-<ul>
-<li>Now, if I include both SBP and age as predictors, what does the model suggest?</li>
-</ul>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>In small groups</strong></p>
+</div>
+<div class="callout-content">
+<p>Now that we’re controlling for age, how does your interpretation of <span class="math inline">\(\hat{\beta}_{1}\)</span> change?</p>
+</div>
+</div>
+</div>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top">

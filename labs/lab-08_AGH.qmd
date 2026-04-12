@@ -1,9 +1,9 @@
 ---
 title: "Lab 8: Multiple Regression"
-format: pdf
+format: html
 ---
 
-Due: Friday, Nov 21, 2025 at 11:59PM
+Due: Friday, Apr 17, 2026 at 11:59PM
 
 ## Set up
 
@@ -25,7 +25,6 @@ Due: Friday, Nov 21, 2025 at 11:59PM
 Download `cdc.csv` and `beijing.csv` and save into your Data folder within your BIOS 600 Project folder.
 
 :::
-
 
 ## Loading libraries
 
@@ -54,6 +53,40 @@ Let's read in the `cdc` data.
 ```{r}
 cdc <- read.csv("data/cdc.csv")
 ```
+
+**Reminder**: The variables in the cdc dataset are as follows:
+
+- `State`, the name of the state
+
+- `Region`, the US Census region that each state belongs to
+
+- `HDI`, the Human Development Index of each state in 2017, categorized into whether they are among the top ten, the bottom ten, or the middle
+    
+- `InfantMortalityRate`: infant mortality rate per 100,000
+
+- `CVDeathRate`: death rate per 100,000 due to cardiovasulcar causes
+
+- `DrugDeathRate`: death rate per 100,000 due to drug-related causes (ODs, etc.)
+
+- `MotorDeathRate`: death rate per 100,000 due to motor vehicle-related causes
+    
+- `CancerDeathRate`: death rate per 100,000 due to cancer
+
+- `Obesity`: % of adults who are obese
+
+- `Smoking`: % of adults who smoked at least one cigarette in the past month
+
+- `Exercise`: % of adults who participated in at least 2.5 hours of aerobic activity per week
+
+- `Seatbelt`: % of adults to regularly wear their seat belt
+
+- `FluVaccination`: % of adults who received a flu vaccine
+
+- `ChildVaccination`: % of children who aged 19-35 months who have received the DTaP, polio, MMR, Hib, hepatitis B, varicella and PCV vaccines
+
+- `Under18`: % of residents under age 18
+
+- `Over65`: % of residents over age 65
 
 Now let’s fit a linear model using the CDC data, where our response variable is obesity percentage and the three predictor variables are adequate exercise percentage, smoking percentage, and HDI category, and suppose we want to save it as the object `mod1`. We would use the following code:
 

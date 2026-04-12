@@ -1,14 +1,11 @@
 ---
 title: "Lecture 19: A Few R Demos, Interactions and Collinearity"
-subtitle: "BIOS 600 - Fall 2025"
+subtitle: "BIOS 600 - Spring 2026"
 institute: "UNC - Chapel Hill"
-logo: "images/logo600-beamer.png"
-format: 
-  beamer:
-    fonttheme: professionalfonts
-    fontsize: 36pt
-    urlcolor: teal
-    slide-level: 2
+logo: "images/logo_600.png"
+format:
+  revealjs:
+    css: reveal-custom.css
 execute:
   freeze: auto
 ---
@@ -17,9 +14,7 @@ execute:
 
 - Exam Corrections due **Thursday 11/20 at 11:59pm**.
 
-- Lab 7 due this **Friday at 11:59pm**. 
-
-- HW will be assigned later today.
+- Lab 8 due this **Friday at 11:59pm**. 
 
 ## Overview
 

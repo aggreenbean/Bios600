@@ -1,0 +1,93 @@
+---
+title: "Lecture 22: Final Exam Review"
+subtitle: "BIOS 600 - Spring 2026"
+institute: "UNC - Chapel Hill"
+logo: "images/logo_600.png"
+format:
+  revealjs:
+    css: reveal-custom.css
+execute:
+  freeze: auto
+---
+
+## Announcements
+
+- Please fill out the course evaluations, due **December 04 at 11:59pm**.
+
+- If at least 85% of students fill out the course evaluations, everyone in the class will receive an extra 1/2 point on the final exam score. 
+
+## Final Exam Info
+
+- Final Exam is **Thursday, Dec 11, 8am-11am** in this room (MHRC 0001). 
+- Final Exam will be similar length to previous exams, and will focus on material since Exam 02. 
+
+- Final Topics posted on Canvas > Final Exam Preparation
+
+## Video Comments
+
+- Thank you for posting your videos in our online discussion forum!
+
+- As the last component of the project, each student will watch & comment on 2 other project videos in the Discussion post. 
+
+## Video Comment Instructions
+
+- Watch the group's video, then click "Reply" to post a question for the group.
+
+- You may not post a question that's already been asked on the discussion thread.
+
+- Additionally, the question should be (i) substantive (i.e. it shouldn't be "Why did you use a bar plot instead of a pie chart"?), (ii) demonstrate your understanding of the content from the course, and (iii) relevant to that group's specific presentation, i.e demonstrating that you've watched the presentation.
+
+- Video comments are due **Thursday 12/4 by 11:59pm**. 
+
+- These instructions are also posted in the Final Project Page on our Canvas homepage. 
+
+
+## Project Recap
+
+::: callout-tip
+## Project Recap (4 mins)
+
+- Find a partner. Each person take 2 mins sharing the following: 
+
+  1) What were some challenges you faced while working on your project? 
+  
+  2) Which skills from class were most helpful for you on your project?
+  
+  3) Did doing the project inspire you to learn any new skills we didn't get to cover in class?
+
+:::
+
+
+## Application Exercise
+
+:::callout-tip
+## Exam Review
+
+Head to Canvas and download the template for AE 06. This application exercise will serve as review for final exam material. 
+
+Select groups should put their solutions on [these Google Slides](https://docs.google.com/presentation/d/1IytlbNth49PJU8zoKRTzY_YaZAkX2KI0l2uFvpsXV4A/edit?usp=sharing) and be ready to present later in class. 
+
+AE 06 is due on Canvas by **Thursday 12/4 at 11:59pm**.
+:::
+
+## Class recap
+
+Hopefully, BIOS 600 has helped you
+
+- choose which statistical test to use and when
+
+- learn how to apply descriptive techniques used to commonly summarize public health data
+
+- learn how to apply common statistical methods for inference in a reproducible way using R!
+
+
+
+## Thank you!
+
+- Thank you all for a wonderful semester. I have enjoyed having each of you in class! :-)
+
+- Stay in touch! 
+
+## Participation
+
+- How do you feel that BIOS 600 has strengthened your (bio)statistical toolkit this semester? 

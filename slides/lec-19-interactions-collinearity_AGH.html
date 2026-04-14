@@ -9,7 +9,7 @@
 <link href="lec-19-interactions-collinearity_AGH_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.36">
 
-  <title>Lecture 19: A Few R Demos, Interactions and Collinearity</title>
+  <title>Lecture 19: Interactions and Collinearity</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -196,7 +196,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Lecture 19: A Few R Demos, Interactions and Collinearity</h1>
+  <h1 class="title">Lecture 19: Interactions and Collinearity</h1>
   <p class="subtitle">BIOS 600 - Spring 2026</p>
 
 <div class="quarto-title-authors">
@@ -206,14 +206,15 @@
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li><p>Exam Corrections due <strong>Thursday 11/20 at 11:59pm</strong>.</p></li>
+<li><p>Exam 2 grades are posted <strong>with</strong> curve</p></li>
+<li><p>Exam Corrections due <strong>Friday 4/24 at 11:59pm</strong>.</p></li>
+<li><p>Note, there will be no exam corrections for final exam</p></li>
 <li><p>Lab 8 due this <strong>Friday at 11:59pm</strong>.</p></li>
 </ul>
 </section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
 <ul>
-<li><p>Some R demos, helpful project things</p></li>
 <li><p>Interpreting categorical variables, plus releveling factors</p></li>
 <li><p>Interactions &amp; how to interpret interaction terms</p></li>
 <li><p>Checking for multicollinearity</p></li>
@@ -228,81 +229,7 @@
 <span id="cb1-4"><a href=""></a><span class="fu">library</span>(car) <span class="co"># for VIF</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="r-demo-merging-datasets" class="slide level2">
-<h2>R Demo: merging datasets</h2>
-<ul>
-<li><p>Merging datasets could be helpful for your project!</p></li>
-<li><p>Let’s say you have two data sets..</p></li>
-</ul>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>df1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  ID    Name
-1  1   Alice
-2  2     Bob
-3  3 Charlie
-4  4   David</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>df2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  ID     City
-1  1 New York
-2  3   London
-3  5    Paris</code></pre>
-</div>
-</div>
-</section>
-<section id="r-demo-merging-datasets-1" class="slide level2">
-<h2>R Demo: Merging datasets</h2>
-<ul>
-<li>As long as you have an identifying column (e.g.&nbsp;studyid, patient number, observation number etc.), you can merge using <code>left_join()</code>:</li>
-</ul>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="co"># The 'by' argument specifies the </span></span>
-<span id="cb6-2"><a href=""></a><span class="co"># common column(s) to join on.</span></span>
-<span id="cb6-3"><a href=""></a>merged_df <span class="ot">&lt;-</span> df1 <span class="sc">|&gt;</span></span>
-<span id="cb6-4"><a href=""></a>  <span class="fu">left_join</span>(df2, <span class="at">by =</span> <span class="st">"ID"</span>)</span>
-<span id="cb6-5"><a href=""></a></span>
-<span id="cb6-6"><a href=""></a>merged_df </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  ID    Name     City
-1  1   Alice New York
-2  2     Bob     &lt;NA&gt;
-3  3 Charlie   London
-4  4   David     &lt;NA&gt;</code></pre>
-</div>
-</div>
-</section>
-<section id="r-demo-dropping-na-values" class="slide level2">
-<h2>R Demo: Dropping NA values</h2>
-<ul>
-<li>We haven’t talked about missing data much, but it may be simplest to conduct a “complete case analysis” where you only perform an analysis on complete cases:</li>
-</ul>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>merged_df <span class="sc">|&gt;</span></span>
-<span id="cb8-2"><a href=""></a>  <span class="fu">drop_na</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  ID    Name     City
-1  1   Alice New York
-2  3 Charlie   London</code></pre>
-</div>
-</div>
-</section>
-<section id="r-demo-write.csv" class="slide level2">
-<h2>R Demo: <code>write.csv()</code></h2>
-<ul>
-<li>You can save your cleaned/merged dataset at any point using <code>write.csv()</code></li>
-</ul>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="fu">write.csv</span>(merged_df, <span class="at">file =</span> <span class="st">"data/data_clean.csv"</span>, </span>
-<span id="cb10-2"><a href=""></a>          <span class="at">row.names =</span> F) </span>
-<span id="cb10-3"><a href=""></a><span class="co"># do not create a column of row names</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<ul>
-<li>Note that you may need to include <code>row.names = F</code> so that R does not create an additional column of row numbers.</li>
-</ul>
-</section>
-<section id="categorical-variables-from-last-time" class="slide level2">
+<section id="categorical-variables-from-last-time" class="slide level2 smaller">
 <h2>Categorical variables from last time…</h2>
 <p>Consider the model</p>
 <div class="poll">
@@ -316,12 +243,12 @@
 <li><p><span class="math inline">\(\beta_2\)</span> represents the expected difference in obesity percentage for a state in the bottom ten HDI category, <strong>compared to the top ten</strong></p></li>
 </ul>
 </section>
-<section id="fitting-the-model" class="slide level2">
+<section id="fitting-the-model" class="slide level2 smaller">
 <h2>Fitting the model</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Obesity <span class="sc">~</span> HDI, <span class="at">data =</span> cdc)</span>
-<span id="cb11-2"><a href=""></a><span class="fu">tidy</span>(fit2) <span class="sc">|&gt;</span></span>
-<span id="cb11-3"><a href=""></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Obesity <span class="sc">~</span> HDI, <span class="at">data =</span> cdc)</span>
+<span id="cb2-2"><a href=""></a><span class="fu">tidy</span>(fit2) <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href=""></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top">
 <thead>
@@ -385,21 +312,21 @@
 <section id="changing-the-reference-level" class="slide level2">
 <h2>Changing the reference level</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>cdc_new <span class="ot">&lt;-</span> cdc <span class="sc">|&gt;</span></span>
-<span id="cb12-2"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">HDI_relevel =</span> <span class="fu">fct_relevel</span>(HDI, <span class="st">"Top ten"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>cdc_new <span class="ot">&lt;-</span> cdc <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">HDI_relevel =</span> <span class="fu">fct_relevel</span>(HDI, <span class="st">"Top ten"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li><p>This reorders the factor levels so that “<code>Top ten</code>” becomes the first (reference) level.</p></li>
 <li><p>Now, when we run the regression, the model will automatically use <code>Top ten</code> as the baseline.</p></li>
 </ul>
 </section>
-<section id="re-running-the-model" class="slide level2">
+<section id="re-running-the-model" class="slide level2 smaller">
 <h2>Re-running the model</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a>fit2_relevel <span class="ot">&lt;-</span> <span class="fu">lm</span>(Obesity <span class="sc">~</span> HDI_relevel, </span>
-<span id="cb13-2"><a href=""></a>                   <span class="at">data =</span> cdc_new)</span>
-<span id="cb13-3"><a href=""></a><span class="fu">tidy</span>(fit2_relevel) <span class="sc">|&gt;</span></span>
-<span id="cb13-4"><a href=""></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>fit2_relevel <span class="ot">&lt;-</span> <span class="fu">lm</span>(Obesity <span class="sc">~</span> HDI_relevel, </span>
+<span id="cb4-2"><a href=""></a>                   <span class="at">data =</span> cdc_new)</span>
+<span id="cb4-3"><a href=""></a><span class="fu">tidy</span>(fit2_relevel) <span class="sc">|&gt;</span></span>
+<span id="cb4-4"><a href=""></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top">
 <thead>
@@ -453,11 +380,205 @@
 </div>
 </div>
 </section>
+<section id="example" class="slide level2">
+<h2>Example</h2>
+<ul>
+<li><p>What if I am interested in seeing if sex and BMI (kg/m2) are associated with fasting blood glucose levels (FBG)?</p></li>
+<li><p>I might consider the following model:</p></li>
+</ul>
+<p><span class="math display">\[FBG_i = \beta_0 + \beta_1 Female_i + \beta_2 BMI_i\]</span></p>
+<ul>
+<li>But what if I think that the association between BMI and FBG differs by sex?</li>
+</ul>
+</section>
+<section id="interactionseffect-modification" class="slide level2 smaller">
+<h2>Interactions/Effect Modification</h2>
+<ul>
+<li><p>This is a case of effect modification - the relationship between one predictor and the outcome depends on the value of another predictor variable</p></li>
+<li><p>This could mean any of the following:</p>
+<ul>
+<li>Association is in the same direction (e.g.&nbsp;positive/negative) but the association is stronger in magnitude depending on the value of the effect modifier (e.g.&nbsp;association is positive for males and females, but stronger association for females)</li>
+<li>Association is in one direction for certain values but the opposite direction depending on other values of the effect modifier (e.g.&nbsp;association is positive for males but negative for females)</li>
+<li>Association is present for certain values of the effect modifier, but no association is seen for other values (e.g.&nbsp;association is positive for males but no evidence of association for females)</li>
+</ul></li>
+</ul>
+</section>
+<section id="interactionseffect-modification-1" class="slide level2">
+<h2>Interactions/Effect Modification</h2>
+<ul>
+<li><p>To model a case of effect modification - when the relationship between one predictor and the outcome depends on the value of another predictor variable, we create an <strong>interaction term</strong>.</p></li>
+<li><p>This is created simply by multiplying two predictors <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> to create a new predictor, <span class="math inline">\(x_1x_2\)</span>. When interaction terms are in a model, interpretations can become tricky.</p></li>
+</ul>
+</section>
+<section id="interactionseffect-modification-2" class="slide level2 smaller">
+<h2>Interactions/Effect Modification</h2>
+<ul>
+<li>With interaction terms in the model
+<ul>
+<li>Difference between females and males in FBG, holding BMI constant, is no longer given by <span class="math inline">\(\beta_1\)</span></li>
+<li><span class="math inline">\(\beta_2\)</span> no longer represents the change in FBG associated with a 1 <span class="math inline">\(kg/m^{2}\)</span> change in BMI, holding sex constant</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[FBG_i = \beta_0 + \beta_1 Female_i + \beta_2 BMI_i + \beta_3 (BMI_i)(Female_i)\]</span></p>
+<ul>
+<li>But how can I get an estimate for how they are associated?</li>
+</ul>
+</section>
+<section id="association-between-bmi-and-fasting-blood-glucose-fbg-ignoring-gender" class="slide level2">
+<h2>Association between BMI and fasting blood glucose (FBG), ignoring gender</h2>
+
+<img data-src="lec-19-interactions-collinearity_AGH_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
+<section id="association-between-bmi-and-fasting-blood-glucose-fbg-ignoring-gender-1" class="slide level2">
+<h2>Association between BMI and fasting blood glucose (FBG), ignoring gender</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">62.859</td>
+<td style="text-align: right;">10.210</td>
+<td style="text-align: right;">6.157</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bmi</td>
+<td style="text-align: right;">2.963</td>
+<td style="text-align: right;">0.376</td>
+<td style="text-align: right;">7.882</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="association-between-bmi-and-fasting-blood-glucose-fbg-controlling-for-gender" class="slide level2">
+<h2>Association between BMI and fasting blood glucose (FBG), controlling for gender</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">53.746</td>
+<td style="text-align: right;">9.835</td>
+<td style="text-align: right;">5.465</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bmi</td>
+<td style="text-align: right;">2.938</td>
+<td style="text-align: right;">0.359</td>
+<td style="text-align: right;">8.185</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">genderFemale</td>
+<td style="text-align: right;">19.571</td>
+<td style="text-align: right;">2.789</td>
+<td style="text-align: right;">7.017</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="now-lets-look-again" class="slide level2">
+<h2>Now let’s look again</h2>
+
+<img data-src="lec-19-interactions-collinearity_AGH_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+<section id="association-between-bmi-and-fasting-blood-glucose-fbg-with-interaction" class="slide level2">
+<h2>Association between BMI and fasting blood glucose (FBG), with interaction</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">77.400</td>
+<td style="text-align: right;">13.731</td>
+<td style="text-align: right;">5.637</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bmi</td>
+<td style="text-align: right;">2.057</td>
+<td style="text-align: right;">0.506</td>
+<td style="text-align: right;">4.063</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">genderFemale</td>
+<td style="text-align: right;">-27.579</td>
+<td style="text-align: right;">19.400</td>
+<td style="text-align: right;">-1.422</td>
+<td style="text-align: right;">0.156</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bmi:genderFemale</td>
+<td style="text-align: right;">1.754</td>
+<td style="text-align: right;">0.714</td>
+<td style="text-align: right;">2.456</td>
+<td style="text-align: right;">0.014</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="association-between-bmi-and-fasting-blood-glucose-fbg-with-interaction-1" class="slide level2">
+<h2>Association between BMI and fasting blood glucose (FBG), with interaction</h2>
+
+<img data-src="lec-19-interactions-collinearity_AGH_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<section id="association-between-bmi-and-fasting-blood-glucose-fbg-with-interaction-2" class="slide level2">
+<h2>Association between BMI and fasting blood glucose (FBG), with interaction</h2>
+<ul>
+<li><p><span class="math display">\[FBG_i = \beta_0 + \beta_1 Female_i + \beta_2 BMI_i + \beta_3 (BMI_i)(Female_i)\]</span></p></li>
+<li><p>For males, <span class="math inline">\(Female_i=0\)</span>,</p></li>
+</ul>
+</section>
+<section id="association-between-bmi-and-fasting-blood-glucose-fbg-with-interaction-3" class="slide level2">
+<h2>Association between BMI and fasting blood glucose (FBG), with interaction</h2>
+<ul>
+<li><p><span class="math display">\[FBG_i = \beta_0 + \beta_1 Female_i + \beta_2 BMI_i + \beta_3 (BMI_i)(Female_i)\]</span></p></li>
+<li><p>For females, <span class="math inline">\(Female_i=1\)</span></p></li>
+</ul>
+</section>
 <section id="interactions" class="slide level2 smaller">
 <h2>Interactions</h2>
 <ul>
-<li><p>Sometimes, the relationship between one predictor and the outcome depends on the value of another predictor variable. For example, the effect of exercise % on obesity may be different for smokers vs.&nbsp;non-smokers. To model such a relationship, we create an <strong>interaction term</strong>.</p></li>
-<li><p>This is created simply by multiplying two predictors <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> to create a new predictor, <span class="math inline">\(x_1x_2\)</span>. When interaction terms are in a model, interpretations can become tricky.</p></li>
+<li><p>Interpretation of interaction terms with categorical predictors is easier than with continuous predictors.</p></li>
+<li><p>Since categorical predictors are based on dummy variables, they can only take on the values of 0 or 1 in the model.</p></li>
+<li><p>But in general, the same idea applies for continuous variables - an interaction effect implies that the regression coefficient for an explanatory variable would change depending on the value of another predictor (for instance, the relationship between exercise and obesity might depend on the % of the state that smokes at least one cigarette).</p></li>
 </ul>
 </section>
 <section id="interactions-1" class="slide level2">
@@ -467,15 +588,15 @@
 <p><span class="math display">\[+ \beta_3 (Exercise_i \cdot Smoking_i) + \epsilon_i\]</span></p>
 <p>What is the expected change in obesity % given a one percentage point increase in exercise %?</p>
 </section>
-<section id="interactions-model" class="slide level2">
+<section id="interactions-model" class="slide level2 smaller">
 <h2>Interactions model</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a>fit_int <span class="ot">&lt;-</span> <span class="fu">lm</span>(Obesity <span class="sc">~</span> Exercise <span class="sc">+</span> </span>
-<span id="cb14-2"><a href=""></a>                Smoking <span class="sc">+</span> </span>
-<span id="cb14-3"><a href=""></a>                Exercise<span class="sc">*</span>Smoking, </span>
-<span id="cb14-4"><a href=""></a>                   <span class="at">data =</span> cdc)</span>
-<span id="cb14-5"><a href=""></a><span class="fu">tidy</span>(fit_int) <span class="sc">|&gt;</span></span>
-<span id="cb14-6"><a href=""></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>fit_int <span class="ot">&lt;-</span> <span class="fu">lm</span>(Obesity <span class="sc">~</span> Exercise <span class="sc">+</span> </span>
+<span id="cb5-2"><a href=""></a>                Smoking <span class="sc">+</span> </span>
+<span id="cb5-3"><a href=""></a>                Exercise<span class="sc">*</span>Smoking, </span>
+<span id="cb5-4"><a href=""></a>                   <span class="at">data =</span> cdc)</span>
+<span id="cb5-5"><a href=""></a><span class="fu">tidy</span>(fit_int) <span class="sc">|&gt;</span></span>
+<span id="cb5-6"><a href=""></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top">
 <thead>
@@ -531,7 +652,7 @@
 </ul>
 <p><strong>However</strong>: The interaction term is not significant. So we should remove the interaction term and just use the model with main effects only.</p>
 </section>
-<section id="the-math-behind-it" class="slide level2">
+<section id="the-math-behind-it" class="slide level2 smaller">
 <h2>The math behind it</h2>
 <ul>
 <li>How did we get that interpretation? Here’s the math behind it…</li>
@@ -562,14 +683,6 @@
 </div>
 </div>
 </section>
-<section id="interactions-2" class="slide level2 smaller">
-<h2>Interactions</h2>
-<ul>
-<li><p>Luckily, interpretation of interaction terms with categorical predictors is easier than with continuous predictors.</p></li>
-<li><p>Since categorical predictors are based on dummy variables, they can only take on the values of 0 or 1 in the model.</p></li>
-<li><p>Again, an interaction effect implies that the regression coefficient for an explanatory variable would change depending on the value of another predictor (for instance, the relationship between exercise and obesity might depend on whether a state is in High, Medium, or Low HDI groups).</p></li>
-</ul>
-</section>
 <section id="multicollinearity" class="slide level2">
 <h2>Multicollinearity</h2>
 <ul>
@@ -588,7 +701,7 @@
 </ul>
 <p>A <strong>significant overall F test with no significant individual variable test</strong> is a typical sign of collinearity. We can check out the correlations among the three predictors.</p>
 </section>
-<section id="checking-vif" class="slide level2">
+<section id="checking-vif" class="slide level2 smaller">
 <h2>Checking VIF</h2>
 <ul>
 <li><p>The common way to check for multicollinearity is through VIF values. VIF values indicate the extent of multicollinearity.</p></li>
@@ -603,10 +716,10 @@
 <li>Let’s say we had the following model:</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>fit4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Obesity <span class="sc">~</span> Exercise <span class="sc">+</span> Smoking <span class="sc">+</span> Over65, </span>
-<span id="cb15-2"><a href=""></a>           <span class="at">data =</span> cdc)</span>
-<span id="cb15-3"><a href=""></a>vif_values <span class="ot">&lt;-</span> <span class="fu">vif</span>(fit4) <span class="co"># car package</span></span>
-<span id="cb15-4"><a href=""></a>vif_values</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>fit4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Obesity <span class="sc">~</span> Exercise <span class="sc">+</span> Smoking <span class="sc">+</span> Over65, </span>
+<span id="cb6-2"><a href=""></a>           <span class="at">data =</span> cdc)</span>
+<span id="cb6-3"><a href=""></a>vif_values <span class="ot">&lt;-</span> <span class="fu">vif</span>(fit4) <span class="co"># car package</span></span>
+<span id="cb6-4"><a href=""></a>vif_values</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Exercise  Smoking   Over65 
 1.420894 1.541720 1.123272 </code></pre>
@@ -616,12 +729,146 @@
 <li>In this model, none of the VIFs are above 5 (in fact, they’re much closer to 1), so multicollinearity is not an issue here.</li>
 </ul>
 </section>
+<section id="r-demo-uploading-an-excel-file" class="slide level2">
+<h2>R Demo: Uploading an excel file</h2>
+<ul>
+<li>You can upload <code>.xlsx</code> files using the <strong>readxl</strong> package.</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="co"># Install (only once)</span></span>
+<span id="cb8-2"><a href=""></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span>
+<span id="cb8-3"><a href=""></a></span>
+<span id="cb8-4"><a href=""></a><span class="co"># Load each time you start R</span></span>
+<span id="cb8-5"><a href=""></a><span class="fu">library</span>(readxl)</span>
+<span id="cb8-6"><a href=""></a></span>
+<span id="cb8-7"><a href=""></a><span class="co"># read in data</span></span>
+<span id="cb8-8"><a href=""></a></span>
+<span id="cb8-9"><a href=""></a><span class="co"># Example: import a dataset called "biostats_data.xlsx"</span></span>
+<span id="cb8-10"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/biostats_data.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="r-demo-merging-datasets" class="slide level2">
+<h2>R Demo: merging datasets</h2>
+<ul>
+<li><p>Merging datasets could be helpful for your project!</p></li>
+<li><p>Let’s say you have two data sets..</p></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>df1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID    Name
+1  1   Alice
+2  2     Bob
+3  3 Charlie
+4  4   David</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>df2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID     City
+1  1 New York
+2  3   London
+3  5    Paris</code></pre>
+</div>
+</div>
+</section>
+<section id="r-demo-merging-datasets-1" class="slide level2">
+<h2>R Demo: Merging datasets</h2>
+<ul>
+<li>As long as you have an identifying column (e.g.&nbsp;studyid, patient number, observation number etc.), you can merge using <code>left_join()</code>:</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="co"># The 'by' argument specifies the </span></span>
+<span id="cb13-2"><a href=""></a><span class="co"># common column(s) to join on.</span></span>
+<span id="cb13-3"><a href=""></a>merged_df <span class="ot">&lt;-</span> df1 <span class="sc">|&gt;</span></span>
+<span id="cb13-4"><a href=""></a>  <span class="fu">left_join</span>(df2, <span class="at">by =</span> <span class="st">"ID"</span>)</span>
+<span id="cb13-5"><a href=""></a></span>
+<span id="cb13-6"><a href=""></a>merged_df </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID    Name     City
+1  1   Alice New York
+2  2     Bob     &lt;NA&gt;
+3  3 Charlie   London
+4  4   David     &lt;NA&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="r-demo-merging-datasets-2" class="slide level2">
+<h2>R Demo: Merging datasets</h2>
+<ul>
+<li>Note the difference here when merging using <code>right_join()</code></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="co"># The 'by' argument specifies the </span></span>
+<span id="cb15-2"><a href=""></a><span class="co"># common column(s) to join on.</span></span>
+<span id="cb15-3"><a href=""></a>merged_df_right <span class="ot">&lt;-</span> df1 <span class="sc">|&gt;</span></span>
+<span id="cb15-4"><a href=""></a>  <span class="fu">right_join</span>(df2, <span class="at">by =</span> <span class="st">"ID"</span>)</span>
+<span id="cb15-5"><a href=""></a></span>
+<span id="cb15-6"><a href=""></a>merged_df_right </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID    Name     City
+1  1   Alice New York
+2  3 Charlie   London
+3  5    &lt;NA&gt;    Paris</code></pre>
+</div>
+</div>
+</section>
+<section id="r-demo-merging-datasets-3" class="slide level2">
+<h2>R Demo: Merging datasets</h2>
+<ul>
+<li>As similarly with <code>full_join()</code></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a><span class="co"># The 'by' argument specifies the </span></span>
+<span id="cb17-2"><a href=""></a><span class="co"># common column(s) to join on.</span></span>
+<span id="cb17-3"><a href=""></a>merged_df_full <span class="ot">&lt;-</span> df1 <span class="sc">|&gt;</span></span>
+<span id="cb17-4"><a href=""></a>  <span class="fu">full_join</span>(df2, <span class="at">by =</span> <span class="st">"ID"</span>)</span>
+<span id="cb17-5"><a href=""></a></span>
+<span id="cb17-6"><a href=""></a>merged_df_full </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID    Name     City
+1  1   Alice New York
+2  2     Bob     &lt;NA&gt;
+3  3 Charlie   London
+4  4   David     &lt;NA&gt;
+5  5    &lt;NA&gt;    Paris</code></pre>
+</div>
+</div>
+</section>
+<section id="r-demo-dropping-na-values" class="slide level2">
+<h2>R Demo: Dropping NA values</h2>
+<ul>
+<li>We haven’t talked about missing data much, but it may be simplest to conduct a “complete case analysis” where you only perform an analysis on complete cases:</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>merged_df <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href=""></a>  <span class="fu">drop_na</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID    Name     City
+1  1   Alice New York
+2  3 Charlie   London</code></pre>
+</div>
+</div>
+</section>
+<section id="r-demo-write.csv" class="slide level2">
+<h2>R Demo: <code>write.csv()</code></h2>
+<ul>
+<li>You can save your cleaned/merged dataset at any point using <code>write.csv()</code></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="fu">write.csv</span>(merged_df, <span class="at">file =</span> <span class="st">"data/data_clean.csv"</span>, </span>
+<span id="cb21-2"><a href=""></a>          <span class="at">row.names =</span> F) </span>
+<span id="cb21-3"><a href=""></a><span class="co"># do not create a column of row names</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li>Note that you may need to include <code>row.names = F</code> so that R does not create an additional column of row numbers.</li>
+</ul>
+</section>
 <section id="recap" class="slide level2">
 <h2>Recap</h2>
 <ul>
-<li><p>Some R demos: merging, dropping NA, <code>write.csv()</code>, re-leveling a factor</p></li>
 <li><p>Interactions, interpretations, and the math behind it all</p></li>
 <li><p>Collinearity</p></li>
+<li><p>Some R demos: uploading excel file, merging, dropping NA, <code>write.csv()</code>, re-leveling a factor</p></li>
 </ul>
 </section>
 <section id="next-class" class="slide level2">

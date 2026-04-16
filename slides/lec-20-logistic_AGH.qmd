@@ -67,9 +67,9 @@ tidy(fit_int) |>
 
 ## Review of Linear Regression 
 
-- We talked briefly, but with this p-value for this interaction term, I do not have evidence to suggest there are differences in this association by smoking and exercise
+- Based on this p-value, at $\alpha=0.05$, I do not have evidence to suggest there are differences in the association between obesity and exercise based on smoking
 
-- Sometimes based on these p-values, people might remove the interaction term and refit the model 
+- Often, based on non-significant p-values, people remove the interaction term and refit the model 
 
 ## Review of Linear Regression 
 
@@ -87,6 +87,7 @@ tidy(fit_int) |>
 ### Let’s say you’re analyzing a randomized trial  
   - Preventive therapy for cardiovascular disease  
   - You included a **treatment × sex** interaction term
+  - P-value for the interaction term was 0.83
 
 ## Would you remove it? 
 

@@ -356,7 +356,7 @@ $\hat \beta_{cigs20-29}$ + $\hat \beta_{NAT2*{cigs20-29}}\left(NAT2=slow\right)$
 
 ::: callout-tip
 
-Head to Canvas and download the template for Application Exercise 05. AE 05 will be due **this Sunday at 11:59pm**.
+Head to Canvas and download the template for Application Exercise 06. AE 06 will be due **this Sunday at 11:59pm**.
 
 Selected groups should put their answers (screenshots of code, interpretations) on [these google slides](https://docs.google.com/presentation/d/1BkdGxGVgf6htUw8a0s4PvuMwasf6G0kL4nnRsNZNaH0/edit?usp=sharing). Pick a representative to present your slide.
 
@@ -373,9 +373,11 @@ tidy(fit2) |>
 
 By hand, write out the following. Leave in terms of values given:
 
-1. What is the **predicted log odds** of dying for a patient with ascites, a bilirubin level of 3 mg/dL, and stage 3?
+1. What is the **model** we are using?
 
-2. Given this value, what is the **predicted probability**?
+2. What is the **predicted log odds** of dying for a patient with ascites, a bilirubin level of 3 mg/dL, and stage 3?
+
+3. Given this value, what is the **predicted probability**?
 
 :::
 

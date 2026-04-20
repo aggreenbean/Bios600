@@ -324,7 +324,7 @@ fit3 <- glm(bladder_ca ~  NAT2 + cigs,
 tidy(fit3) |>
   kable(digits = 3)
 ```
-Individuals smoking 20-29 cigarettes per day have exp$(\hat \beta_{cigs20-29})$=exp(1.15) times the odds of having bladder cancer compared to individuals smoking 0 cigarettes per day
+Individuals smoking 20-29 cigarettes per day have exp$(\hat \beta_{cigs20-29})$=exp(1.15) times the odds of having bladder cancer compared to individuals smoking 0 cigarettes per day, **holding NAT2 constant**
 
 ## Interaction terms {.smaller}
 
@@ -338,15 +338,12 @@ fit3 <- glm(bladder_ca ~  NAT2 + cigs + NAT2 * cigs,
 tidy(fit3) |>
   kable(digits = 3)
 ```
+
 ## Interaction term
 
-- Cigarettes per day is a categorical variable, so think in terms of odds ratios for one group vs. reference group 
+- With the interaction term in the model: 
 
-- The odds ratio comparing individuals smoking 20-29 cigarettes per day versus individuals smoking 0 cigarettes per day (reference group) differs depending on the other predictor in the interaction term
-
-<div style="text-align: center;">
-$\hat \beta_{cigs20-29}$ + $\hat \beta_{NAT2*{cigs20-29}}\left(NAT2=slow\right)$
-</div>
+Individuals smoking 20-29 cigarettes per day have exp$(\hat \beta_{cigs20-29})$=exp(1.15) times the odds of having bladder cancer compared to individuals smoking 0 cigarettes per day, **when the other predictor (NAT2) is 0**
 
 ## Interaction terms 
 

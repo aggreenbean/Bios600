@@ -39,7 +39,7 @@ format: html
 
 ## Conceptual and Applied
 
-- Knowing common tests or models given the type of predictor and type of outcome (When to choose what method at the beginning of Lec 21). 
+- Knowing common tests or models given the type of predictor and type of outcome ('When to choose what method' at the beginning of Lec 21). 
 
 - Correlation coefficient $\rho$: what type of relationship does it describe? Know the range and how to interpret positive/negative/zero values. Which statistic can we use to estimate $\rho$? (How to do this in `R`?)
   - Spearman vs. Pearson
@@ -50,19 +50,19 @@ format: html
 
 - Confounding definition
 
-- What is a regression line? What are residuals? What is error? What does "least squares" refer to? Know how to write out a linear model for a particular study, indexed by observation $i = 1, \ldots, n$.Be able to define all terms in the model. 
+- What is a regression line? What are residuals? What is error? 
+
+- Know how to write out a linear model for a particular study, indexed by observation $i = 1, \ldots, n$.Be able to define all terms in the model. 
 
 - Interpreting coefficients from simple and multiple linear regression models. What's the difference between simple vs. multiple linear regression?
 
 - Model assumptions of linear regression: be able to describe, and also how to check each one in R
 
+- In regression output, what are the individual coefficient statistics and p-values telling us? Which hypothesis test is being conducted for each p-value? Be able to write out the null and alternative hypotheses in symbols and in words. 
 
+  - For the global F-test, how would you interpret a p-value from the overall test? Be able to write out the null and alternative hypotheses in symbols and in words. 
 
-- In regression output, what are the individual coefficient statistics and p-values telling us? Which hypothesis test is being conducted for each p-value? What is the distribution of the t-statistic given in the R output? (include degrees of freedom)
-
-  - For the global F-test, what is the distribution of the test statistic (including degrees of freedom)? How would you interpret a p-value from the overall test?
-
-- $R^2$ and Adjusted $R^2$: definitions and how to interpret
+- $R^2$ and Adjusted $R^2$: definitions and how to interpret. What's the difference between them? 
 
 - How to predict a new value based on estimated coefficients from a regression model? (e.g. writing out an expression)
 

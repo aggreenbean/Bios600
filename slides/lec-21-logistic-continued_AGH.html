@@ -892,7 +892,7 @@
 </table>
 </div>
 </div>
-<p>Individuals smoking 20-29 cigarettes per day have exp<span class="math inline">\((\hat \beta_{cigs20-29})\)</span>=exp(1.15) times the odds of having bladder cancer compared to individuals smoking 0 cigarettes per day</p>
+<p>Individuals smoking 20-29 cigarettes per day have exp<span class="math inline">\((\hat \beta_{cigs20-29})\)</span>=exp(1.15) times the odds of having bladder cancer compared to individuals smoking 0 cigarettes per day, <strong>holding NAT2 constant</strong></p>
 </section>
 <section id="interaction-terms" class="slide level2 smaller">
 <h2>Interaction terms</h2>
@@ -1001,12 +1001,9 @@
 <section id="interaction-term" class="slide level2">
 <h2>Interaction term</h2>
 <ul>
-<li><p>Cigarettes per day is a categorical variable, so think in terms of odds ratios for one group vs.&nbsp;reference group</p></li>
-<li><p>The odds ratio comparing individuals smoking 20-29 cigarettes per day versus individuals smoking 0 cigarettes per day (reference group) differs depending on the other predictor in the interaction term</p></li>
+<li>With the interaction term in the model:</li>
 </ul>
-<div style="text-align: center;">
-<p><span class="math inline">\(\hat \beta_{cigs20-29}\)</span> + <span class="math inline">\(\hat \beta_{NAT2*{cigs20-29}}\left(NAT2=slow\right)\)</span></p>
-</div>
+<p>Individuals smoking 20-29 cigarettes per day have exp<span class="math inline">\((\hat \beta_{cigs20-29})\)</span>=exp(1.15) times the odds of having bladder cancer compared to individuals smoking 0 cigarettes per day, <strong>when the other predictor (NAT2) is 0</strong></p>
 </section>
 <section id="interaction-terms-1" class="slide level2">
 <h2>Interaction terms</h2>

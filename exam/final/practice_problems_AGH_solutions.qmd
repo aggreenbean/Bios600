@@ -3,6 +3,10 @@ title: "Practice Problems"
 format: html
 ---
 
+Some of these problems are meant to be fairly difficult--the purpose is to get you to think carefully about the concepts we've covered in class, and give you a better understanding of those underlying concepts, in order to be better prepared for the final.
+
+Since some of these are a bit challenging, you are encouraged to discuss these problems in small groups.
+
 ```{r}
 #| echo: false
 #| message: false

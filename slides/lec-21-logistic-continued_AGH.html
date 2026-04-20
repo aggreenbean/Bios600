@@ -9,7 +9,7 @@
 <link href="lec-21-logistic-continued_AGH_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.36">
 
-  <title>Lecture 20: Logistic Regression Continued</title>
+  <title>Lecture 21: Logistic Regression Continued</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -196,7 +196,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Lecture 20: Logistic Regression Continued</h1>
+  <h1 class="title">Lecture 21: Logistic Regression Continued</h1>
   <p class="subtitle">BIOS 600 - Spring 2026</p>
 
 <div class="quarto-title-authors">
@@ -206,28 +206,26 @@
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li><p>Test corrections due <strong>tonight at 11:59pm</strong></p></li>
-<li><p>Lab 08 due Friday at 11:59pm</p></li>
-<li><p>No class/lab on <strong>Tuesday, November 25</strong>. It’s a project workday.</p></li>
-<li><p>Projects due <strong>Monday, December 1 at 11:59pm</strong></p>
-<ul>
-<li>PDF report and Quarto file (when rendered, quarto file should produce PDF report exactly), slides to be turned in on Canvas</li>
-<li>Video to be posted on Canvas &gt; Panopto</li>
-</ul></li>
-<li><p>Do not wait until the last minute to complete your projects!</p></li>
+<li>Test corrections due <strong>Friday</strong> at 11:59 pm</li>
 </ul>
 </section>
 <section id="announcements-1" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li><p>Final Exam is <strong>Thursday, Dec 11, 8am-11am</strong> in this room (MHRC 0001).</p></li>
-<li><p>Final Exam will be similar length to previous exams, and will focus on material since Exam 02.</p></li>
+<li><p>Final Exam is <strong>Tuesday, May 5, 8am-11am</strong></p>
+<ul>
+<li>Will be in this room <strong>and</strong> McGavern 2301.</li>
+</ul></li>
+<li><p>Final Exam will be similar length to previous exams</p></li>
+<li><p>Focus on material since Exam 02</p></li>
+<li><p>Please reach out <strong>ASAP</strong> if you have any scheduling issues</p></li>
 </ul>
 </section>
 <section id="course-evaluation" class="slide level2">
 <h2>Course evaluation</h2>
 <ul>
-<li><p>Please fill out the course evaluations, due <strong>December 04 at 11:59pm</strong>.</p></li>
+<li><p>Course evaluations are due <strong>April 28 at 11:59pm</strong>.</p></li>
+<li><p>Please fill these out</p></li>
 <li><p>If at least 85% of students fill out the course evaluations, everyone in the class will receive an extra 1/2 point on the final exam score.</p></li>
 </ul>
 </section>
@@ -240,6 +238,55 @@
 <span id="cb1-4"><a href=""></a><span class="fu">library</span>(randomForestSRC) <span class="co"># for pbc data</span></span>
 <span id="cb1-5"><a href=""></a><span class="fu">data</span>(pbc, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</section>
+<section id="when-to-choose-what-method" class="slide level2 smaller">
+<h2>When to choose what method?</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 24%">
+<col style="width: 52%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Predictor Type</th>
+<th>Outcome Type</th>
+<th>Common Tests / Topics</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Categorical</td>
+<td>Categorical</td>
+<td>Fisher’s exact test, <span class="math inline">\(\chi^2\)</span> test</td>
+</tr>
+<tr class="even">
+<td>Categorical</td>
+<td>Continuous</td>
+<td>t-tests, ANOVA, nonparametric alternatives</td>
+</tr>
+<tr class="odd">
+<td>Continuous</td>
+<td>Continuous</td>
+<td>Correlation</td>
+</tr>
+<tr class="even">
+<td>Continuous <strong>or</strong> Categorical</td>
+<td>Continuous</td>
+<td>Regression</td>
+</tr>
+<tr class="odd">
+<td>Continuous <strong>or</strong> Categorical</td>
+<td>Categorical</td>
+<td>Logistic regression</td>
+</tr>
+<tr class="even">
+<td>Other / Complex</td>
+<td>Various (e.g.&nbsp;survival, counts)</td>
+<td>Advanced or “exotic” methods</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="quick-review" class="slide level2">
 <h2>Quick review</h2>
@@ -273,7 +320,7 @@
 <li><p><code>stage</code>: histologic stage of disease (ordinal categorical variable with stages 1, 2, 3, and 4)</p></li>
 </ul>
 </section>
-<section id="logistic-regression-model" class="slide level2">
+<section id="logistic-regression-model" class="slide level2 smaller">
 <h2>Logistic regression model</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>fit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(status <span class="sc">~</span> ascites <span class="sc">+</span> bili <span class="sc">+</span> <span class="fu">as.factor</span>(stage), </span>
@@ -340,10 +387,362 @@
 </div>
 </div>
 </section>
+<section id="hypothesis-tests-in-logistic-regression" class="slide level2">
+<h2>Hypothesis tests in logistic regression</h2>
+<p>Generally, we wish to know whether the OR = 1 or equivalently, whether the logit of <span class="math inline">\(p\)</span> (a <span class="math inline">\(\beta\)</span> coefficient) = 0. To test</p>
+<p><span class="math display">\[H_0: \beta_k = 0\]</span></p>
+<p><span class="math display">\[H_1: \beta_k \neq 0\]</span></p>
+<p>we can compare the ratio of a parameter estimate to its standard error using the standard normal distribution (reason we use Z instead of t is a bit technical).</p>
+</section>
+<section id="logistic-regression-model-1" class="slide level2 smaller">
+<h2>Logistic regression model</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>fit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(status <span class="sc">~</span> ascites <span class="sc">+</span> bili <span class="sc">+</span> <span class="fu">as.factor</span>(stage), </span>
+<span id="cb3-2"><a href=""></a>            <span class="at">data =</span> pbc, </span>
+<span id="cb3-3"><a href=""></a>            <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
+<span id="cb3-4"><a href=""></a><span class="co"># Gets estimates for log odds scale</span></span>
+<span id="cb3-5"><a href=""></a><span class="fu">tidy</span>(fit2) <span class="sc">|&gt;</span></span>
+<span id="cb3-6"><a href=""></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-3.143</td>
+<td style="text-align: right;">1.054</td>
+<td style="text-align: right;">-2.981</td>
+<td style="text-align: right;">0.003</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ascites</td>
+<td style="text-align: right;">2.868</td>
+<td style="text-align: right;">1.067</td>
+<td style="text-align: right;">2.689</td>
+<td style="text-align: right;">0.007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">bili</td>
+<td style="text-align: right;">0.315</td>
+<td style="text-align: right;">0.064</td>
+<td style="text-align: right;">4.886</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">as.factor(stage)2</td>
+<td style="text-align: right;">1.251</td>
+<td style="text-align: right;">1.095</td>
+<td style="text-align: right;">1.142</td>
+<td style="text-align: right;">0.253</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">as.factor(stage)3</td>
+<td style="text-align: right;">1.716</td>
+<td style="text-align: right;">1.069</td>
+<td style="text-align: right;">1.604</td>
+<td style="text-align: right;">0.109</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">as.factor(stage)4</td>
+<td style="text-align: right;">2.167</td>
+<td style="text-align: right;">1.075</td>
+<td style="text-align: right;">2.015</td>
+<td style="text-align: right;">0.044</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
 <section id="interpretation" class="slide level2">
 <h2>Interpretation</h2>
 <p><span class="math inline">\(\hat\beta_{\text{bili}}\)</span>: Each one mg/dL increase in bilirubin is associated with the odds of death being multiplied by exp(.315) = 1.37, holding ascites presence and ascites presence constant.</p>
 <p><strong>Another Equivalent Interpretation</strong>: A one mg/dL increase in bilirubin is associated with 37% higher odds of death, holding ascites presence and status constant.</p>
+<p>Interpretation includes <strong>estimates of magnitude, the units and since we are using multivariable model specifies we are holding all other varibles constant</strong></p>
+</section>
+<section id="in-r" class="slide level2 smaller">
+<h2>In R</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>fit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(status <span class="sc">~</span> ascites <span class="sc">+</span> bili <span class="sc">+</span> <span class="fu">as.factor</span>(stage), </span>
+<span id="cb4-2"><a href=""></a>            <span class="at">data =</span> pbc, </span>
+<span id="cb4-3"><a href=""></a>            <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
+<span id="cb4-4"><a href=""></a><span class="co"># Get odds ratios </span></span>
+<span id="cb4-5"><a href=""></a><span class="co"># Note std.error values are **not** not exponentiated</span></span>
+<span id="cb4-6"><a href=""></a><span class="fu">tidy</span>(fit2, <span class="at">exponentiate =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-7"><a href=""></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">0.043</td>
+<td style="text-align: right;">1.054</td>
+<td style="text-align: right;">-2.981</td>
+<td style="text-align: right;">0.003</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ascites</td>
+<td style="text-align: right;">17.608</td>
+<td style="text-align: right;">1.067</td>
+<td style="text-align: right;">2.689</td>
+<td style="text-align: right;">0.007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">bili</td>
+<td style="text-align: right;">1.370</td>
+<td style="text-align: right;">0.064</td>
+<td style="text-align: right;">4.886</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">as.factor(stage)2</td>
+<td style="text-align: right;">3.493</td>
+<td style="text-align: right;">1.095</td>
+<td style="text-align: right;">1.142</td>
+<td style="text-align: right;">0.253</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">as.factor(stage)3</td>
+<td style="text-align: right;">5.561</td>
+<td style="text-align: right;">1.069</td>
+<td style="text-align: right;">1.604</td>
+<td style="text-align: right;">0.109</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">as.factor(stage)4</td>
+<td style="text-align: right;">8.733</td>
+<td style="text-align: right;">1.075</td>
+<td style="text-align: right;">2.015</td>
+<td style="text-align: right;">0.044</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="confidence-intervals" class="slide level2">
+<h2>Confidence intervals</h2>
+<p>CIs for associations on the <strong>logit scale</strong> are given by</p>
+<div class="poll">
+<p><span class="math display">\[\hat \beta_j \pm z^*_{1-\alpha/2} \times \widehat {SE} (\hat\beta_j)\]</span></p>
+</div>
+<p>These are typically translated into confidence intervals in <strong>odds scale</strong> by exponentiating the lower and upper limits.</p>
+<p><span class="math display">\[[\text{exp}(\hat \beta_j - z^*_{1-\alpha/2} \times \widehat {SE} (\hat\beta_j)), \text{exp}(\hat \beta_j + z^*_{1-\alpha/2} \times \widehat {SE} (\hat\beta_j))]\]</span></p>
+</section>
+<section id="confidence-intervals-1" class="slide level2">
+<h2>Confidence intervals</h2>
+<ul>
+<li>For the variable ascites [patient had ascites (1 = yes, 0 = no)]
+<ul>
+<li><span class="math inline">\(\hat{\beta}_{ascites}\)</span> = 2.868</li>
+<li>Standard error of <span class="math inline">\(\hat{\beta}_{ascites}\)</span> = 1.067</li>
+</ul></li>
+<li>We are 95% confident that the true difference in the log‑odds of the outcome comparing patients with ascites to those without ascites lies within the following interval, holding the other variables in the model constant: <span class="math display">\[\hat \beta_j \pm z^*_{1-\alpha/2} \times \widehat {SE} (\hat\beta_j)\]</span></li>
+</ul>
+</section>
+<section id="in-r-1" class="slide level2 smaller">
+<h2>In R</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># Get odds ratios and 95% CIs</span></span>
+<span id="cb5-2"><a href=""></a><span class="fu">tidy</span>(fit2, <span class="at">conf.int =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href=""></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 12%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 10%">
+<col style="width: 12%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+<th style="text-align: right;">conf.low</th>
+<th style="text-align: right;">conf.high</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-3.143</td>
+<td style="text-align: right;">1.054</td>
+<td style="text-align: right;">-2.981</td>
+<td style="text-align: right;">0.003</td>
+<td style="text-align: right;">-6.062</td>
+<td style="text-align: right;">-1.499</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ascites</td>
+<td style="text-align: right;">2.868</td>
+<td style="text-align: right;">1.067</td>
+<td style="text-align: right;">2.689</td>
+<td style="text-align: right;">0.007</td>
+<td style="text-align: right;">1.167</td>
+<td style="text-align: right;">5.796</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">bili</td>
+<td style="text-align: right;">0.315</td>
+<td style="text-align: right;">0.064</td>
+<td style="text-align: right;">4.886</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.198</td>
+<td style="text-align: right;">0.450</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">as.factor(stage)2</td>
+<td style="text-align: right;">1.251</td>
+<td style="text-align: right;">1.095</td>
+<td style="text-align: right;">1.142</td>
+<td style="text-align: right;">0.253</td>
+<td style="text-align: right;">-0.525</td>
+<td style="text-align: right;">4.208</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">as.factor(stage)3</td>
+<td style="text-align: right;">1.716</td>
+<td style="text-align: right;">1.069</td>
+<td style="text-align: right;">1.604</td>
+<td style="text-align: right;">0.109</td>
+<td style="text-align: right;">0.017</td>
+<td style="text-align: right;">4.647</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">as.factor(stage)4</td>
+<td style="text-align: right;">2.167</td>
+<td style="text-align: right;">1.075</td>
+<td style="text-align: right;">2.015</td>
+<td style="text-align: right;">0.044</td>
+<td style="text-align: right;">0.450</td>
+<td style="text-align: right;">5.104</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="confidence-intervals-2" class="slide level2">
+<h2>Confidence intervals</h2>
+<ul>
+<li>For the variable ascites [patient had ascites (1 = yes, 0 = no)]
+<ul>
+<li><span class="math inline">\(\hat{\beta}_{ascites}\)</span> = 2.868</li>
+<li>Standard error of <span class="math inline">\(\hat{\beta}_{ascites}\)</span> = 1.067</li>
+</ul></li>
+<li>We are 95% confident that the true odds ratio comparing patients with ascites to those without ascites lies within the following interval, holding the other variables in the model constant: <span class="math display">\[[\text{exp}(\hat \beta_j - z^*_{1-\alpha/2} \times \widehat {SE} (\hat\beta_j)), \text{exp}(\hat \beta_j + z^*_{1-\alpha/2} \times \widehat {SE} (\hat\beta_j))]\]</span></li>
+</ul>
+</section>
+<section id="in-r-2" class="slide level2 smaller">
+<h2>In R</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="co"># Get odds ratios and 95% CIs</span></span>
+<span id="cb6-2"><a href=""></a><span class="fu">tidy</span>(fit2, <span class="at">exponentiate =</span> <span class="cn">TRUE</span>, <span class="at">conf.int =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href=""></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 12%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 10%">
+<col style="width: 12%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+<th style="text-align: right;">conf.low</th>
+<th style="text-align: right;">conf.high</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">0.043</td>
+<td style="text-align: right;">1.054</td>
+<td style="text-align: right;">-2.981</td>
+<td style="text-align: right;">0.003</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">0.223</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ascites</td>
+<td style="text-align: right;">17.608</td>
+<td style="text-align: right;">1.067</td>
+<td style="text-align: right;">2.689</td>
+<td style="text-align: right;">0.007</td>
+<td style="text-align: right;">3.213</td>
+<td style="text-align: right;">329.029</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">bili</td>
+<td style="text-align: right;">1.370</td>
+<td style="text-align: right;">0.064</td>
+<td style="text-align: right;">4.886</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">1.219</td>
+<td style="text-align: right;">1.568</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">as.factor(stage)2</td>
+<td style="text-align: right;">3.493</td>
+<td style="text-align: right;">1.095</td>
+<td style="text-align: right;">1.142</td>
+<td style="text-align: right;">0.253</td>
+<td style="text-align: right;">0.591</td>
+<td style="text-align: right;">67.253</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">as.factor(stage)3</td>
+<td style="text-align: right;">5.561</td>
+<td style="text-align: right;">1.069</td>
+<td style="text-align: right;">1.604</td>
+<td style="text-align: right;">0.109</td>
+<td style="text-align: right;">1.017</td>
+<td style="text-align: right;">104.304</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">as.factor(stage)4</td>
+<td style="text-align: right;">8.733</td>
+<td style="text-align: right;">1.075</td>
+<td style="text-align: right;">2.015</td>
+<td style="text-align: right;">0.044</td>
+<td style="text-align: right;">1.568</td>
+<td style="text-align: right;">164.733</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
 <section id="predicted-probabilities" class="slide level2 smaller">
 <h2>Predicted probabilities</h2>
@@ -355,37 +754,45 @@
 <p>Thus, their predicted <strong>probability</strong> of dying is</p>
 <p><span class="math display">\[\frac{\text{exp}(-0.34)}{1+\text{exp}(-0.34)} = 0.42\]</span></p>
 </section>
-<section id="in-r" class="slide level2">
+<section id="in-r-3" class="slide level2">
 <h2>In R</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># Example patient:</span></span>
-<span id="cb3-2"><a href=""></a>new_patient <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb3-3"><a href=""></a>  <span class="at">ascites =</span> <span class="dv">0</span>,</span>
-<span id="cb3-4"><a href=""></a>  <span class="at">bili =</span> <span class="dv">5</span>,</span>
-<span id="cb3-5"><a href=""></a>  <span class="at">stage =</span> <span class="dv">2</span></span>
-<span id="cb3-6"><a href=""></a>)</span>
-<span id="cb3-7"><a href=""></a></span>
-<span id="cb3-8"><a href=""></a><span class="co"># Get predicted log-odds (type = "link")</span></span>
-<span id="cb3-9"><a href=""></a>pred_logodds <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit2, </span>
-<span id="cb3-10"><a href=""></a>                        <span class="at">newdata =</span> new_patient, </span>
-<span id="cb3-11"><a href=""></a>                        <span class="at">type =</span> <span class="st">"link"</span>)</span>
-<span id="cb3-12"><a href=""></a></span>
-<span id="cb3-13"><a href=""></a><span class="co"># Convert log-odds to odds</span></span>
-<span id="cb3-14"><a href=""></a>pred_odds <span class="ot">&lt;-</span> <span class="fu">exp</span>(pred_logodds)</span>
-<span id="cb3-15"><a href=""></a></span>
-<span id="cb3-16"><a href=""></a><span class="co"># Convert odds to probability</span></span>
-<span id="cb3-17"><a href=""></a>pred_prob <span class="ot">&lt;-</span> pred_odds <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> pred_odds)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="co"># Example patient:</span></span>
+<span id="cb7-2"><a href=""></a>new_patient <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb7-3"><a href=""></a>  <span class="at">ascites =</span> <span class="dv">0</span>,</span>
+<span id="cb7-4"><a href=""></a>  <span class="at">bili =</span> <span class="dv">5</span>,</span>
+<span id="cb7-5"><a href=""></a>  <span class="at">stage =</span> <span class="dv">2</span></span>
+<span id="cb7-6"><a href=""></a>)</span>
+<span id="cb7-7"><a href=""></a></span>
+<span id="cb7-8"><a href=""></a><span class="co"># Get predicted log-odds (type = "link")</span></span>
+<span id="cb7-9"><a href=""></a>pred_logodds <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit2, </span>
+<span id="cb7-10"><a href=""></a>                        <span class="at">newdata =</span> new_patient, </span>
+<span id="cb7-11"><a href=""></a>                        <span class="at">type =</span> <span class="st">"link"</span>)</span>
+<span id="cb7-12"><a href=""></a></span>
+<span id="cb7-13"><a href=""></a><span class="co"># Convert log-odds to odds</span></span>
+<span id="cb7-14"><a href=""></a>pred_odds <span class="ot">&lt;-</span> <span class="fu">exp</span>(pred_logodds)</span>
+<span id="cb7-15"><a href=""></a></span>
+<span id="cb7-16"><a href=""></a><span class="co"># Convert odds to probability</span></span>
+<span id="cb7-17"><a href=""></a>pred_prob <span class="ot">&lt;-</span> pred_odds <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> pred_odds)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</section>
+<section id="in-r-4" class="slide level2">
+<h2>In R</h2>
+<ul>
+<li><p>Type = link tells R to estimate the outcome variable in terms of a function of the linear predictor (in the case of logistic regression this returns the log-odds (logit) of the outcome)</p></li>
+<li><p>Since generalized linear models do not model the outcome directly in the <strong>glm</strong> function we need to specify the distribution via the family argument</p></li>
+<li><p>Since generalized linear models do not model the outcome directly in the <strong>predict</strong> function we need to specify the scale on which predictions are returned (e.g., log‑odds vs.&nbsp;probabilities)</p></li>
+</ul>
 </section>
 <section id="output" class="slide level2">
 <h2>Output</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>pred_logodds</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>pred_logodds</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         1 
 -0.3180994 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>pred_prob</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>pred_prob</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       1 
 0.421139 </code></pre>
@@ -398,6 +805,11 @@
 <li>We can also calculate the predicted probability directly using <code>predict</code> by setting the <code>type</code> to be <code>"response"</code>.</li>
 </ul>
 <div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="co"># Get predicted probability (type = "response")</span></span>
+<span id="cb12-2"><a href=""></a>pred_prob2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit2, </span>
+<span id="cb12-3"><a href=""></a>                        <span class="at">newdata =</span> new_patient, </span>
+<span id="cb12-4"><a href=""></a>                        <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb12-5"><a href=""></a>pred_prob2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       1 
 0.421139 </code></pre>
@@ -497,7 +909,7 @@
 </div>
 </div>
 </section>
-<section id="hypothesis-tests-in-logistic-regression" class="slide level2">
+<section id="hypothesis-tests-in-logistic-regression-1" class="slide level2">
 <h2>Hypothesis tests in logistic regression</h2>
 <p>Generally, we wish to know whether the OR = 1 or equivalently, whether the logit of <span class="math inline">\(p\)</span> (a <span class="math inline">\(\beta\)</span> coefficient) = 0. To test</p>
 <p><span class="math display">\[H_0: \beta_k = 0\]</span></p>
@@ -507,7 +919,7 @@
 <li>(The reason we use Z instead of t is a bit technical, so we won’t go into it in class).</li>
 </ul>
 </section>
-<section id="confidence-intervals" class="slide level2">
+<section id="confidence-intervals-3" class="slide level2">
 <h2>Confidence intervals</h2>
 <p>CIs for associations on the <strong>logit scale</strong> are given by</p>
 <div class="poll">

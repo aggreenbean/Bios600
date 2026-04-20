@@ -22,6 +22,8 @@ execute:
 
 - Final Exam will be similar length to previous exams
 
+- No formulas needed and so no formula sheet provided
+
 - Focus on material since Exam 02
 
 - Please reach out **ASAP** if you have any scheduling issues

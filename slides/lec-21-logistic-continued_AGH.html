@@ -224,20 +224,10 @@
 <section id="course-evaluation" class="slide level2">
 <h2>Course evaluation</h2>
 <ul>
-<li><p>Course evaluations are due <strong>April 28 at 11:59pm</strong>.</p></li>
-<li><p>Please fill these out</p></li>
+<li><p>Please fill out course evaluations</p></li>
+<li><p>Evaluations are due <strong>April 28 at 11:59pm</strong>.</p></li>
 <li><p>If at least 85% of students fill out the course evaluations, everyone in the class will receive an extra 1/2 point on the final exam score.</p></li>
 </ul>
-</section>
-<section id="computational-setup" class="slide level2">
-<h2>Computational setup</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href=""></a><span class="fu">library</span>(tidymodels)</span>
-<span id="cb1-3"><a href=""></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb1-4"><a href=""></a><span class="fu">library</span>(randomForestSRC) <span class="co"># for pbc data</span></span>
-<span id="cb1-5"><a href=""></a><span class="fu">data</span>(pbc, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
 </section>
 <section id="when-to-choose-what-method" class="slide level2 smaller">
 <h2>When to choose what method?</h2>
@@ -308,6 +298,16 @@
 </ol>
 </div>
 </div>
+</div>
+</section>
+<section id="computational-setup" class="slide level2">
+<h2>Computational setup</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href=""></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb1-3"><a href=""></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-4"><a href=""></a><span class="fu">library</span>(randomForestSRC) <span class="co"># for pbc data</span></span>
+<span id="cb1-5"><a href=""></a><span class="fu">data</span>(pbc, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="logistic-regression-from-last-time" class="slide level2">
@@ -780,8 +780,8 @@
 <h2>In R</h2>
 <ul>
 <li><p>Type = link tells R to estimate the outcome variable in terms of a function of the linear predictor (in the case of logistic regression this returns the log-odds (logit) of the outcome)</p></li>
-<li><p>Since generalized linear models do not model the outcome directly in the <strong>glm</strong> function we need to specify the distribution via the family argument</p></li>
-<li><p>Since generalized linear models do not model the outcome directly in the <strong>predict</strong> function we need to specify the scale on which predictions are returned (e.g., log‑odds vs.&nbsp;probabilities)</p></li>
+<li><p>Since generalized linear models do not model the outcome directly in the <code>glm</code> function we need to specify the distribution via the family argument</p></li>
+<li><p>Since generalized linear models do not model the outcome directly in the <code>predict</code> function we need to specify the scale on which predictions are returned (e.g.&nbsp;log‑odds vs.&nbsp;probabilities)</p></li>
 </ul>
 </section>
 <section id="output" class="slide level2">
@@ -816,6 +816,202 @@
 </div>
 </div>
 </section>
+<section id="logistic-regression-model-2" class="slide level2 smaller">
+<h2>Logistic regression model</h2>
+<ul>
+<li><p>We can also include interaction terms in logistic regression models</p></li>
+<li><p>This allows to test whether the association between a predictor and the outcome variable depends on the value of another variable</p></li>
+<li><p>Let’s take for example this <a href="https://pubmed.ncbi.nlm.nih.gov/16112301/">study</a> looking at gene by environment interaction with risk of bladder cancer</p></li>
+</ul>
+</section>
+<section id="without-interaction" class="slide level2 smaller">
+<h2>Without interaction</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-5.394</td>
+<td style="text-align: right;">0.282</td>
+<td style="text-align: right;">-19.139</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NAT2slow</td>
+<td style="text-align: right;">1.425</td>
+<td style="text-align: right;">0.175</td>
+<td style="text-align: right;">8.140</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">cigs1-9</td>
+<td style="text-align: right;">0.094</td>
+<td style="text-align: right;">0.380</td>
+<td style="text-align: right;">0.248</td>
+<td style="text-align: right;">0.804</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">cigs10-19</td>
+<td style="text-align: right;">0.796</td>
+<td style="text-align: right;">0.307</td>
+<td style="text-align: right;">2.593</td>
+<td style="text-align: right;">0.010</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">cigs20-29</td>
+<td style="text-align: right;">1.154</td>
+<td style="text-align: right;">0.301</td>
+<td style="text-align: right;">3.832</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">cigs30-39</td>
+<td style="text-align: right;">1.784</td>
+<td style="text-align: right;">0.281</td>
+<td style="text-align: right;">6.348</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">cigs40+</td>
+<td style="text-align: right;">2.335</td>
+<td style="text-align: right;">0.283</td>
+<td style="text-align: right;">8.247</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Individuals smoking 20-29 cigarettes per day have exp<span class="math inline">\((\hat \beta_{cigs20-29})\)</span>=exp(1.15) times the odds of having bladder cancer compared to individuals smoking 0 cigarettes per day</p>
+</section>
+<section id="interaction-terms" class="slide level2 smaller">
+<h2>Interaction terms</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-4.807</td>
+<td style="text-align: right;">0.410</td>
+<td style="text-align: right;">-11.727</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NAT2slow</td>
+<td style="text-align: right;">0.618</td>
+<td style="text-align: right;">0.510</td>
+<td style="text-align: right;">1.212</td>
+<td style="text-align: right;">0.225</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">cigs1-9</td>
+<td style="text-align: right;">-0.140</td>
+<td style="text-align: right;">0.710</td>
+<td style="text-align: right;">-0.197</td>
+<td style="text-align: right;">0.844</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">cigs10-19</td>
+<td style="text-align: right;">0.301</td>
+<td style="text-align: right;">0.559</td>
+<td style="text-align: right;">0.538</td>
+<td style="text-align: right;">0.591</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">cigs20-29</td>
+<td style="text-align: right;">0.858</td>
+<td style="text-align: right;">0.544</td>
+<td style="text-align: right;">1.578</td>
+<td style="text-align: right;">0.114</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">cigs30-39</td>
+<td style="text-align: right;">1.245</td>
+<td style="text-align: right;">0.497</td>
+<td style="text-align: right;">2.504</td>
+<td style="text-align: right;">0.012</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">cigs40+</td>
+<td style="text-align: right;">0.971</td>
+<td style="text-align: right;">0.582</td>
+<td style="text-align: right;">1.669</td>
+<td style="text-align: right;">0.095</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NAT2slow:cigs1-9</td>
+<td style="text-align: right;">0.358</td>
+<td style="text-align: right;">0.842</td>
+<td style="text-align: right;">0.425</td>
+<td style="text-align: right;">0.671</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NAT2slow:cigs10-19</td>
+<td style="text-align: right;">0.688</td>
+<td style="text-align: right;">0.671</td>
+<td style="text-align: right;">1.026</td>
+<td style="text-align: right;">0.305</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NAT2slow:cigs20-29</td>
+<td style="text-align: right;">0.438</td>
+<td style="text-align: right;">0.654</td>
+<td style="text-align: right;">0.669</td>
+<td style="text-align: right;">0.503</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NAT2slow:cigs30-39</td>
+<td style="text-align: right;">0.744</td>
+<td style="text-align: right;">0.604</td>
+<td style="text-align: right;">1.232</td>
+<td style="text-align: right;">0.218</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NAT2slow:cigs40+</td>
+<td style="text-align: right;">1.756</td>
+<td style="text-align: right;">0.674</td>
+<td style="text-align: right;">2.603</td>
+<td style="text-align: right;">0.009</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="interaction-term" class="slide level2">
+<h2>Interaction term</h2>
+<ul>
+<li><p>Cigarettes per day is a categorical variable, so think in terms of odds ratios for one group vs.&nbsp;reference group</p></li>
+<li><p>The odds ratio comparing individuals smoking 20-29 cigarettes per day versus individuals smoking 0 cigarettes per day (reference group) differs depending on the other predictor in the interaction term</p></li>
+</ul>
+<div style="text-align: center;">
+<p><span class="math inline">\(\hat \beta_{cigs20-29}\)</span> + <span class="math inline">\(\hat \beta_{NAT2*{cigs20-29}}\left(NAT2=slow\right)\)</span></p>
+</div>
+</section>
+<section id="interaction-terms-1" class="slide level2">
+<h2>Interaction terms</h2>
+
+<img data-src="images/lect-21/genebye.jpg" class="r-stretch"></section>
 <section id="application-exercise" class="slide level2">
 <h2>Application Exercise</h2>
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -828,7 +1024,7 @@
 </div>
 <div class="callout-content">
 <p>Head to Canvas and download the template for Application Exercise 05. AE 05 will be due <strong>this Sunday at 11:59pm</strong>.</p>
-<p>Selected groups should put their answers (screenshots of code, interpretations) on <a href="https://docs.google.com/presentation/d/1Jm7LUn5_xbzZDmswAJQmoH2M9rsnYx68-ui_Vqlx7Fw/edit?usp=sharing">these google slides</a>. Pick a representative to present your slide.</p>
+<p>Selected groups should put their answers (screenshots of code, interpretations) on <a href="https://docs.google.com/presentation/d/1BkdGxGVgf6htUw8a0s4PvuMwasf6G0kL4nnRsNZNaH0/edit?usp=sharing">these google slides</a>. Pick a representative to present your slide.</p>
 </div>
 </div>
 </div>
@@ -909,32 +1105,6 @@
 </div>
 </div>
 </section>
-<section id="hypothesis-tests-in-logistic-regression-1" class="slide level2">
-<h2>Hypothesis tests in logistic regression</h2>
-<p>Generally, we wish to know whether the OR = 1 or equivalently, whether the logit of <span class="math inline">\(p\)</span> (a <span class="math inline">\(\beta\)</span> coefficient) = 0. To test</p>
-<p><span class="math display">\[H_0: \beta_k = 0\]</span></p>
-<p><span class="math display">\[H_1: \beta_k \neq 0\]</span></p>
-<p>we can compare the ratio of a parameter estimate to its standard error using the standard normal distribution</p>
-<ul>
-<li>(The reason we use Z instead of t is a bit technical, so we won’t go into it in class).</li>
-</ul>
-</section>
-<section id="confidence-intervals-3" class="slide level2">
-<h2>Confidence intervals</h2>
-<p>CIs for associations on the <strong>logit scale</strong> are given by</p>
-<div class="poll">
-<p><span class="math display">\[\hat \beta_j \pm z^*_{1-\alpha/2} \times \widehat {SE} (\hat\beta_j)\]</span></p>
-</div>
-<p>These are typically translated into confidence intervals in <strong>odds scale</strong> by exponentiating the lower and upper limits. That is,:</p>
-<p><span class="math display">\[[\text{exp}(\hat \beta_j - z^*_{1-\alpha/2} \times \widehat {SE} (\hat\beta_j)), \text{exp}(\hat \beta_j + z^*_{1-\alpha/2} \times \widehat {SE} (\hat\beta_j))]\]</span></p>
-</section>
-<section id="participation" class="slide level2">
-<h2>Participation</h2>
-<ul>
-<li><p>Think about your knowledge of statistics and confidence with R coding at the beginning of the semester vs.&nbsp;now.</p></li>
-<li><p>What (if anything) about the structure of our class has been particularly helpful for your learning? (labs, Application Exercises, HW, lecture examples, TA office hours?)</p></li>
-</ul>
-</section>
 <section id="recap" class="slide level2">
 <h2>Recap</h2>
 <ul>
@@ -946,9 +1116,7 @@
 <section id="next-class" class="slide level2">
 <h2>Next class</h2>
 <ul>
-<li><p>No class on Tuesday 11/25.</p></li>
-<li><p>Have a restful week next week!</p></li>
-<li><p>Last day of class is Dec.&nbsp;2. (Class wrap-up, Exam info)</p></li>
+<li>Last day of class is this <strong>Thursday</strong> (Class wrap-up, Exam info)</li>
 </ul>
 
 </section>

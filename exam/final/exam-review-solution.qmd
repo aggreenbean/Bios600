@@ -152,7 +152,7 @@ Interpret each coefficient in the model. How does the interpretation of the age 
 
 ### (c)
 
-What is the $R^2$ and adjusted $R^2$? Interpret the adjusted $R^2$. Why might we prefer adjusted $R^2$ to $R^2$?
+What is the $R^2$ and adjusted $R^2$? Interpret the adjusted $R^2$. Why might we prefer adjusted $R^2$ versus regular $R^2$?
 
 [type response here]
 
@@ -186,11 +186,10 @@ You were concerned there might be differences in the association between BMI and
 
 ```
 
-
-i) Given the interaction term is in the model, interpret the coefficient for BMI (what happens to systolic blood pressure when BMI increases by 1 kg/m2)
+i) Given the interaction term is in the model, what is the estimated change in systolic blood pressure corresponding to a 1 kg/m2 increase in BMI. **Note that the estimated change will depend on an individuals gender**
 
 [type response here]
 
-ii) Based on the results from this model do you think there is evidence of a difference in the association by gender (assume $\alpha=0.05$). Why or why not?
+ii) Based on the results from this model do you think there is evidence of a difference in the association by gender (assume $\alpha=0.05$ Why or why not?
 
 [type response here]

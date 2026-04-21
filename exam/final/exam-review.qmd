@@ -92,7 +92,7 @@ Write out the mathematical model for this regression, clearly defining all terms
 Fit the model in R and display the summary output using `tidy()` and `kable()`.
 
 ```{r}
-#| label: q3b
+#| label: q2b
 
 # type code here
 
@@ -113,7 +113,7 @@ In the following exercise, we'll check all four assumptions of linear regression
 Create diagnostic plots to check: (1) Linearity, (2) Normality of residuals, (3) Homoscedasticity, (4) Independence
 
 ```{r}
-#| label: q4a
+#| label: q3a
 
 # Your code here
 
@@ -138,7 +138,7 @@ In this question, we'll fit a multiple linear regression model predicting systol
 Fit the model and display the estimated coefficients using `tidy()` and `kable()`. Round to 3 digits.
 
 ```{r}
-#| label: q5a
+#| label: q4a
 
 # Your code here
 
@@ -160,6 +160,13 @@ What is the $R^2$ and adjusted $R^2$? Interpret the adjusted $R^2$. Why might we
 
 What is the F-statistic testing? State the null and alternative hypotheses. Interpret the p-value.
 
+```{r}
+#| label: q4d
+
+# Your code here
+
+```
+
 [type response here]
 
 ### (e)
@@ -167,7 +174,7 @@ What is the F-statistic testing? State the null and alternative hypotheses. Inte
 Predict the systolic blood pressure for a 45-year-old male with BMI of 28. (First create a new data frame, then use the `predict()` function.) Write a 1-sentence conclusion about the predicted value. 
 
 ```{r}
-#| label: q5e
+#| label: q4e
 
 # type code here
 
@@ -180,7 +187,7 @@ Predict the systolic blood pressure for a 45-year-old male with BMI of 28. (Firs
 You were concerned there might be differences in the association between BMI and systolic blood pressure by gender. Run the test with the interaction term for gender and BMI.  
 
 ```{r}
-#| label: q5f
+#| label: q4f
 
 # type code here
 

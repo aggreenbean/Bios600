@@ -26,8 +26,6 @@ execute:
 
 - Focus on material since Exam 02
 
-- Please reach out **ASAP** if you have any scheduling issues
-
 ## Course evaluation
 
 - Please fill out course evaluations

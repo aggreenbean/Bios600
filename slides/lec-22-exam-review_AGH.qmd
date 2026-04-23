@@ -18,6 +18,7 @@ execute:
 
 - If at least 85% of students fill out the course evaluations, everyone in the class will receive an extra 1/2 point on the final exam score. 
 
+- AE #6 is due this Sunday **April 26**
 
 ## Final Exam Info
 
@@ -30,8 +31,6 @@ execute:
 
 ## Final Exam Info
 
-- Please reach out **ASAP** if you have any scheduling issues
-
 - Focus on material since Exam 02
 
 - Final Topics, Final Info and Practice Problems posted on Canvas 
@@ -41,7 +40,7 @@ execute:
 :::callout-tip
 ## Exam Review
 
-Head to Canvas and download the template for AE 06. This application exercise will serve as review for final exam material. 
+Head to Canvas and download the template for Exam Review. This application exercise will serve as review for final exam material. 
 
 Select groups should put their solutions on [these Google Slides](https://docs.google.com/presentation/d/18sEurrIUaDs9Vg-r_fsVYMe97XeiztLVfhriIq4lp7Q/edit?usp=sharing) and be ready to present later in class. 
 :::
@@ -62,6 +61,3 @@ Hopefully, BIOS 600 has helped you
 
 - Stay in touch! 
 
-## Participation
-
-- How do you feel that BIOS 600 has strengthened your (bio)statistical toolkit this semester? 

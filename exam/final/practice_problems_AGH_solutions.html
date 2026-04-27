@@ -130,8 +130,6 @@ window.Quarto = {
 </header>
 
 
-<p>Some of these problems are meant to be fairly difficult–the purpose is to get you to think carefully about the concepts we’ve covered in class, and give you a better understanding of those underlying concepts, in order to be better prepared for the final.</p>
-<p>Since some of these are a bit challenging, you are encouraged to discuss these problems in small groups.</p>
 <section id="exercise-1-multicollinearity-and-linear-regression" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-1-multicollinearity-and-linear-regression">Exercise 1: Multicollinearity and linear regression</h2>
 <p>A (fictional) study examined the association between three air pollutants, Pollutant1, Pollutant2, and Pollutant3, and prevalence of asthma within counties in a fictional U.S. state. The pollutant variables are the average concentrations in parts per billion (ppb) measured at monitoring sites within that county. Prevalence of asthma is the % of the county’s population diagnosed with asthma; it’s treated as normally distributed. The sample comprised 100 counties in this state. Assume hypothesis tests are conducted with significance level <span class="math inline">\(\alpha=.05.\)</span></p>
@@ -183,18 +181,22 @@ window.Quarto = {
 <section id="a" class="level3">
 <h3 class="anchored" data-anchor-id="a">(a)</h3>
 <p>Write out the model that has been fit in symbols below (i.e.&nbsp;<span class="math inline">\(Asthma_{i} = ...\)</span>)</p>
+<p><span style="color:blue;"> <span class="math inline">\(Asthma_{i} = \beta_{0}+\beta_{1}Pollutant1_{i}+\beta_{2}Pollutant2_{i}+\beta_{3}Pollutant3_{i}+\epsilon_{i}\)</span> </span></p>
 </section>
 <section id="b" class="level3">
 <h3 class="anchored" data-anchor-id="b">(b)</h3>
 <p>What are the results of the hypothesis tests for the significance of each pollutant? Interpret these results in the context of the study.</p>
+<p><span style="color:blue;">Each of the hypothesis tests for individual pollutants’ association with asthma prevalence, holding the other pollutant levels constant, have a p-value greater than 0.05. So for each of these tests, we would fail to reject the null hypothesis that the air concentration of that pollutant in ppb is associated with asthma prevalence (%), holding the other pollutant levels constant.</span></p>
 </section>
 <section id="c" class="level3">
 <h3 class="anchored" data-anchor-id="c">(c)</h3>
 <p>Write the null and alternative hypotheses for the F-test for overall model significance. Write these hypotheses both in symbols, and in words in the context of the study.</p>
+<p><span style="color:blue;">Symbols: <span class="math inline">\(H_0: \beta_1=\beta_2=\beta_3=0. H_1:\)</span> At least one of <span class="math inline">\(\beta_j, j=1,2,3\)</span> is not equal to 0.</span></p>
+<p>Words: The null hypothesis is that none of the pollutant concentrations (ppb) is associated with asthma prevalence (%). The alternative hypothesis is that at least one of the pollutant concentrations (ppb) is associated with asthma prevalence (%). </p>
 </section>
 <section id="d" class="level3">
 <h3 class="anchored" data-anchor-id="d">(d)</h3>
-<p>What is the result of the overall F-test for the linear regression model (see below)? Interpret this result in the context of the study.</p>
+<p>What is the result of the overall F-test for the linear regression model (see below), assume <span class="math inline">\(\alpha=0.05\)</span>? Interpret this result in the context of the study.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -205,10 +207,12 @@ window.Quarto = {
 # ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
 </div>
 </div>
+<p><span style="color:blue;"> The overall F test results has a p-value of 0.00626, which is less than <span class="math inline">\(0.05\)</span>, so we reject <span class="math inline">\(H_0\)</span> and conclude that there is evidence that at least one of the pollutant concentrations (ppb) is associated with asthma prevalence (%).</span></p>
 </section>
 <section id="e" class="level3">
 <h3 class="anchored" data-anchor-id="e">(e)</h3>
 <p>Interpret the <span class="math inline">\(R^{2}\)</span> value and briefly explain what it suggests about the adequacy of the model.</p>
+<p><span style="color:blue;"> Predictors explain about 12% of the variability in the model (or 12% of the variability in asthma prevalence). This relatively low value suggests that, while the predictors are related to asthma prevalence, the model leaves most of the variability unexplained and therefore has limited explanatory power. </span></p>
 </section>
 <section id="f" class="level3">
 <h3 class="anchored" data-anchor-id="f">(f)</h3>
@@ -222,6 +226,7 @@ window.Quarto = {
 </div>
 </div>
 <p>What did the researchers do? Explain in 1 sentence. What do the results indicate about multicollinearity affecting this model?</p>
+<p><span style="color:blue;">The researchers computed the VIF values (variable inflation factor) which checks for multicollinearity. Above 5 or 10 can be considered problematic levels of multicollinearity so it seems to confirm that it is present here.</span></p>
 </section>
 </section>
 <section id="exercise-2-conceptual" class="level2">
@@ -230,14 +235,24 @@ window.Quarto = {
 <section id="a-1" class="level3">
 <h3 class="anchored" data-anchor-id="a-1">(a)</h3>
 <p>If our outcome variable <span class="math inline">\(Y_{i}\)</span> takes values <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>, for a single observation what would we assume its distribution is?</p>
+<p><span style="color:blue;">Since we are talking about a single observation, it is Bernoulli, or equivalently, if we were talking about multiple observations (each with probability <span class="math inline">\(p\)</span>) this would be binomial with the number of trials equal to the number of observations.</span></p>
 </section>
 <section id="b-1" class="level3">
 <h3 class="anchored" data-anchor-id="b-1">(b)</h3>
 <p>Why would or wouldn’t you want to use a linear regression model for this situation?</p>
+<p><span style="color:blue;"> The linear regression model assumes a normally distributed outcome, which our outcome variable is not. A normally distributed outcome variable can (hypothetically) take any real number as a value, while our outcome variable must be 0 or 1. So our assumption of normality is incorrect. More concretely, assuming a linear model for the expected value of the outcome, as a function of predictors, can lead to estimated probabilities less than 0 or greater than 1, which are not possible. For these reasons we would not want to use a linear regression model.</span></p>
 </section>
 <section id="c-1" class="level3">
 <h3 class="anchored" data-anchor-id="c-1">(c)</h3>
 <p>What function of <span class="math inline">\(Y_{i}\)</span> are we modelling when we use logistic regression?</p>
+<p><span style="color:blue;"> Instead of modeling $Y_{i}=<em>{0}+</em>{1}X_1 . . . $ we model $logit(Pr(Y_{i}=1))=<em>{0}+</em>{1}X_1 . . . $. The logistic or logit function is <span class="math inline">\(logit(p)=\log\left(\frac{p}{1-p}\right)\)</span>. We use it in logistic regression because it ensures the values of <span class="math inline">\(p\)</span> are always within <span class="math inline">\([0,1]\)</span>.</span></p>
+</section>
+<section id="d-1" class="level3">
+<h3 class="anchored" data-anchor-id="d-1">(d)</h3>
+<p>How does interpretation of our parameter estimates (e.g.&nbsp;<span class="math inline">\(\beta_1\)</span>) change when considering logistic vs.&nbsp;linear regression?</p>
+<p><span style="color:blue;"></span></p>
+<p>Linear Regression - Continuous Predictors: <span class="math inline">\(\beta_{1}\)</span> represents the expected change in the mean outcome for a one‑unit increase in the predictor, holding other variables constant. Logistic Regression - Continuous Predictors: <span class="math inline">\(\beta_{1}\)</span> represents the change in the log-odds of the outcome for a one‑unit increase in the predictor, holding other variables constant. We often use exp(<span class="math inline">\(\beta_{1}\)</span>) as an estimate for the odds ratio for a one-unit increase in the predictor</p>
+<p>Linear Regression - Categorical Predictors: <span class="math inline">\(\beta_{1}\)</span> represents the difference in mean outcome between a given category and the reference group, holding other variables constant. Logistic Regression - Categorical Predictors: <span class="math inline">\(\beta_{1}\)</span> represents the difference in log-odds of the outcome between a given category and the reference group, holding other variables constant. Equivalently, exp(<span class="math inline">\(\beta_{1}\)</span>) is the odds ratio comparing that category to the reference group. </p>
 </section>
 </section>
 <section id="exercise-3-logistic-regression" class="level2">
@@ -301,10 +316,12 @@ window.Quarto = {
 <section id="a-2" class="level3">
 <h3 class="anchored" data-anchor-id="a-2">(a)</h3>
 <p>What is the reference category for the region variable?</p>
+<p><span style="color:blue;">Category 1 is the reference category, which we can see because it’s not included as a dummy variable in the R summary output.</span></p>
 </section>
 <section id="b-2" class="level3">
 <h3 class="anchored" data-anchor-id="b-2">(b)</h3>
 <p>Write the model used.</p>
+<p><span style="color:blue;"> Let <span class="math inline">\(p_i\)</span> be <span class="math inline">\(P(Y_i=1)\)</span>, the probability that individual <span class="math inline">\(i\)</span> is diagnosed with the condition. Then the model is <span class="math inline">\(logit(p_i)=\beta_0 + \beta_1 age_i + \beta_2(Region_i=2) + \beta_3(Region_i=3) + \beta_4(Region_i=4)\)</span>, where <span class="math inline">\(Region_i\)</span> can take the values 1, 2, 3, 4 depending on the residence of observation <span class="math inline">\(i\)</span>.</span></p>
 </section>
 <section id="c-2" class="level3">
 <h3 class="anchored" data-anchor-id="c-2">(c)</h3>
@@ -314,26 +331,35 @@ window.Quarto = {
 <li>Compare the p-value to <span class="math inline">\(\alpha\)</span>.</li>
 <li>Draw and state your conclusion in the context of the study.</li>
 </ol>
+<p><span style="color:blue;"> <span class="math inline">\(H_0\)</span>: Age (years) is not associated with diagnosis probability, holding region of residence constant. In symbols, <span class="math inline">\(H_0: \beta_1=0\)</span>.</span></p>
+<p><span class="math inline">\(H_A\)</span>: Age (years) is associated with diagnosis probability, holding region of residence constant. In symbols, <span class="math inline">\(H_A\)</span>: <span class="math inline">\(\beta_1\neq 0\)</span>. </p>
 </section>
-<section id="d-1" class="level3">
-<h3 class="anchored" data-anchor-id="d-1">(d)</h3>
+<section id="d-2" class="level3">
+<h3 class="anchored" data-anchor-id="d-2">(d)</h3>
 <p>Interpret the coefficient for the age variable in the context of the study.</p>
+<p><span style="color:blue;">For every increase in age by one year, the odds of diagnosis changes by a factor of <span class="math inline">\(\exp(\hat{\beta}_1)= \exp(0.0610685)\)</span>.</span></p>
 </section>
 <section id="e-1" class="level3">
 <h3 class="anchored" data-anchor-id="e-1">(e)</h3>
 <p>Interpret the coefficient for region category 4 in the context of the study.</p>
+<p><span style="color:blue;">Individuals residing in region 4 have odds of diagnosis equal to <span class="math inline">\(\exp(\hat{\beta}_4)=exp(0.7701685)\)</span> times the odds of diagnosis of an individual residing in region 1.</span></p>
 </section>
 <section id="f-1" class="level3">
 <h3 class="anchored" data-anchor-id="f-1">(f)</h3>
 <p>Based on the sign (positive/negative) of <span class="math inline">\(\hat{\beta}_1\)</span>, is increased age associated with increased or decreased probability of diagnosis?</p>
+<p><span style="color:blue;">The sign of the coefficient is positive, meaning that as age increases, the odds of diagnosis increase, and therefore as age increases, probability of diagnosis also increases.</span></p>
 </section>
 <section id="g" class="level3">
 <h3 class="anchored" data-anchor-id="g">(g)</h3>
-<p>Suppose the researchers suspect that the association between Pollutant1 and asthma prevalence depends on the level of Pollutant2. They fit the following model.</p>
+<p>Suppose the researchers suspect that the association between age and prevalence of this condition depends on BMI. They fit the following model.</p>
 <ol type="i">
-<li><p>Given the interaction term is in the model, how do you interpret the coefficient for age?</p></li>
-<li><p>How do you interpret the p-value for the coefficient for the interaction term?</p></li>
+<li>Given the interaction term is in the model, how do you interpret the coefficient for age?</li>
 </ol>
+<p><span style="color:blue;"> The coefficient for age represents the log odds associated with a 1 year increase in age <strong>when BMI = 0</strong>, holding all other variables constant. </span></p>
+<ol start="2" type="i">
+<li>How do you interpret the p-value for the coefficient for the interaction term?</li>
+</ol>
+<p><span style="color:blue;"> Assuming <span class="math inline">\(\alpha=0.05\)</span>, given the p-value is 0.018 which is less than 0.05 we reject the null hypothesis that the association between age and this condition do not differ by BMI. We therefore have evidence to suggest the association between age and this condition differs by BMI. </span></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fit.glm2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  condition <span class="sc">~</span> age <span class="sc">+</span> BMI <span class="sc">+</span> age <span class="sc">*</span> BMI <span class="sc">+</span> Region,</span>
@@ -425,6 +451,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<p><span style="color:blue;"> Some potential violations of linearity, as the line appears to jump up and down. Not as much evidence of violations for heteroskedascity (non-constant variance) and normality.</span></p>
 <ol start="2" type="a">
 <li>Scenario 2</li>
 </ol>
@@ -437,6 +464,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<p><span style="color:blue;"> Violations of linearity and normality. </span></p>
 <ol start="3" type="a">
 <li>Scenario 3</li>
 </ol>
@@ -449,6 +477,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<p><span style="color:blue;"> Violations of heteroskedascity (non-constant variance) </span></p>
 <ol start="4" type="a">
 <li>Scenario 4</li>
 </ol>
@@ -461,6 +490,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<p><span style="color:blue;"> Most assumptions seem to be met </span></p>
 <ol start="5" type="a">
 <li>Scenario 5</li>
 </ol>
@@ -473,12 +503,14 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<p><span style="color:blue;"> Violations of linearity and normality and potentially heteroskedascity (non-constant variance) </span></p>
 </section>
 <section id="exercise-5-correlations" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-5-correlations">Exercise 5: Correlations</h2>
 <ol type="a">
 <li>Describe the direction and strength of the correlation between X and Y in the plot below. Would you expect the Pearson correlation coefficient to be close to 0, close to 1, or somewhere in between?</li>
 </ol>
+<p><span style="color:blue;"> Strong positive correlation, correlation coefficient would be close to 1 </span></p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -491,6 +523,7 @@ window.Quarto = {
 <ol start="2" type="a">
 <li>Describe the direction and strength of the correlation. Would the correlation coefficient be positive or negative?</li>
 </ol>
+<p><span style="color:blue;"> Moderate positive correlation, correlation coefficient would be positive </span></p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -503,6 +536,7 @@ window.Quarto = {
 <ol start="3" type="a">
 <li>Is the association between X and Y strong or weak? Would the correlation coefficient be close to 0, close to 1, or close to −1?</li>
 </ol>
+<p><span style="color:blue;"> Strong linear association between X and Y, correlation coefficient would be close to -1 </span></p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -515,6 +549,7 @@ window.Quarto = {
 <ol start="4" type="a">
 <li>Would you expect the Pearson correlation coefficient to be close to 0, close to 1, or close to −1? Does a correlation near 0 imply there is no relationship between X and Y? Explain briefly.</li>
 </ol>
+<p><span style="color:blue;"> Close to 0, not a lot of linear association between X and Y. A correlation near 0 does not imply there is no relationship between X and Y, only that there is not a linear association between X and Y. </span></p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -527,6 +562,7 @@ window.Quarto = {
 <ol start="5" type="a">
 <li>What value would you expect the correlation coefficient to be close to? How would you describe the relationship between X and Y?</li>
 </ol>
+<p><span style="color:blue;"> Almost exactly 1- X and Y seem to be almost perfectly correlated. </span></p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -537,9 +573,13 @@ window.Quarto = {
 </div>
 </div>
 <ol start="6" type="a">
-<li><p>A public health researcher studies the relationship between daily physical activity (minutes per day) and body mass index (BMI) in a community sample and finds that the Pearson correlation coefficient is exactly zero. What does this result tell the researcher about the linear association between physical activity and BMI? Describe a situation in which Spearman correlation would be more appropriate than Pearson correlation for summarizing the association between these two variables. Briefly explain your reasoning.</p></li>
-<li><p>A public health researcher examines the association between neighborhood air pollution levels (<span class="math inline">\(PM_{2.5}\)</span> concentration) and lung function (measured by FEV₁) and finds no evidence of a correlation between the two variables based on the Pearson correlation coefficient. However, after controlling for smoking intensity (e.g., pack‑years), the researcher finds that the partial correlation between air pollution and lung function is substantially larger. What does this suggest about the role of smoking intensity in the relationship between air pollution and lung function? Briefly explain how it is possible for the partial correlation to be larger than the unadjusted correlation.</p></li>
+<li>A public health researcher studies the relationship between daily physical activity (minutes per day) and body mass index (BMI) in a community sample and finds that the Pearson correlation coefficient is exactly zero. What does this result tell the researcher about the linear association between physical activity and BMI? Describe a situation in which Spearman correlation would be more appropriate than Pearson correlation for summarizing the association between these two variables. Briefly explain your reasoning.</li>
 </ol>
+<p><span style="color:blue;"> A Pearson correlation coefficient of exactly zero indicates that there is no evidence of a linear association between daily physical activity and BMI in the sample. In other words, as physical activity increases or decreases, there is no evidence of a straight‑line relationship with BMI. This does not imply that the two variables are unrelated—only that they are not linearly related. Spearman correlation would be more appropriate if the relationship between physical activity and BMI is monotonic but non‑linear (e.g., BMI decreases rapidly at low levels of activity and then levels off), or if the data contain outliers or skewed distributions. Spearman correlation is based on ranks rather than raw values, making it less sensitive to nonlinearity and outliers than Pearson correlation. </span></p>
+<ol start="7" type="a">
+<li>A public health researcher examines the association between neighborhood air pollution levels (<span class="math inline">\(PM_{2.5}\)</span> concentration) and lung function (measured by FEV₁) and finds no evidence of a correlation between the two variables based on the Pearson correlation coefficient. However, after controlling for smoking intensity (e.g., pack‑years), the researcher finds that the partial correlation between air pollution and lung function is substantially larger. What does this suggest about the role of smoking intensity in the relationship between air pollution and lung function? Briefly explain how it is possible for the partial correlation to be larger than the unadjusted correlation.</li>
+</ol>
+<p><span style="color:blue;"> The fact that the partial correlation is substantially larger after controlling for smoking intensity suggests that smoking intensity is a confounder in the relationship between air pollution and lung function. Smoking is related to both higher <span class="math inline">\(PM_{2.5}\)</span> exposure (e.g., through residential or behavioral patterns) and poorer lung function, and its presence was masking the association between air pollution and FEV₁ in the unadjusted analysis. It is possible for the partial correlation to be larger than the unadjusted (Pearson) correlation because adjusting for smoking removes variation in lung function that is attributable to smoking rather than air pollution. Once this shared variation is accounted for, the remaining association between <span class="math inline">\(PM_{2.5}\)</span> and FEV₁ can become stronger and more apparent. </span></p>
 </section>
 <section id="exercise-6-r-functions-and-what-they-do" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-6-r-functions-and-what-they-do">Exercise 6: R Functions and What They Do</h2>
@@ -584,6 +624,28 @@ H. Fits a linear regression model I. Tests the association between two variables
 J. Adds fitted values and residuals to the original dataset for diagnostic purposes.</p>
 </section>
 </div>
+<ol type="1">
+<li><p><span style="color:blue;"> <strong><code>cor()</code></strong> → <strong>C</strong><br>
+Computes a numerical measure of linear association between two numeric variables.</span></p></li>
+<li><p><span style="color:blue;"><strong><code>pcor.test()</code></strong> → <strong>I</strong><br>
+Tests the association between two variables while controlling for one or more additional variables.</span></p></li>
+<li><p><span style="color:blue;"><strong><code>ggpairs()</code></strong> → <strong>G</strong><br>
+Produces a graphical display showing pairwise relationships among multiple variables.</span></p></li>
+<li><p><span style="color:blue;"><strong><code>lm()</code></strong> → <strong>H</strong><br>
+Fits a linear regression model.</span></p></li>
+<li><p><span style="color:blue;"><strong><code>glm(family = "binomial")</code></strong> → <strong>D</strong><br>
+Fits a regression model for a binary outcome using a logit link function.</span></p></li>
+<li><p><span style="color:blue;"> <strong><code>predict()</code></strong> → <strong>F</strong><br>
+Generates fitted values or predictions for new or existing observations based on a fitted model.</span></p></li>
+<li><p><span style="color:blue;"> <strong><code>vif()</code></strong> → <strong>B</strong><br>
+Computes variance inflation factors to assess multicollinearity among predictors.</span></p></li>
+<li><p><span style="color:blue;"> <strong><code>tidy()</code></strong> → <strong>E</strong><br>
+Converts model output into a tidy data frame with one row per model coefficient.</span></p></li>
+<li><p><span style="color:blue;"><strong><code>glance()</code></strong> → <strong>A</strong><br>
+Returns a compact summary of overall model fit statistics (e.g., R², F‑statistic).</span></p></li>
+<li><p><span style="color:blue;"> <strong><code>augment()</code></strong> → <strong>J</strong><br>
+Adds fitted values and residuals to the original dataset for diagnostic purposes.</span></p></li>
+</ol>
 </section>
 
 </main>

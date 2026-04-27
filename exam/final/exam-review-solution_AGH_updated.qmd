@@ -278,9 +278,9 @@ tidy(model3) |>
 
 i) Given the interaction term is in the model, what is the estimated change in systolic blood pressure corresponding to a 1 kg/m2 increase in BMI. **Note that the estimated change will depend on an individuals gender**
 
-So for a female (when gender = 0; which means reference group for gender), we expect the change in SBP of 0.4426 mmHg corresponding to a 1 kg/m2 increase in BMI
+So for a female (when gender = 0; which means reference group for gender), we expect a change in SBP of 0.4426 mmHg corresponding to a 1 kg/m2 increase in BMI, holding age constant
 
-We could also state that a 1 kg/m2 increase in BMI is associated with a 0.426 + (-1.44)*(Gender = male) mmHg increase in systolic blood pressure, so leave the increase in mmHg corresponding to a change in 1 kg/m2 in BMI as a function of Gender
+We could also state that a 1 kg/m2 increase in BMI is associated with a 0.426 + (-1.44)*(Gender = male) mmHg increase in systolic blood pressure, holding age constant, so leave the increase in mmHg corresponding to a change in 1 kg/m2 in BMI as a function of Gender
 
 ii) Based on the results from this model do you think there is evidence of a difference in the association by gender (assume $\alpha=0.05$ Why or why not?
 
